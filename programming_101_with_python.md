@@ -29,11 +29,7 @@ Python drawbacks:
 
 # Other interactive courses
 
-https://futurecoder.io/course/#toc
 
-https://learn-python.adamemery.dev/basics
-
-https://www.codedex.io/
 
 # Exercise lists:
 
@@ -49,59 +45,6 @@ https://python-fiddle.com/challenges/levels/intermediate
 
 ejercicios año pasado
 
-# Resources for the beginer
-
-https://nostarch.com/python-crash-course-3rd-edition
-
-https://docs.python.org/3/tutorial/index.html
-
-https://greenteapress.com/thinkpython2/html/index.html
-
-http://openbookproject.net/thinkcs/python/english3e/
-
-https://runestone.academy/ns/books/published/thinkcspy/index.html
-
-# Documentation
-
-Python official documentation.
-https://docs.python.org/
-
-
-# Tutorials
-
-https://developers.google.com/edu/python?hl=es-419
-
-https://wiki.python.org/moin/BeginnersGuide/NonProgrammers
-
-# Running Python code in the web
-
-## Running Python
-
-There are many ways of running Python:
-
-- jupyterlite
-- https://futurecoder.io/course/#ide
-- https://pyodide.org/en/stable/console.html
-- Locally
-
-## Objective
-
-Learn to:
-
-- execute a Python program. (future coder)
-- use the interactive interpreter, the shell (python.org)
-
-### Resources
-
-Running Python code in future coder
-https://futurecoder.io/course/#ide
-
-The interactive console in python.org
-https://www.python.org/
-
-## Exersises: Hello world
-
-Modify a Hello world program to say: print Hello YourName
 
 # Basics: flow and variables
 
