@@ -154,9 +154,13 @@ dict.items()
 
 ## variables are references
 
+## variable naming conventions
+
 # Functions
 
 ## Introduce that there are methods
+
+## function naming conventions
 
 # Running Python locally
 
