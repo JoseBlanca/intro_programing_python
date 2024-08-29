@@ -11,6 +11,7 @@ dependencies = [
     "ipykernel>=6.29.5",
     "jupyterlite-core>=0.4.0",
     "nbconvert>=7.16.4",
+    "notebook>=7.2.2",
 ]
 
 [build-system]
