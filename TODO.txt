@@ -1,2 +1,0 @@
-check writable false
-https://github.com/jupyterlite/jupyterlite/issues/407#issuecomment-1601357352
