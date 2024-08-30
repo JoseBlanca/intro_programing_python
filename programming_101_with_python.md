@@ -46,15 +46,6 @@ https://python-fiddle.com/challenges/levels/intermediate
 ejercicios año pasado
 
 
-# Basics: flow and variables
-
-## Objective: The code is executed line by line.
-
-### Exercise: print hello first and then your name
-
-## Objective: variables store information for later use
-
-### Exercise: print Hello your name using a variable
 
 # Types
 
