@@ -1,0 +1,273 @@
+---
+title: Operators
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+
+In any programming language we can do operations on data and, in most, for the basic operation a operator syntax is defined.
+
+## Basic numeric operations
+
+For instance, in Python we can sum to numbers using the **+** operator.
+
+
+```{pyodide}
+a = 41
+b = a + 1
+print(b)
+```
+
+With integers and floats we can use the basic arithmetic operators: **+**, **-**, **/**, **\***, .
+
+```{pyodide}
+a = 2 + 2
+print("a", a)
+b = 2 - 10
+print("b", b)
+c = 2.0 * 3
+print("c", c)
+d = 2 / 3
+print("d", d)
+```
+
+There is also an operator for power: **\*\***.
+
+```{pyodide}
+print(2**8)
+```
+
+```{pyodide}
+#| exercise: rect_area
+# calculate the area of a rectangle
+width = 20
+height = 5
+area =
+print("area = ", area)
+```
+
+::: { .solution exercise="rect_area" }
+::: { .callout-tip collapse="false"}
+
+```python
+width = 20
+height = 5
+area = width * area
+print("area = ", area)
+```
+
+:::
+:::
+
+
+```{pyodide}
+#| exercise: circle_area
+# Calculate the area of a circle, remember that the area is pi * r^2
+pi = 3.14159
+# alternatively, we can get the value of pi directly from python
+import math
+pi = math.pi
+r = 10
+area =
+print("area = ", area)
+```
+
+::: { .solution exercise="circle_area" }
+::: { .callout-tip collapse="false"}
+
+```python
+import math
+pi = math.pi
+r = 10
+area = 2 * pi * (r**2)
+print("area = ", area)
+```
+
+:::
+:::
+
+
+## Integer division
+
+For integers Python defines two other special operators: integer division (*//*), and remainder (**%**).
+
+```{pyodide}
+dividend = 10
+divisor = 3
+quotient = dividend // divisor
+remainder = dividend % divisor
+print("quotient", quotient)
+print("remainder", remainder)
+```
+
+```{pyodide}
+#| exercise: exp_int_div
+
+# Which are the expected results for the following operations?
+# 9 % 3 
+# 14 % 2
+# 14 % 3 
+# 9 // 3 
+# 14 //2
+# 14 % 3
+```
+
+::: { .solution exercise="exp_int_div" }
+::: { .callout-tip collapse="false"}
+
+```python
+print("9 % 3 ", 9 % 3)
+print("14 % 2 ", 14 % 2)
+print("14 % 3 ", 14 % 3)
+print("9 // 3 ", 9 // 3)
+print("14 //2 ", 14 //2)
+print("14 % 3 ", 14 % 3)
+```
+
+:::
+:::
+
+
+Find out if the numbers 10938 and 9893 are divisible by 3.
+
+```{pyodide}
+
+#| exercise: div_3
+# Find out if the numbers 10938 and 9893 are divisible by 3.
+```
+
+::: { .hint exercise="div_3"}
+::: { .callout-note collapse="false"}
+
+Use the mod operator **%**, and the type casting to bool.
+
+:::
+:::
+
+::: { .solution exercise="div_3" }
+::: { .callout-tip collapse="false"}
+
+```python
+
+number = 10938
+remainder = number % 3
+print("Is ", number, "divisible by 3? The remainder is:", remainder, "So is it not divisible? ", bool(remainder))
+number = 9893
+remainder = number % 3
+print("Is ", number, "divisible by 3? The remainder is:", remainder, "So is it not divisible? ", bool(remainder))
+
+```
+
+:::
+:::
+
+
+## Common unary operators
+
+The operators that we have seen so far take two elements, for instance the add operator (**+**) takes two numbers and returns the sum of both. These operators are called binary because they take two elements.
+But there are also unary operators, that only act in one element. The one most commonly used is the **+=** operator.
+
+```{pyodide}
+# These two operations are equivalent
+
+a = 10
+a = a + 1
+print(a)
+
+a = 10
+a += 1
+print(a)
+```
+
+There are other unary operators, like **-=**, **\*=**, **\\=** but they are not used as much.
+
+```{pyodide}
+#| exercise: unary_op
+# Transform this operations using unary operators
+
+my_age = 42
+my_age = my_age + 1
+print("After my birthday, my age will be", my_age)
+
+number_of_items = 10
+number_of_items = number_of_items - 1
+print("After selling an item, the number of items will be", number_of_items)
+```
+
+::: { .solution exercise="unary_op" }
+::: { .callout-tip collapse="false"}
+
+```python
+my_age = 42
+my_age += 1
+print("After my birthday, my age will be", my_age)
+
+number_of_items = 10
+number_of_items -= 1
+print("After selling an item, the number of items will be", number_of_items)
+```
+
+:::
+:::
+
+
+```{pyodide}
+#| exercise: expect_unary
+# Which would be the expected result of the following operations?
+# a = 2
+# a += 3
+# a *= 5
+# a /= 5
+# a -= 3
+```
+
+```python
+a = 2
+a += 3
+a *= 5
+a /= 5
+a -= 3
+print(a)
+```
+
+
+## Operations with text strings
+
+Text strings can be added.
+
+```{pyodide}
+print("Hello " + "Jane")
+```
+
+One confusing Python behaviour is that it will add two string even if there is no + sign between them. This is called string concatenation.
+
+```{pyodide}
+print("Hello" "John")
+```
+
+The multiplication operation is also defined for str and int. It just repeats the string the given number of times.
+
+```{pyodide}
+print("Hi!" * 10)
+```
+
+We could check is a string is included in another string by using the *in* operator.
+
+```{pyodide}
+print("GATA" in "GCCGTATGCATGATATGCTAGCTAG")
+```
+
+```{pyodide}
+# Does the following code give the expected result?
+print("gata" in "cagtcagGATAtctagtcgta")
+```
+
+# Resources
+
+- Real python tutorial on [operators and statements](https://realpython.com/python-operators-expressions/).
+- Official documentation for [expressions and operators](https://docs.python.org/3/reference/expressions.html#binary-arithmetic-operations).
+

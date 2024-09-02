@@ -1,0 +1,248 @@
+---
+title: Comparisons and boolean operators
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+
+
+## Comparisons
+
+A critical part of any programming language is the comparison between items.
+For instance, is a number equal to the result of an operation? Is is bigger or maybe smaller?
+Some of the operators used are: equal (**==**), less than (**<**), greater than (**>**), not equal (**!=**), less or equal (**<=**), greater or equal (**>**).
+
+```{pyodide}
+#| exercise: simple_comparisons
+
+# Which would be the expected result of the following operations?
+print("1 == 1:", 1 == 1)
+# 1 == 2
+# 1 != 2
+# 1 < 2
+# 1 > 2
+#1 <= 2
+```
+
+::: { .solution exercise="simple_comparisons" }
+::: { .callout-tip collapse="false"}
+
+```python
+print("1 == 1:", 1 == 1)
+print("1 == 2:", 1 == 2)
+print("1 != 2:", 1 != 2)
+print("1 < 2:", 1 < 2)
+print("1 > 2:", 1 > 2)
+print("1 <= 2:", 1 <= 2)
+```
+
+:::
+:::
+
+
+It is very important to understand the difference between the assingment operator (**=**) and the comparison operator (**==**).
+The assigment operator is used to assign a value (an object) to a variable, whereas the comparison operator is used to find out if two objects are the same or not.
+
+```{pyodide}
+#| exercise: fix_assign
+
+# Fix this code
+
+name1 = "John"
+name2 = "John"
+print(a = b)
+```
+
+::: { .hint exercise="fix_assign" }
+::: { .callout-tip collapse="false"}
+
+Remember that the comparison operator is **==**, not **=**.
+:::
+:::
+
+::: { .solution exercise="fix_assign" }
+::: { .callout-tip collapse="false"}
+
+name1 = "John"
+name2 = "John"
+print(a == b)
+
+:::
+:::
+
+There is a catch with the floats. It is OK to check if they are greater or lower, but do not use the equality operator (**==**) to check if they are the same because the comparison might fail. Remember that floats are approximate.
+If you want to check if two floats are very similar you have to use the [isclose](https://docs.python.org/3/library/math.html#math.isclose) function. This function is not directly avilable, you have to import it from the math module, we will work with modules in the future.
+
+```{pyodide}
+#| exercise: isclose
+
+from math import isclose
+
+print(isclose(1.0, 1.0000000000000001))
+
+# Fix the following code
+
+print(2.0 == 2)
+```
+
+::: { .solution exercise="isclose" }
+::: { .callout-tip collapse="false"}
+
+```python
+from math import isclose
+
+print(isclose(1.0, 1.0000000000000001))
+
+print(isclose(2.0, == 2))
+```
+:::
+:::
+
+
+
+```{pyodide}
+#| exercise: isclose2
+
+# create checks for the following operations
+print("0.1 + 0.1 = 0.2:", 0.1 + 0.1 == 0.2)
+# 0.8 - 0.3 = 0.5
+# 0.1 x 0.3 = 0.03
+# 9 /3 = 3
+# 4**3= 64
+# 4**3  + 3**3 = 91
+# (2+1)/10 = 0.3
+# 0.2 + 0.1 = 0.3
+```
+
+::: { .hint exercise="isclose" }
+::: { .callout-tip collapse="false"}
+
+Use the comparison operator for the integers and the isclose function for the floats.
+
+:::
+:::
+
+::: { .solution exercise="isclose" }
+::: { .callout-tip collapse="false"}
+
+```python
+from math import isclose
+print("0.1 + 0.1 = 0.2:", isclose(0.1 + 0.1, 0.2))
+print("0.8 - 0.3 = 0.5:", isclose(0.1 + 0.1, 0.2))
+print("0.8 - 0.3 = 0.5:", isclose(0.1 x 0.3, 0.03))
+print("9 / 3 = 3:", isclose(9 /3, 3))
+print("4**3 = 64:", 4**3 == 64)
+print("4**3  + 3**3 = 91:", 4**3  + 3**3 == 91)
+print("(2+1)/10 = 0.3:", isclose((2+1)/10, 0.3))
+print("0.2 + 0.1 = 0.3:", isclose(0.2 + 0.1, 0.3))
+```
+:::
+:::
+
+
+None represents another special case. You might check if a variable is None using the equality operator, but is it recommended to use the **is** operator.
+
+```{pyodide}
+a = None
+
+# This will print True, but is it not reccomended to use == with None
+print("a == None", a == None)
+
+# This is the correct way to check if a variable is None
+print("a is None", a is None)
+
+# if you want to check if a variable is not None, you can use the following
+b = ""
+print("b is not None", b is not None)
+print("a is not None", a is not None)
+```
+
+## Operations with booleans
+
+The boolean type has special operators: *and*, *or*, *not*. These operators define a [boolean arithmetic](https://en.wikipedia.org/wiki/Boolean_algebra).
+
+```{pyodide}
+three_is_positive = True
+three_is_odd = True
+print("positive and odd: ", three_is_positive and three_is_odd)
+print("positive or odd: ", three_is_positive or three_is_odd)
+
+three_is_negative = not three_is_positive
+print("three is negative: ", three_is_negative)
+
+print("negative or even: ", (not three_is_positive) or (not three_is_odd))
+```
+
+```{pyodide}
+#| exercise: exp_bools
+
+# Which would be the result of the following operations?
+print("True or False: ", True or False)
+# True and False
+# True and not False
+# 4 <= 4 and True
+# 3 > 2 and 4 > 8
+# 3 > 2 or 4 > 8
+```
+
+::: { .solution exercise="exp_bools" }
+::: { .callout-tip collapse="false"}
+
+```python
+print("True or False:", True or False)
+print("True and False:", True and False)
+print("True and not False:", True and not False)
+print("4 <= 4 and True:", 4 <= 4 and True)
+print("3 > 2 and 4 > 8:", 3 > 2 and 4 > 8)
+print("3 > 2 or 4 > 8:", 3 > 2 or 4 > 8)
+```
+
+:::
+:::
+
+Explore the boolean arithmetic which are the results for all the combinations of **and** and **or**.
+
+```{pyodide}
+#| exercise: bool_tables
+
+print("True and True: ", True and True)
+print("True and False: ", True and False)
+# and so on ...
+```
+
+::: { .solution exercise="bool_tables" }
+::: { .callout-tip collapse="false"}
+
+Try all True and False combinations with and and or.
+
+:::
+:::
+
+::: { .solution exercise="bool_tables" }
+::: { .callout-tip collapse="false"}
+
+```python
+print("True and True: ", True and True)
+print("True and False: ", True and False)
+print("False and True: ", False and True)
+print("False and False: ", False and False)
+
+print("True or True: ", True or True)
+print("True or False: ", True or False)
+print("False or True: ", False or True)
+print("False or False: ", False or False)
+
+```
+
+:::
+:::
+
+# Resources
+
+- Official documentation on [boolean operators](https://docs.python.org/3/library/stdtypes.html) for the built-in types.
+- Real python tutorial on [boolean operators](https://realpython.com/python-and-operator/).
+

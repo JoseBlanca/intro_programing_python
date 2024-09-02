@@ -1,0 +1,36 @@
+project:
+  type: website
+
+website:
+  title: "Introduction to programming with Python"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Basics"
+        contents:
+          - text: "Hello world"
+            href: intro/hello_world.qmd
+          - text: "Flow and variables"
+            href: intro/flow_and_variables.qmd
+      - section: "Types and operators"
+        contents:
+          - text: "Types"
+            href: types_and_operators/types.qmd
+          - text: "Operators"
+            href: types_and_operators/operators.qmd
+          - text: "Comparisons and bool operators"
+            href: types_and_operators/comparisons_and_bool_operators.qmd
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

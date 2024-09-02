@@ -1,0 +1,208 @@
+---
+title: Flow and variables
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+
+
+## Flow
+
+The computer code is execute one line (or statement) at a time.
+The order in which the lines are executed is called flow.
+
+```{pyodide}
+print("This line will be executed first.")
+print("This line will be executed second.")
+print("This line will be executed last.")
+```
+
+
+Order the lines in the following code, we want the computer to first say Hello, then Your Name, and, finally, an invitation to play.
+
+```{pyodide}
+#| exercise: fix_flow
+print("Your Name")
+print("Do you want to play a nice game of chess?")
+
+print("Hello")
+```
+
+::: { .hint exercise="fix_flow"}
+::: { .callout-note collapse="false"}
+## Hint 
+
+Remember that the lines are executed in order, so change the order of the lines.
+
+:::
+:::
+
+::: { .solution exercise="fix_flow" }
+::: { .callout-tip collapse="false"}
+
+```python
+print("Hello")
+print("John")
+print("Do you want to play a nice game of chess?")
+```
+
+:::
+:::
+
+
+## Variables
+
+When we run programs we store information in the memory of the computer for later use. This is a fundamental idea in computers.
+You can think about the memory of a computer as a file cabinet in which we can store values like numbers and strings of letters.
+Internally the memory is divided in small pieces, like the drawers of a filing cabinet, and the computer assings a numeric adress to each of those drawers. So, for instance, we could tell the computer to store the number 42 in the address 00000100, but it would be very cumbersome to use these numeric addresses, so, instead, the we use [variables](https://en.wikipedia.org/wiki/Variable_(computer_science)), names that we create, to refer to the memory locations and contents.
+
+In different programming languages and expressions a variable can refer to the value stored or to the memory address ([pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))). In Python a variable will always be a reference to the object stored. You can think of it as a label in the file cabinet drawer or an arrow that points to the content of the drawer.
+
+![Value stored in a variable](../static/memory_and_variables.png "Value stored in a variable")
+
+In Python we store a variable in memory by using the assigment operator **=**.
+
+```{pyodide}
+favorite_number = 42
+print("My favorite number is ", favorite_number)
+```
+
+Python is doing quite a lot of things for us when we write "favorite_number = 42":
+
+  1. It reserves a space in the memory to be able to store the object that is going to create.
+  2. It creates the object 42.
+  3. It assigns the favorite_number variable as a reference to the created and stored object.
+
+## Create and print variables
+
+Create two variables, one with your name, and another one with your surname and print them.
+
+```{pyodide}
+#| exercise: variable_name
+# Fix this code, by providing a name and surname
+
+name = 
+surname =
+
+print("Hello ", name, " ", surname)
+```
+
+::: { .solution exercise="variable_name" }
+::: { .callout-tip collapse="false"}
+
+```python
+name = "Jane"
+surname = "Doe"
+print("Hello ", name, " ", surname)
+```
+
+:::
+:::
+
+## Change the value of a variable
+
+The variables can be changed to refer to different values/objects.
+Fix the program to show your real name by changing the value of the variable.
+
+```{pyodide}
+#| exercise: variable_change
+name = "John"
+name = 
+
+print("My name is ", name)
+```
+
+::: { .solution exercise="variable_change" }
+::: { .callout-tip collapse="false"}
+
+```python
+name = "John"
+name = "Alice"
+
+print("My name is ", name)
+```
+
+:::
+:::
+
+
+Given the following code, think about the expected output, what will the program print when you execute it?
+
+```{pyodide}
+name = "FALKEN"
+name = "SNAPE"
+print(name)
+name = "FALKEN"
+print(name)
+```
+
+
+Fix the following code to print the correct name of your Pokemons.
+
+```{pyodide}
+#| exercise: variables_and_strings
+my_pokemon = "Pikachu"
+your_pokemon = "Ampharos"
+print("My favorite pokemon is", "my_pokemon")
+print("Your favorite pokemon is", "your_pokemon")
+```
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+
+Remember that variable names are not enclosed by quotes and that if you put something inside a quote Python will consider it a text string.
+
+:::
+:::
+
+::: { .solution exercise="variables_and_strings" }
+::: { .callout-tip collapse="false"}
+
+```python
+my_pokemon = "Pikachu"
+your_pokemon = "Ampharos"
+print("My favorite pokemon is", my_pokemon)
+print("Your favorite pokemon is", your_pokemon)
+```
+
+:::
+:::
+
+
+It is very importan to understand the difference between variables and text:
+  - variable names are not enclosed by quotes.
+
+```{pyodide}
+a_variable = 42
+"a_text_string"
+```
+
+Write the name and year of release of a movie using two variables.
+
+```{pyodide}
+#| exercise: movie
+# write here the code to print the name and year of a movie
+```
+
+::: { .solution exercise="movie" }
+::: { .callout-tip collapse="false"}
+
+```python
+movie = "The Matrix"
+year = 1999
+print(movie, "was released in", year)
+```
+
+:::
+:::
+
+
+## Resources
+
+- [Variables in Python](https://realpython.com/python-variables/) in Real Python.
+- [print](https://docs.python.org/3/library/functions.html#print) function official documentation.
+- A [print](https://realpython.com/python-print/) function tutorial in Real Python.

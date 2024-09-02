@@ -1,0 +1,73 @@
+---
+title: Hello world
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+
+
+## Objectives
+
+The aim of this exercise is to learn how to write and execute Python code.
+
+## Rationale
+
+There are plenty of [programing languages](https://en.wikipedia.org/wiki/List_of_programming_languages), but all of them share some common principles.
+Computers execute [machine code](https://en.wikipedia.org/wiki/Machine_code), a binary set of instructions that are carried out by the computer processors, but usually human do not write binary machine code, or even [assembly language](https://en.wikipedia.org/wiki/Assembly_language), the written code directly translatable to machine code.
+
+Most of the time programers write code in languages that are easier to write and read by us, humans. These codes, in turn, have to be translated to machine code. This process of translation is called [compilation](https://en.wikipedia.org/wiki/Compiler). Compilation is a complex process that comprises several steps, and different compilers and programming languages divide theses steps differently.
+There are compilers, like the C or C++ compiles, that take the code and compile it into a binary executable that can be directly run in a computer, while there are other, like the Python [interpreter](https://en.wikipedia.org/wiki/Interpreter_(computing)) of the Java compiler, that are capable of running directly the human readable code that create an intermediate representation called [bytecode](https://en.wikipedia.org/wiki/Bytecode).
+In these cases we need to install the language interpreter to run the program. For instance, if you want to run a Java or Python program you will need to install Java or Python before.
+
+[Python](https://en.wikipedia.org/wiki/Python_(programming_language)) is an interpreted language, so, once you install Python you will be able to directly run Python code.
+However, you first need to have Python available in your computer.
+
+There are many ways of installing Python like:
+
+  - Downloading Python from [python.org](https://www.python.org/).
+  - Using the Windows store or the Linux packages already prepared.
+  - Using a Python version manager like [uv](https://docs.astral.sh/uv/).
+  - Having Python included in your web browser thanks to [Pyodide](https://pyodide.org/).
+
+In this exercise we are going to use [JupyterLite](https://jupyterlite.readthedocs.io/), a version of the [Jupyter](https://docs.jupyter.org/), a system that allows to write and run Python code directly in a web page, that does not require any previous installation because it already includes Python, thanks to Pyodide.
+
+The Notebook document is composed by cells, some are text (in markdown format), and others contain Python code that can be executed.
+To execute a Python cell:
+
+  - Select the cell that you want to execute.
+  - Click the play symbol on top of the page or press shift + enter.
+
+## Resources
+
+- Explanation of the Jupyter [Notebook interface](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#notebook-user-interface).
+- Real Python Jupyter [Notebook introduction](https://realpython.com/jupyter-notebook-introduction/).
+- Jupyter [Notebook tutorial](https://www.dataquest.io/blog/jupyter-notebook-tutorial/) by dataquest.
+
+## Print Hello world
+
+```{pyodide}
+#| exercise: hello_world_01
+print("Hello world")
+```
+
+## Print Hello "Your Name"
+
+```{pyodide}
+#| exercise: hello_world_02
+# Use this Notebook cell to write Python code capable of printing your name
+```
+
+::: { .solution exercise="hello_world_02" }
+::: { .callout-tip collapse="false"}
+
+```python
+print('Jane')
+```
+
+:::
+:::
+

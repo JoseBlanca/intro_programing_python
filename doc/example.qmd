@@ -1,0 +1,35 @@
+---
+title: Hello world
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+
+```{pyodide}
+#| exercise: variable_name
+favorite_number = 42
+print("My favorite number is ", favorite_number)
+```
+
+::: { .hint exercise="variable_name"}
+::: { .callout-note collapse="false"}
+
+Remember 
+
+:::
+:::
+
+
+::: { .solution exercise="variable_name" }
+::: { .callout-tip collapse="false"}
+
+```python
+name = "Jane"
+```
+
+:::
+:::
