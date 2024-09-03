@@ -1,0 +1,618 @@
+---
+title: Strings
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+
+# Strings
+
+In most programming laguages the type used for text are called strings, because they are considered string of characters.
+In Python you can create an object of type [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) by using a string literal, like:
+
+```{pyodide}
+
+some_text = "This is a text string literal"
+
+```
+
+String literals can be defined with single and double quotes.
+
+```{pyodide}
+
+greetings1 = "Hello"
+greetings2 = 'Hello'
+print(greetings1, "and", greetings2, "are exactly the same:", greetings1 == greetings2)
+
+```
+
+It is also common to use triple quotes. The advantage of the triple quotes is that they can include string literals with several lines.
+
+```{pyodide}
+
+hamlet = """To be, or not to be, that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune"""
+
+print(hamlet)
+
+text_with_single_triple_quotes = '''This is an example
+of a text
+created with single triple quotes.
+'''
+print(text_with_single_triple_quotes)
+
+```
+
+Fix the following code:
+
+```{pyodide}
+
+"greetings" = "Hello Ada"
+print(greetings)
+
+```
+
+## String methods
+
+The string type has a rich functionality available. We can, for instance create upper- or lowercase versions of the strings.
+This funcionality is accessed via the string class [methods](https://en.wikipedia.org/wiki/Method_(computer_programming)).
+It is still too early to formally introduce the concept what is a method, so lets just show some examples.
+
+```{pyodide}
+
+lowercase_text = "Some TEXT with lower and UPPER case letters.".lower()
+uppercase_text = lowercase_text.upper()
+print(lowercase_text)
+print(uppercase_text)
+```
+
+So methods are used by writing a dot (**.**), the name of the methods and two parentheses.
+You can ask for the whole documentation of the str methods by using the [help](https://docs.python.org/3/library/functions.html#help) function.
+
+```{pyodide}
+
+help(str)
+
+```
+
+Let's see some examples of the most commonly used string methods.
+
+```{pyodide}
+
+# remove extracharacters at the begining and at the end
+
+string_with_spaces = "   Some text    "
+print("*" + string_with_spaces + "*")
+string_with_no_spaces = string_with_spaces.strip()
+print("*" + string_with_no_spaces + "*")
+
+# Count number of occurences
+
+dna_sequence = "CTAGCTATCGAT"
+print("The number of As is: ", dna_sequence.count('A'))
+
+# Be careful because lower and upper letters are different
+
+print("The number of as is: ", dna_sequence.count('a'))
+
+# We can replace an string with another string
+
+print("My name is Joe".replace("Joe", "Jane"))
+
+```
+
+We can also split a string into a list of strings.
+
+```{pyodide}
+
+text = "The Answer to the Ultimate Question of Life, the Universe, and Everything is 42"
+
+# split by spaces or tabs
+words = text.split()
+
+# words will be a list of strings
+print(words)
+
+# we could also split using any other character
+letters = "a,b,c,d,e,f".split(",")
+print(letters)
+
+```
+
+If we have a list of strings we can join them.
+
+```{pyodide}
+
+words = ["I", "am", "learning", "Python"]
+text = " ".join(words)
+print(text)
+print("".join(words))
+print("- -".join(words))
+
+```
+
+We can also get every letter by using list.
+
+```{pyodide}
+
+print(list("Some text"))
+print(list("ABCDEF"))
+```
+
+To find out the lenght of a string we use the function [len](https://docs.python.org/3/library/functions.html#len).
+
+```{pyodide}
+
+text = "Some text"
+print("The length of the text is: ", len(text))
+
+```
+
+Calculate the GC content, percentage of Gs and Cs of a DNA sequence.
+
+
+```{pyodide}
+#| exercise: gc_content
+sequence = "CGT AGC TAT CGA TGC TAG TCG TAG TCT AGC TAG TCA"
+
+print("The GC content is ")
+```
+
+::: { .hint exercise="gc_content"}
+::: { .callout-note collapse="false"}
+
+You can remove characters using replace("character", "").
+
+:::
+:::
+
+::: { .solution exercise="gc_content"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+sequence = "CGT AGC TAT CGA TGC TAG TCG TAG TCT AGC TAG TCA"
+sequence = sequence.replace(" ", "")
+num_gcs = sequence.count("C") + sequence.count("G")
+print("The GC content is: ", num_gcs / len(sequence) * 100)
+```
+
+:::
+:::
+
+
+We are writting some software that deal with file names, and we would like to change every .txt file into a .doc file. How could we change these file names?
+
+```{pyodide}
+#| exercise: replace_txt
+file_name = 'my_text.txt'
+
+print(file_name.)
+```
+
+::: { .solution exercise="replace_txt" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+file_name = 'my_text.txt'
+
+print(file_name.replace('.txt', '.doc'))
+```
+
+:::
+:::
+
+We have file with values separated by commas and we want the separated by tabs, how could we do it.
+
+```{pyodide}
+#| exercise: comma_tab
+
+line = "name,surname,age\n"
+
+print(line_with_tabs)
+```
+
+::: { .hint exercise="comma_tab"}
+::: { .callout-note collapse="false"}
+
+The tab character is represented by "\t".
+
+:::
+:::
+
+::: { .solution exercise="comma_tab"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+
+line = "name,surname,age\n"
+
+print(line.replace(",", "\t"))
+
+# or
+
+print("\t".join(line.split(",")))
+```
+
+:::
+:::
+
+Imagine that we are reading a text file in which each line gives us information from one person. Remove the line feed and split the information items.
+
+```{pyodide}
+#| exercise: read_line
+line = 'John,Doe,20\n'
+
+print(name)
+print(surname)
+print(age)
+```
+
+::: { .hint exercise="read_line"}
+::: { .callout-note collapse="false"}
+
+Remember that you can remove the feed line and return characters using the strip method and that you can split a sting with the split method.
+
+Once you have the three items you can do:
+
+```{pyodide}
+name = items[0]
+surname = items[1]
+age = items[age]
+
+# or
+name, surname, age = items
+```
+
+:::
+:::
+
+::: { .solution exercise="read_line"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+line = 'John,Doe,20\n'
+items = line.strip().split(',')
+name, surname, age = items
+print(name)
+print(surname)
+print(age)
+```
+
+:::
+:::
+
+## Type casting
+
+Strings can be converted into numbers and numbers into strings.
+
+```{pyodide}
+number = int("42")
+string = str(number)
+float_number = float(string)
+```
+
+Fix the following code:
+
+```{pyodide}
+#| exercise: total
+first = 20
+second = "40"
+total = first + second
+print(total)
+```
+
+::: { .solution exercise="total"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+first = 20
+second = "40"
+total = first + int(second)
+print(total)
+```
+
+:::
+:::
+
+
+## Indexing
+
+Strings are a sequence of characters and they can be indexed, we can get some of the characters, by using the square brackets: **[]**.
+
+```{pyodide}
+
+wonderland = "Alice was beginning to get very tired"
+
+# In most programming languages indexes start at zero, the first character is 0
+print(wonderland[0])
+print(wonderland[1])
+print(wonderland[2])
+print(wonderland[3])
+print(wonderland[4])
+
+# In Python we can ask for the last character by using negative numbers
+
+print(wonderland[-1])
+print(wonderland[-2])
+print(wonderland[-3])
+print(wonderland[-4])
+print(wonderland[-4])
+
+```
+
+![Python positive and negative string indexes](../static/python_str_indexes.png "Python positive and negative string indexes")
+
+We will see that this is a general property of any [sequence type](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) in Python, all of them can be indexed in the same way.
+
+Indexes allow us to ask for not just one, but several items, in the string case several characters using the colon (**:**) to separate the first and the last position. Take into account that the first position will be included in the selection but the last one will be not.
+
+```{pyodide}
+
+wonderland = "Alice was beginning to get very tired"
+
+print(wonderland[0:5])
+print(wonderland[6:9])
+
+# We can ommit the first position. That will be interpreted as, from the begining.
+
+print(wonderland[:9])
+
+# Or we could ommit the last position, up until the end.
+
+print(wonderland[10:])
+
+# If we ommint both the first and last we will get a complete copy of the string, from the begining to the end
+
+print(wonderland[:])
+
+# Of couse, we can also use, as indexes, negative number
+
+print(wonderland[-5:])
+
+```
+
+Predict the result of running the following code:
+
+```{pyodide}
+a= "GAATTC"
+print(a[0:6])
+print(a[0:5])
+print(a[:6])
+```
+
+The combination of the start and end position is called slice. By using this kind of indexing we are slicing the string.
+Slices can also be build using the [slice]((https://docs.python.org/3/library/functions.html#slice)) built-in functions, but this is a more avanced topic.
+
+Slices, besides start and stop, allow for a third number, the step, that indicates the increment between the index of the selected items. For instance, we could use the step to select every three characters.
+
+```{pyodide}
+sequence = 'ActGcgTacT'
+print(sequence[::3])
+```
+
+Step is commonly used to reverse the string by using a step of -1.
+
+```{pyodide}
+sequence = 'Hello'
+print(sequence[::-1])
+```
+
+Another way of reversing a string, or any Python [sequence](https://docs.python.org/3/glossary.html#term-sequence), is to use the [reversed](https://docs.python.org/3/library/functions.html#reversed). The result won't be exactly the same because reversed returns an [iterator](https://docs.python.org/3/glossary.html#term-iterator) that has to be converted into a string. The reversed function could seem more cumbersome, but iterators have many advantages in different context. But we won't discuss them here because this is a more advanced topic.
+
+```{pyodide}
+string = 'Hello'
+reversed_string = ''.join(reversed(string))
+print(reversed_string)
+```
+
+Excercise, create a way of checking if a string is a palindrome.
+
+```{pyodide}
+#| exercise: palindrome
+string = 'racecar'
+
+print("The string is a palindrome:", )
+```
+
+::: { .hint exercise="palindrome"}
+::: { .callout-note collapse="false"}
+
+You could check if the reversed string is equal to the original string.
+
+:::
+:::
+
+
+::: { .solution exercise="palindrome"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+string = 'racecar'
+
+is_palindrome = string[::-1] == string
+
+print("The string is a palindrome:", is_palindrome)
+
+exercise. Check if some text is a palyndrome
+```
+
+:::
+:::
+
+Another useful string [method](https://docs.python.org/3/glossary.html#term-method) is find.
+It allows us to look for ocurrences of a substring inside of a string. (Remember that we count from zero.)
+
+```{pyodide}
+
+print("acACGTactt".find("ACGT"))
+
+# when the substring is not found, the find method returns -1
+print("acACGTactt".find("acgt"))
+
+```
+
+## Operations with text strings
+
+Text strings can be added.
+
+```{pyodide}
+print("Hello " + "Jane")
+```
+
+One confusing Python behaviour is that it will add two string even if there is no + sign between them. This is called string concatenation.
+
+```{pyodide}
+print("Hello" "John")
+```
+
+Predict the result of running the following code:
+
+```{pyodide}
+a= "GAATTC"
+b= "CTTAAG"
+
+print(a[0:3] + b[3:6])
+print(a[0:3] + b[3:6] + a[3:6])
+print(a[-2:] + b[-3:])
+print(a[-2:] + b[-3:] + a[:2])
+print(a[2] + b[2] + a[-3])
+```
+
+The multiplication operation is also defined for str and int. It just repeats the string the given number of times.
+
+```{pyodide}
+print("Hi!" * 10)
+```
+
+We could check is a string is included in another string by using the *in* operator.
+
+```{pyodide}
+print("GATA" in "GCCGTATGCATGATATGCTAGCTAG")
+```
+
+```{pyodide}
+# Does the following code give the expected result?
+print("gata" in "cagtcagGATAtctagtcgta")
+```
+
+Fix the following code:
+
+```{pyodide}
+#| exercise: fix_jon
+name = "Jon"
+surname = "Snow" 
+full name = name + surname
+print(full name)
+```
+
+::: { .hint exercise="fix_jon"}
+::: { .callout-note collapse="false"}
+
+Remember that variables name can not have spaces.
+
+The method capitalize creates a string with the first letter in uppercase.
+
+:::
+:::
+
+::: { .solution exercise="fix_jon"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+name = "Jon"
+surname = "snow" 
+full_name = name + " " + surname.capitalize()
+print(full_name)
+
+# Or
+
+name = "Jon"
+surname = "snow" 
+full_name = f"{name} {surname.capitalize()}"
+print(full_name)
+```
+
+:::
+:::
+
+Fix the following code:
+
+```{pyodide}
+#| exercise: fix_jon2
+name = "Jon"
+surname = "Snow"
+Age = 20
+birth_place = "Northern Kingdom"
+print(name + ' ' + surname + ' is ‘ + age + ' years old and is from the ' + birth_place)
+```
+
+::: { .hint exercise="fix_jon2"}
+::: { .callout-note collapse="false"}
+
+You can create a string from a number by using the str function.
+
+:::
+:::
+
+::: { .solution exercise="fix_jon2"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+name = "Jon"
+surname = "Snow"
+Age = 20
+birth_place = "Northern Kingdom"
+print(name + ' ' + surname + ' is ' + str(age) + ' years old and he is from ' + birth_place)
+# Or
+
+print(f"{name} {surname} is {age} years old and he is from {birth_place}"")
+```
+
+:::
+:::
+
+
+## f-strings
+
+[f-strings](https://docs.python.org/3/glossary.html#term-f-string) are a very common and powerful way of creating string.
+You will see them a lot in the Python code.
+They allow, for instance to create a string from a variable in a very suscint way using curly braces (**{}**).
+
+```{pyodide}
+the_answer = 42
+print(f"The answer to life, the universe, and everything else is {the_answer}")
+```
+
+f-strings have a very powerfull [formatting language](https://docs.python.org/3/reference/lexical_analysis.html#f-strings) that allows to specify how the strings should be created.
+
+```{pyodide}
+some_number = 10
+print(f"As a decimal integer {some_number:d}")
+print(f"Float with two decimals {some_number:.2f}")
+print(f"Padded decimal integer {some_number:05d}")
+print(f"Binnary integer {some_number:b}")
+```
+
+## UTF and the enconding tables
+
+Python strings a [UTF-8](https://en.wikipedia.org/wiki/UTF-8) strings. String encoding is a more advanced topic, but any seasoned programmer will end up having to understand a little bit about [character encoding standards](https://en.wikipedia.org/wiki/Character_encoding).
+
+```{pyodide}
+import string
+for character in string.printable:
+    print(f"{character} -> {ord(character)}")
+```
+
+## Resources
+
+- Official documentation for the [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) class.
+- Google [string tutorial](https://developers.google.com/edu/python/strings), available in different languages.
+- Real Python [string tutorial](https://realpython.com/python-strings/).
+- [String tutorial](https://github.com/JoseBlanca/py_industriales/blob/main/python/cadenas_de_texto.ipynb) in Spanish.
+- Official [string formatting](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) documentation.
+- Real Python [string formatting](https://realpython.com/python-string-formatting/) tutorial.

@@ -234,38 +234,6 @@ a -= 3
 print(a)
 ```
 
-
-## Operations with text strings
-
-Text strings can be added.
-
-```{pyodide}
-print("Hello " + "Jane")
-```
-
-One confusing Python behaviour is that it will add two string even if there is no + sign between them. This is called string concatenation.
-
-```{pyodide}
-print("Hello" "John")
-```
-
-The multiplication operation is also defined for str and int. It just repeats the string the given number of times.
-
-```{pyodide}
-print("Hi!" * 10)
-```
-
-We could check is a string is included in another string by using the *in* operator.
-
-```{pyodide}
-print("GATA" in "GCCGTATGCATGATATGCTAGCTAG")
-```
-
-```{pyodide}
-# Does the following code give the expected result?
-print("gata" in "cagtcagGATAtctagtcgta")
-```
-
 # Resources
 
 - Real python tutorial on [operators and statements](https://realpython.com/python-operators-expressions/).

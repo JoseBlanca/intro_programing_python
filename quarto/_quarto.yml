@@ -26,6 +26,8 @@ website:
             href: types_and_operators/operators.qmd
           - text: "Comparisons and bool operators"
             href: types_and_operators/comparisons_and_bool_operators.qmd
+          - text: "Strings"
+            href: types_and_operators/strings.qmd
 format:
   html:
     theme: cosmo

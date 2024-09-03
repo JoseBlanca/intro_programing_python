@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="99.08725mm"
+   height="59.520756mm"
+   viewBox="0 0 99.08725 59.520756"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
+   sodipodi:docname="python_str_indexes.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0405163"
+     inkscape:cx="203.74501"
+     inkscape:cy="389.22986"
+     inkscape:window-width="2494"
+     inkscape:window-height="1371"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="215.33406"
+       y="269.06714"
+       width="275.41916"
+       height="63.734138"
+       id="rect2" />
+    <rect
+       x="215.33406"
+       y="269.06714"
+       width="275.41916"
+       height="63.734138"
+       id="rect2-8" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-51.197769,-45.394996)">
+    <text
+       xml:space="preserve"
+       style="font-size:21.8747px;line-height:1.25;font-family:sans-serif;letter-spacing:3.9661px;stroke-width:1.17186"
+       x="61.23777"
+       y="68.782501"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace;letter-spacing:3.9661px;fill:#0000ff;stroke-width:1.17186"
+         x="61.23777"
+         y="68.782501">ALICE</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.61571654,0,0,0.61571654,-69.511687,-94.995498)"
+       id="text2"
+       style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:2.64275px;white-space:pre;shape-inside:url(#rect2)"><tspan
+         x="215.33398"
+         y="285.58206"
+         id="tspan9"><tspan
+           style="font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan4">0 1 2 3 4</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.47402495,0,0,0.47402495,-45.578798,-44.130917)"
+       id="text2-7"
+       style="font-size:24.1921px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;white-space:pre;shape-inside:url(#rect2-8);display:inline"><tspan
+         x="215.33398"
+         y="290.47075"
+         id="tspan19"><tspan
+           style="font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan10">-5</tspan><tspan
+           style="font-size:7.44218px"
+           id="tspan11"> </tspan><tspan
+           style="font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan12">-4</tspan><tspan
+           style="font-size:16.3728px"
+           id="tspan13"> </tspan><tspan
+           style="font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan14">-3</tspan><tspan
+           style="font-size:11.9075px"
+           id="tspan15"> </tspan><tspan
+           style="font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan16">-2</tspan><tspan
+           style="font-size:11.9075px"
+           id="tspan17"> </tspan><tspan
+           style="font-family:Monospace;-inkscape-font-specification:Monospace"
+           id="tspan18">-1</tspan></tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.765;stroke-linecap:round;stroke-opacity:0.0070331"
+       id="rect9"
+       width="98.32225"
+       height="58.755756"
+       x="51.580269"
+       y="45.777496" />
+  </g>
+</svg>
