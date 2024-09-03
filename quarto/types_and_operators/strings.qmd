@@ -11,6 +11,17 @@ format:
 
 # Strings
 
+## Resources
+
+- Official documentation for the [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) class.
+- Google [string tutorial](https://developers.google.com/edu/python/strings), available in different languages.
+- Real Python [string tutorial](https://realpython.com/python-strings/).
+- [String tutorial](https://github.com/JoseBlanca/py_industriales/blob/main/python/cadenas_de_texto.ipynb) in Spanish.
+- Official [string formatting](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) documentation.
+- Real Python [string formatting](https://realpython.com/python-string-formatting/) tutorial.
+
+## String literals
+
 In most programming laguages the type used for text are called strings, because they are considered string of characters.
 In Python you can create an object of type [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) by using a string literal, like:
 
@@ -607,12 +618,3 @@ import string
 for character in string.printable:
     print(f"{character} -> {ord(character)}")
 ```
-
-## Resources
-
-- Official documentation for the [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) class.
-- Google [string tutorial](https://developers.google.com/edu/python/strings), available in different languages.
-- Real Python [string tutorial](https://realpython.com/python-strings/).
-- [String tutorial](https://github.com/JoseBlanca/py_industriales/blob/main/python/cadenas_de_texto.ipynb) in Spanish.
-- Official [string formatting](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) documentation.
-- Real Python [string formatting](https://realpython.com/python-string-formatting/) tutorial.

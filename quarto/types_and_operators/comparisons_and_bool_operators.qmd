@@ -8,7 +8,10 @@ format:
         completion: true
 ---
 
+# Resources
 
+- Official documentation on [boolean operators](https://docs.python.org/3/library/stdtypes.html) for the built-in types.
+- Real python tutorial on [boolean operators](https://realpython.com/python-and-operator/).
 
 ## Comparisons
 
@@ -240,9 +243,4 @@ print("False or False: ", False or False)
 
 :::
 :::
-
-# Resources
-
-- Official documentation on [boolean operators](https://docs.python.org/3/library/stdtypes.html) for the built-in types.
-- Real python tutorial on [boolean operators](https://realpython.com/python-and-operator/).
 

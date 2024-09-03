@@ -8,6 +8,16 @@ format:
         completion: true
 ---
 
+## Resources
+
+- Real Python tutorial: [basic data types](https://realpython.com/python-data-types/)
+- Official documentation: [types and operations](https://docs.python.org/3/library/stdtypes.html).
+- Basic introduction to [type and variables](https://github.com/JoseBlanca/py_industriales/blob/main/python/tipos_y_variables.ipynb), [str](https://github.com/JoseBlanca/py_industriales/blob/main/python/cadenas_de_texto.ipynb) and  [booleans](https://github.com/JoseBlanca/py_industriales/blob/main/python/booleanos.ipynb). (In Spanish).
+- [type](https://docs.python.org/3/library/functions.html#type) function official documentation.
+- Real Python introduction to [numbers](https://realpython.com/python-numbers/) and [bool](https://realpython.com/python-boolean/).
+- A discussion about the [floating point arithmethic](https://docs.python.org/3/tutorial/floatingpoint.html) in Python.
+
+## Types
 
 In a computer language the variables have [types](https://en.wikipedia.org/wiki/Data_type). For instance, we have already used numbers and text strings.
 
@@ -217,13 +227,4 @@ print(f"The binary representation for {an_object} is: {an_object:b}")
 another_object = "4"
 print(f"The binary representation for {another_object} is: {ord(another_object):b}")
 ```
-
-## Resources
-
-- Real Python tutorial: [basic data types](https://realpython.com/python-data-types/)
-- Official documentation: [types and operations](https://docs.python.org/3/library/stdtypes.html).
-- Basic introduction to [type and variables](https://github.com/JoseBlanca/py_industriales/blob/main/python/tipos_y_variables.ipynb), [str](https://github.com/JoseBlanca/py_industriales/blob/main/python/cadenas_de_texto.ipynb) and  [booleans](https://github.com/JoseBlanca/py_industriales/blob/main/python/booleanos.ipynb). (In Spanish).
-- [type](https://docs.python.org/3/library/functions.html#type) function official documentation.
-- Real Python introduction to [numbers](https://realpython.com/python-numbers/) and [bool](https://realpython.com/python-boolean/).
-- A discussion about the [floating point arithmethic](https://docs.python.org/3/tutorial/floatingpoint.html) in Python.
 

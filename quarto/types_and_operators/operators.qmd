@@ -11,6 +11,11 @@ format:
 
 In any programming language we can do operations on data and, in most, for the basic operation a operator syntax is defined.
 
+## Resources
+
+- Real python tutorial on [operators and statements](https://realpython.com/python-operators-expressions/).
+- Official documentation for [expressions and operators](https://docs.python.org/3/reference/expressions.html#binary-arithmetic-operations).
+
 ## Basic numeric operations
 
 For instance, in Python we can sum to numbers using the **+** operator.
@@ -233,9 +238,3 @@ a /= 5
 a -= 3
 print(a)
 ```
-
-# Resources
-
-- Real python tutorial on [operators and statements](https://realpython.com/python-operators-expressions/).
-- Official documentation for [expressions and operators](https://docs.python.org/3/reference/expressions.html#binary-arithmetic-operations).
-
