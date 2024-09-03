@@ -2,6 +2,44 @@
 title: "Introduction to programming with Python"
 ---
 
-This is a Quarto website.
+# An introduction to programming using Python
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This is an introduction to Python aimed to students with no prior programming experience.
+There are many great introductions to Python, but we thought that it would be useful for us to create a new one that:
+
+  - It relies mainly in examples and exercises.
+  - It runs those examples and exercises directly in the web, avoiding the need to install Python in the first day of class.
+
+We decided to try this approach after following the [rustlings](https://github.com/rust-lang/rustlings/) path, an exercise set aimed at teaching the Rust programming language.
+Rustlings assumes that the student has previously read the [Rust introductory book](https://doc.rust-lang.org/book/).
+For this course we have decided to add resources to read at the end of each exercise set, so, the student could start by reading these resources, but we have also included examples to ease the use of this course in practical sessions with students with no previous knowlegde of the theory.
+
+
+## Running Python in the web
+
+There are several sites that include Python in its web site and allow to run Python code:
+
+  - The [Future Coder IDE](https://futurecoder.io/course/#ide) allows to write, run and debug Python programs.
+  - In the [Pyodide REPL](https://pyodide.org/en/stable/console.html) the user can execute Python commands.
+
+## Python books and tutorials
+
+- The official [Python tutorial](https://docs.python.org/3/tutorial/index.html). Also, available in [Spanish](https://docs.python.org/es/3/tutorial/index.html), [French](https://docs.python.org/fr/3/tutorial/index.html), [Italian](https://docs.python.org/it/3/tutorial/index.html), [Portuguese](https://docs.python.org/pt-br/3/tutorial/index.html), and other languages.
+- [Python Crash Course](https://nostarch.com/python-crash-course-3rd-edition)
+- [The Python Coding Book](https://thepythoncodingbook.com/)
+- [How to Think Like a Computer Scientist](https://runestone.academy/ns/books/published/thinkcspy/index.html)
+- [Google Python class](https://developers.google.com/edu/python). Also available in [Spanish](https://developers.google.com/edu/python), [German](https://developers.google.com/edu/python), [French](https://developers.google.com/edu/python), and [Indonesian](https://developers.google.com/edu/python).
+- The Python community maintains a [list of Python courses and tutorials](https://wiki.python.org/moin/BeginnersGuide/NonProgrammers).
+- [Introducción a la programación con Python con Python3](https://repositori.uji.es/xmlui/handle/10234/102653)
+- A course in Spanish of focused in [Data Analysis with Python](https://github.com/JoseBlanca/py_industriales)
+
+
+## Other interactive Python courses for beginers
+
+- [Future coder](https://futurecoder.io/course/#toc)
+- [Adam Emery's course](https://learn-python.adamemery.dev/)
+- [Codedex Python course](https://www.codedex.io/python/)
+
+## Python reference documentation
+
+The official Python [documentation](https://docs.python.org/3/).
