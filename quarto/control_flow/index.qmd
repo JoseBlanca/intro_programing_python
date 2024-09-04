@@ -1,0 +1,20 @@
+# Control flow
+
+The flow of the code is the order in which the statements, functions or instructions are executed.
+By default the code is executed line by line:
+
+```{pyodide}
+print("First")
+print("Second")
+print("Third")
+```
+
+But this order can be altered in different ways, and these modifications are known as [control flow](https://en.wikipedia.org/wiki/Control_flow).
+We could:
+
+- Choose to execute some statements only [if](if.qmd) some condition is met.
+- Run the same code over and over again [for](for.qmd) every item.
+- Create new functions and call them.
+
+To understand the control of the flow of execution we need to understand the concept of a [block of code](https://en.wikipedia.org/wiki/Block_(programming)).
+A [block](block.qmd) is a set of lines that are grouped together, for instance, the set of lines that will be executed only when a given condition if met.

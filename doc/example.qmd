@@ -27,7 +27,7 @@ Remember
 ::: { .solution exercise="variable_name" }
 ::: { .callout-tip collapse="false"}
 
-```python
+```{pyodide}
 name = "Jane"
 ```
 

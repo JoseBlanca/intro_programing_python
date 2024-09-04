@@ -43,13 +43,6 @@ https://python-fiddle.com/challenges/levels/intermediate
 ejercicios año pasado
 
 
-# code blocks
-
-# Control flow: if
-
->= ==
-
-
 # Control flow: for
 
 ## break

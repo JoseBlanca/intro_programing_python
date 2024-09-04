@@ -1,0 +1,31 @@
+# Block
+
+A block of code is a set of statements, functions or instructions that are grouped together.
+In most programming languages the [blocks of code](https://en.wikipedia.org/wiki/Block_(programming)) are created by using curly braces (**{}**). For instance, in C the statements executed when a test condition is met would be written as:
+
+```
+if (testCondition) {
+   // statements
+}
+```
+
+In Python a block of code is created by using indentation.
+
+```{pyodide}
+a = 42
+
+if a == 42:
+    # This is the first line of the block
+    print("This is the answer to")
+    print("life, the universe, and everything else")
+    # This is the last line of the block
+
+print("We are outside the block of code defined by if")
+
+```
+
+- In the if and for the code starts with a colon (**:**)
+- The next line after the colon should be indented
+- The block ends when the indentation goes back to the previous level.
+
+The standard is to create the indentation by using four spaces.

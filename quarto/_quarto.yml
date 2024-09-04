@@ -27,6 +27,11 @@ website:
             href: types_and_operators/strings.qmd
           - text: "Lists"
             href: types_and_operators/lists.qmd
+      - section: "Control flow"
+        href: control_flow/index.qmd
+        contents:
+          - text: "if"
+            href: control_flow/if.qmd
 format:
   html:
     theme: cosmo

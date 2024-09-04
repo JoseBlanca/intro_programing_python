@@ -1,0 +1,279 @@
+---
+title: if
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+# if
+
+[if](https://docs.python.org/3/tutorial/controlflow.html#if-statements) is one of the basic control flow statements.
+It allow us to execute some code only if a given condition is met.
+
+```{pyodide}
+a = 42
+
+if a == 42:
+    print("Yes, it is the answer")
+
+```
+
+If the condition is not met the code inside the if block won't be executed.
+
+```{pyodide}
+a = 42
+
+if a > 100:
+    print("We have more than 100")
+
+print("Did we have enough?")
+
+```
+
+
+Every line included in the [block](block.qmd) will be executed, not just the first one.
+
+```{pyodide}
+name = "Jane"
+
+if name == "Jane":
+    print("Yes, she is Jane")
+    print("and she is great")
+
+```
+
+## else
+
+It is common that we want to execute some code if the condition is met, and some other code when the condition was not met, for that we use else.
+
+```{pyodide}
+name = "John"
+
+if name == "Jane":
+    print("Yes, she is Jane")
+eles:
+    print("No, it wasn't Jane")
+```
+
+
+```{pyodide}
+a = -1
+
+if a > 0:
+    print("The number is positive")
+else:
+    print("The number was not positive")
+```
+
+Fix this code:
+
+```{pyodide}
+#| exercise: fix_multiple
+number = 453
+
+if number % 3:
+print("The number if not multiple of 3")
+else:
+print("The number if multiple of 3")
+```
+
+::: { .solution exercise="fix_multiple" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+number = 453
+
+if number % 3:
+    print("The number if not multiple of 3")
+else:
+    print("The number if multiple of 3")
+```
+
+:::
+:::
+
+Write some code capable of, given a pair of numbers, finding out which is the highest.
+
+```{pyodide}
+#| exercise: highest
+a, b = 3, -4
+...
+```
+
+::: { .solution exercise="highest" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+a, b = 3, -4
+
+if a >= b:
+    highest = a
+else:
+    highest = b
+print("The highest number was: ", highest)
+```
+
+:::
+:::
+
+Why would be wrong this solution for the highest number program and in which case would fail?
+
+```{pyodide}
+#| exercise: highest_wrong
+a, b = 3, -4
+
+if a > b:
+    highest = a
+else:
+    highest = b
+```
+
+::: { .solution exercise="highest_wrong" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+# It would fail when both numbers are equal
+a, b = 3, 3
+
+if a > b:
+    highest = a
+else:
+    highest = b
+print("The highest number was: ", highest)
+```
+
+:::
+:::
+
+
+## elif
+
+elif allows us to test for different conditions sequentialy.
+
+```{pyodide}
+a = -1
+
+if a > 0:
+    print("The number is positive")
+elif a == 0:
+    print("The number is zero")
+else:
+    print("The number is negative")
+```
+
+When we have several conditions only the first met will be executed.
+
+```{pyodide}
+a = 42
+
+if a == 42:
+    print("We have the answer")
+elif a >= 0:
+    # this won't be executed when the number is 42
+    print("The number is zero or positive")
+elif a > 0:
+    # This will never be executed because if this condition is met
+    # the previous condition will be met too
+    print("The number is positive")
+else:
+    print("The number is negative")
+```
+
+As a more powerful alternative to elif Python has a [match](https://docs.python.org/dev/tutorial/controlflow.html#match-statements) statement.
+
+Write a program that writes the quote of the selected philosopher.
+
+```{pyodide}
+#| exercise: philosopher_quote
+plato_quote = "Only the dead have seen the end of war."
+aristogle_quote = "Hope is a waking dream."
+descartes_quote = "I think; therefore I am."
+
+philosopher = "Plato"
+
+```
+
+::: { .solution exercise="variable_name" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+plato_quote = "Only the dead have seen the end of war."
+aristotle_quote = "Hope is a waking dream."
+descartes_quote = "I think; therefore I am."
+
+philosopher = "Plato"
+
+if philosopher.lower() == "plato":
+    print(plato_quote)
+elif philosopher.lower() == "aristotle":
+    print(aristotle_quote)
+elif philosopher.lower() == "descartes":
+    print(descartes_quote)
+else:
+    print("Unknown philosopher")
+```
+
+:::
+:::
+
+## Boolean casting
+
+When a condition is evaluated, internally the if statement casts anything given to a boolean. So, you will usually see expressions like:
+
+```{pyodide}
+
+number = 0
+if n:
+    print("The number is not zero")
+
+name = ""
+
+if not name:
+    print("The name is not defined")
+
+```
+
+It would be very weird to write:
+
+```{pyodide}
+
+name = ""
+
+if name == "":
+    print("The name is not defined")
+
+```
+
+Remember that everything that we talked about booleans and [boolean arithmetic](../types_and_operators/comparisons_and_bool_operators.qmd) is applicable to the if evaluation.
+
+
+Fix the following code to prevent the error when a = 0.
+
+```{pyodide}
+#| exercise: prevent_div_zero
+a = 2
+b = 3
+x = b / a
+print(x)
+
+```
+
+::: { .solution exercise="prevent_div_zero" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+a = 2
+b = 3
+if x:
+    x = b / a
+else:
+    x = None
+print(x)
+
+```
+
+:::
+:::
