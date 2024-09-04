@@ -148,3 +148,61 @@ print(tuple_)
 i, word = tuple
 print(i, word)
 ```
+
+## for exercises
+
+Create a program that collects the quotes from each author in different lists.
+
+```{pyodide}
+#| exercise: phil_quotes
+
+text = '''Plato: Never discourage anyone who continually makes progress, no matter how slow.
+Plato: The beginning is the most important part of the work.
+Socrates: To find yourself, think for yourself.
+Aristotle: It is the mark of an educated mind to be able to entertain a thought without accepting it.
+Aristotle: The more you know, the more you realize you don't know.'''
+
+socrates_quotes = []
+plato_quotes = []
+aristotle_quotes = []
+
+for line in text.splitlines():
+    ...
+
+```
+
+::: { .solution exercise="phil_quotes" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+text = '''Plato: Never discourage anyone who continually makes progress, no matter how slow.
+Plato: The beginning is the most important part of the work.
+Socrates: To find yourself, think for yourself.
+Aristotle: It is the mark of an educated mind to be able to entertain a thought without accepting it.
+Aristotle: The more you know, the more you realize you don't know.'''
+
+socrates_quotes = []
+plato_quotes = []
+aristotle_quotes = []
+
+for line in text.splitlines():
+  author, quote = line.split(':')
+  author = author.lower()
+  quote = quote.strip()
+  if author == "socrates":
+    socrates_quotes.append(quote)
+  elif author == "plato":
+    plato_quotes.append(quote)
+  elif author == "aristotle":
+    aristotle_quotes.append(quote)
+
+print("Socrates")
+print(socrates_quotes)
+print("Plato")
+print(plato_quotes)
+print("Aristotle")
+print(aristotle_quotes)
+```
+
+:::
+:::

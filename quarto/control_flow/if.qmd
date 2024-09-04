@@ -189,6 +189,40 @@ else:
 
 As a more powerful alternative to elif Python has a [match](https://docs.python.org/dev/tutorial/controlflow.html#match-statements) statement.
 
+Write a program that classifies a person into: baby, child, teenager, young, and old
+
+```{pyodide}
+#| exercise: age
+
+person = ('John', 40)
+
+```
+
+::: { .solution exercise="age" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+
+person = ('John', 40)
+
+if age < 3:
+    age_group = "baby"
+elif age < 10:
+    age_group = "child"
+elif age < 18:
+    age_group = "teen"
+elif age < 42:
+    age_group = "young"
+else:
+    age_group = "old"
+
+print(f"{person[0]} is a {age_group}")
+
+```
+
+:::
+:::
+
 Write a program that writes the quote of the selected philosopher.
 
 ```{pyodide}
