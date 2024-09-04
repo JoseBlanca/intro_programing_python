@@ -1,5 +1,6 @@
 ---
 title: "Introduction to programming with Python"
+format: live-html
 ---
 
 # An introduction to programming using Python
