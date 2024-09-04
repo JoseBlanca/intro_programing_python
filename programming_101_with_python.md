@@ -43,20 +43,12 @@ https://python-fiddle.com/challenges/levels/intermediate
 ejercicios año pasado
 
 
-
-
-## String: single, double and triple quotes
-
-
-
-
 # code blocks
 
 # Control flow: if
 
 >= ==
 
-# Compound types: list
 
 # Control flow: for
 
@@ -66,11 +58,16 @@ ejercicios año pasado
 
 ## nested loops
 
-## enumerate
+## enumerate, range
+
+
+# functional programming
 
 # Iterables and iterators
 
 range()
+
+# map, filter, reduce
 
 # Compound types: dict
 
@@ -91,6 +88,8 @@ dict.items()
 ## Introduce that there are methods
 
 ## function naming conventions
+
+## lambda
 
 # Running Python locally
 

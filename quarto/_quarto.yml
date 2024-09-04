@@ -3,15 +3,12 @@ project:
 
 website:
   title: "Introduction to programming with Python"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
   sidebar:
     style: "docked"
     search: true
     contents:
+      - text: "Home"
+        href: index.qmd
       - section: "Basics"
         contents:
           - text: "Hello world"
@@ -28,6 +25,8 @@ website:
             href: types_and_operators/comparisons_and_bool_operators.qmd
           - text: "Strings"
             href: types_and_operators/strings.qmd
+          - text: "Lists"
+            href: types_and_operators/lists.qmd
 format:
   html:
     theme: cosmo

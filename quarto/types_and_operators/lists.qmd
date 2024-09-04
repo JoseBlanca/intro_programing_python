@@ -1,0 +1,614 @@
+---
+title: Lists
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- [Lists and tuples](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) in the official documentation, and [more on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists).
+- A Real Python introduction to [lists](https://realpython.com/python-list/).
+- [lists](https://developers.google.com/edu/python/lists) on the google course (available in different languages).
+
+## Lists
+
+So far we have seen basic, or [scalar](https://en.wikipedia.org/wiki/Scalar_processor#Scalar_data_type), [types](types.qmd) like: int, float, str, bool and None.
+[Lists](https://docs.python.org/3/library/stdtypes.html#list) are a [compound type](https://en.wikipedia.org/wiki/Composite_data_type), a type capable of holding different items.
+
+```{pyodide}
+
+a_list_of_numbers = [1, 2, 3, 4]
+
+print(a_list_of_numbers)
+```
+
+Lists can be heterogeneous, they can hold inside elements of different types.
+
+```{pyodide}
+
+person = ["Jane", "Doe", 25, True]
+
+print(person)
+```
+
+In Python there is another type, very similar to a list, but that is limited to have all its elements of the same type, the [array](https://docs.python.org/3/library/array.html). Arrays are more efficient than lists, but in most cases the difference is not noticeable and lists are just fine.
+
+Lists can hold any kind of type, not just basic type, but also compound types, like another list.
+
+```{pyodide}
+import pprint
+
+row1 = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
+row2 = ["pawn"] * 8
+row7 = row2[:]
+row8 = ["rook", "knight", "bishop", "king", "queen", "bishop", "knight", "rook"]
+chessboard = [row1, row2, [], [], [], [], row7, row8]
+
+pprint.pprint(chessboard)
+```
+
+It is quite common to use lists to represent [vectors](https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics)), lists of numbers, and lists of lists to represent 2d-arrays, [matrices](https://en.wikipedia.org/wiki/Matrix_(mathematics)).
+
+```{pyodide}
+vector1 = [1, 2, 3, 4]
+vector2 = [5, 6, 7, 8]
+matrix = [vector1, vector2]
+
+print(matrix)
+```
+
+### List creation with list
+
+As we have seen lists can be created using square brackets (**[]**). But lists can also be created using the [list](https://docs.python.org/3/library/functions.html#func-list) function.
+This function takes any [iterable](https://docs.python.org/3/glossary.html#term-iterable) and returns a list. (An iterable is an object capable of returning its members one at a time).
+For instance we can create a list of letters using list.
+
+```{pyodide}
+letters = list("abcdefghijklmnñopqrstuvwxyz")
+print(letters)
+
+numbers = list(range(10))
+print(numbers)
+
+```
+
+## Lists are sequences
+
+Lists are [sequences](https://docs.python.org/3/glossary.html#term-sequence).
+A sequence is an object composed by items that can be accessed using indexes and that has a length, the number of items that holds.
+We have already seen another sequence type, the [string](strings.qmd).
+
+### Number of items, length
+
+```{pyodide}
+numbers = [3, 5, 7, 8]
+print("The number of numbers is:", len(numbers))
+```
+
+### Indexing
+
+Lists items can be accessed using indexes, exactly like strings were accessed.
+
+```{pyodide}
+pieces = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
+print("0", pieces[0])
+print("1", pieces[1])
+print("-1", pieces[-1])
+
+print("2:4", pieces[2:4])
+print("2:", pieces[2:])
+print(":4", pieces[:4])
+
+numbers = list(range(10))
+print(numbers)
+print("0", numbers[0])
+print("1", numbers[1])
+print("-1", numbers[-1])
+
+print("2:4", numbers[2:4])
+print("2:", numbers[2:])
+print(":4", numbers[:4])
+
+```
+
+You have to be careful. When the index is just one number you will get one item, but if the index is a slice you will always get a list, even if you are selecting just one number.
+
+```{pyodide}
+numbers = list(range(10))
+one_number = numbers[1]
+print(one_number)
+a_list_with_one_number = numbers[1:2]
+print(a_list_with_one_number)
+print("They are not equal:", one_number != a_list_with_one_number)
+```
+
+Predict the result of running the following code:
+
+```{pyodide}
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print (numbers[2:4])  
+print (numbers[2:])
+print (numbers[:4])
+print (numbers[0:4])
+print (numbers[:])    
+print (numbers[-1])
+print (numbers[:-3])
+
+```
+
+Create a list with the numbers from 0 to 9, extract the odd and even numbers, the first 5 and the  last 5.
+
+```{pyodide}
+#| exercise: extract_numbers
+
+numbers = list(range(10))
+...
+
+```
+
+::: { .solution exercise="extract_numbers" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+numbers = list(range(10))
+print(numbers[::2])
+print(numbers[1::2])
+print(numbers[:5])
+print(numbers[5:])
+```
+
+:::
+:::
+
+
+### reverse
+
+As we did with strings we can reverse a list, or any other [sequence](https://docs.python.org/3/glossary.html#term-sequence), using the function [reversed](https://docs.python.org/3/library/functions.html#reversed).
+reversed returns an [iterator](https://docs.python.org/3/glossary.html#term-iterator), so in order to have a list we need to use the [list](https://docs.python.org/3/library/functions.html#func-list) function on the reversed result.
+
+```{pyodide}
+letters = list("abcdefghijklmnñopqrstuvwxyz")
+print(letters)
+
+print(list(reversed(letters)))
+
+numbers = list(range(10))
+print(numbers)
+
+countdown = list(reversed(range(10)))
+print(countdown)
+```
+
+### sorting
+
+Lists can be sorted using the [sorted](https://docs.python.org/3/library/functions.html#sorted) function.
+
+```{pyodide}
+
+letters = list("zklajkodtñyitqzinivmyiflrtx")
+print(letters)
+print(sorted(letters))
+
+```
+
+sorted does the sorting doing [pairwise](https://en.wikipedia.org/wiki/Pairwise) comparisons of the elements. For a list of numbers the result is what we could expect.
+
+
+```{pyodide}
+
+numbers = [10, 1.0, 3, 2.7, 5.5]
+print(sorted(numbers))
+
+```
+
+For for the letters, or many other kinds of objects, the result can be weird.
+
+```{pyodide}
+
+letters = ["b", "Z", "a", "X"]
+print(sorted(letters))
+
+```
+
+The sorted function has a parameter, key, that allows to modify the elements compared. key will be a function that takes one element and returns the element to be compared.
+This is a topic somewhat more advanced, but you have an excellent [sorting](https://docs.python.org/3/howto/sorting.html#sortinghowto) tutorial in the official documentation.
+
+```{pyodide}
+letters = ["d", "Z", "a", "C"]
+print(sorted(letters, key=lambda letter: letter.lower()))
+
+```
+
+Sort the words in alphabetical order.
+
+```{pyodide}
+#| exercise: sort_words
+text = "It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had lost something"
+
+```
+
+The sorted functions creates a new list, the original list will be intact.
+
+```{pyodide}
+numbers = [3, 5, 2, 1]
+sorted_numbers = sorted(numbers)
+print(numbers)
+print(sorted_numbers)
+```
+
+If you wanted to sort the original list you could use the sort method.
+
+```{pyodide}
+numbers = [3, 5, 2, 1]
+numbers.sort()
+print(numbers)
+```
+
+::: { .hint exercise="sort_words"}
+::: { .callout-note collapse="false"}
+
+- The string [split](https://docs.python.org/3.3/library/stdtypes.html#str.split) method will split the text into a list of strings.
+- The string [replace](https://docs.python.org/3.3/library/stdtypes.html#str.replace) method can be used to remove unwanted text.
+- The [sorted]((https://docs.python.org/3/library/functions.html#sorted)) function can take a key parameter to modify the items compared during the sorting procedure.
+
+```{python}
+print(sorted("AbCdE", key=lambda letter: letter.lower()))
+```
+
+:::
+:::
+
+::: { .solution exercise="sort_words"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+text = "It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had lost something"
+text_without_commas = text.replace(",", "")
+words = text_without_commas.split()
+words = sorted(words, key=lambda word: word.lower())
+print(words)
+```
+
+:::
+:::
+
+## Multiple assignment
+
+Lists, and tuples, can be used to assign its values to different variables.
+
+```{pyodide}
+person = ["Trinity", "Moss"]
+name, surname = person
+print(name, surname)
+
+year, month, day = 1997, "August", 29
+print(year, month, day)
+```
+
+This is a feature commonly used in Python that, sometimes is known as destructuring assignment.
+These assignments will fail if the number of items at both sides are different.
+
+```{pyodide}
+name, surname = "Alan", "Mathison", "Turing"
+```
+
+## list operators
+
+### concatenate with **+**
+
+Two lists can be concatenated into a new list by using the **+** operator.
+
+```{pyodide}
+letters = ["a", "b", "c"]
+numbers = [1, 2, 3]
+letters_and_numbers = letters + numbers
+print(letters_and_numbers)
+```
+
+### in operator and index method
+
+We can check if an item is in a list with the **in** operator.
+
+```{pyodide}
+numbers = list(range(10, 20))
+print(10 in numbers)
+print(15 in numbers)
+print(20 in numbers)
+```
+
+If you need the position of the element in the list you can use the list index method.
+
+
+```{pyodide}
+numbers = list(range(10))
+print(numbers)
+print("0", numbers.index(0))
+print("1", numbers.index(1))
+```
+
+If the item is found several times in the list, you will only get the index of the first appareance.
+
+```{pyodide}
+dna = list("ACTGCGTACTGTCA")
+print(dna.index('C'))
+```
+
+If you try to locate the position of an element that is not in the list, you will get an error.
+
+```{pyodide}
+dna = list("ACTG")
+print(dna.index('Z'))
+```
+
+## Lists are mutable
+
+Strings were inmutable sequences, once you create a string, it can not be changed.
+You can obtain a new modified string, for instance an uppercase string, but the original string will be unmodified.
+
+```{pyodide}
+dna = 'actg'
+dna2 = dna.upper()
+print(dna2)
+print(dna)
+```
+
+You might have though that the original string was lost because most of the time we were reusing the name of the variable.
+
+```{pyodide}
+dna = "actg"
+dna = dna.upper()
+print(dna)
+```
+
+But what is going one in this code is more subtle:
+
+- dna = "atcg" creates, and stores in memory, the string "atcg" and assigns the dna varible as a reference to it.
+- dna.upper() creates a new string "ATCG"
+- dna = dna.upper() assing the dna variable to the new string "ATCG"
+- There is now no variable referencing to the original "actg" string, so even if it would still be in memory it would be inaccessible to us.
+- At some point the Python interpreter will remove the original "actg" string from memory because it is not referenced by any variable, but this is of no concern to us. (This process is known in computer science as [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)), and Python is a garbage collected language).
+
+Lists, on the other hand, are mutable.
+As an example, let's use the append method, that appends a item to the list.
+
+```{pyodide}
+dna = ["A", "C", "G", "T"]
+dna2 = dna
+dna.append("C")
+print(dna)
+print(dna2)
+```
+
+As you can see the variables dna and dna2 refer to the same list in memory, so when we change that list, in this case by adding a new letter, both variables print the same result.
+It is worth mentioning that the append method, unlike the string methods, does not return a new list.
+
+
+### append and extend
+
+The append method adds an element to the list.
+
+```{pyodide}
+numbers = [1, 2, 3]
+print(numbers)
+numbers.append(4)
+print(numbers)
+numbers.append(5)
+print(numbers)
+numbers.append(42)
+print(numbers)
+```
+
+The extend method adds any number of elements to the list, it takes any iterable.
+
+```{pyodide}
+numbers = [1, 2, 3]
+numbers.extend([4, 5, 42])
+print(numbers)
+```
+
+Predict the result of running the following code:
+
+```{pyodide}
+
+a=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+a= a + [11]
+print(a)
+a.append(12)
+print(a)
+a.extend([13, 14])
+print(a)
+```
+
+What would happend if you try to append a list of numbers? Try it, and explain the result.
+
+```{pyodide}
+#| exercise: append_list
+numbers = [1, 2, 3]
+numbers.append([4, 5, 42])
+print(numbers)
+```
+::: { .hint exercise="variable_name"}
+::: { .callout-note collapse="false"}
+
+append adds one item to the list and, in this case, this element happens to be the list [4, 5, 42], so no problem, we end up with a list that has this element in it.
+
+:::
+:::
+
+### Modify the list using indexes
+
+Lists can also ve changed by using the indexing syntax.
+
+```{pyodide}
+
+numbers = [0, 1, 2, 3]
+numbers[1] = 42
+print(numbers)
+
+numbers[1:3] = [4, 5]
+print(numbers)
+```
+
+Predict the result of running the following code and think about why the two methods yield different results.
+
+```{pyodide}
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# method 1
+print(a)
+c = a
+print("method 1, c:", c)
+a[0] = 42
+print("method 1, a:", a)
+print("method 1, c:", c)
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# method 2
+print(a)
+c = a[:]
+print("method 2, c:", c)
+a[0] = 42
+print("method 2, a:", a)
+print("method 2, c:", c)
+```
+
+### tuples
+
+In python there is another type, very similar to a list, but inmutable, the [tuple](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
+We create tuples using parentheses instead of square brackets.
+
+```{pyodide}
+person = ("Jane", "Doe", 22)
+print(person)
+```
+
+If you try to modify a tuple, you will get an error.
+
+```{pyodide}
+person = ("Jane", "Doe", 22)
+print(person)
+person[0] = "John"
+```
+
+Python tuples have a gotcha. They are created using parentheses, but if you want to create a tuple with just one element you need to include a trailing comma.
+
+```{pyodide}
+# it creates a tuple
+person = ("John", "Connor")
+print(person)
+
+# it will work
+person = ("John")
+# but the result is not a tuple, but just the item inside
+print(person)
+
+# In python parethesis can be added around almost anythig with no consequence
+just_one_number = (((1)))
+
+# If you want to create a tuple with just one element, you need to add a trailing comma
+person = ("John", )
+print(person)
+
+# Adding a trailing comma is usually of no consequence either
+numbers = [1, 2, 3]
+numbers2 = [1, 2, 3,]
+print(numbers == numbers2)
+
+```
+
+## More methods, help
+
+The functionallity offered by the list and tuple types is very rich, if you want to explore it in more detail remember the official documentation and the help function.
+
+```{pyodide}
+print(help(list))
+```
+
+```{pyodide}
+print(help(tuple))
+```
+
+## More exercises
+
+Carry out the following manipulations.
+
+```{pyodide}
+#| exercise: temps
+# We have read the following data from a file
+line = "Jane,phase1,37.1,39.3,38.1"
+# split the line in items
+
+# Store the items in three variables
+subject_id =
+phase =
+temperatures =
+
+# Convert the temperatures into numbers
+
+# Add to the temperatures another one: 37.2
+
+# Add two more temperatures: [36.5, 37.3]
+
+# How many temperatures do we have in total?
+
+# Which are the minimum and maximum temperatures. You can use the min and max functions on the list
+
+# Sort the temperatures
+
+# Calculate the mean temperature. You can use the sum function
+
+```
+
+::: { .solution exercise="temps" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+# We have read the following data from a file
+line = "Jane,phase1,37.1,39.3,38.1"
+# split the line in items
+items = line.split(",")
+# Store the items in three variables
+subject_id = items[0]
+phase = items[1]
+temps = items[2:]
+
+# Convert the temperatures into numbers
+temps[0] = float(temps[0])
+temps[1] = float(temps[1])
+temps[2] = float(temps[2])
+# we will learn to do this step as:
+# temps = [float(temp) for temp in temps]
+# or
+# temps = list(map(float, temps))
+
+# Add to the temperatures another one: 37.2
+temps.append(37.2)
+
+# Add two more temperatures: [36.5, 37.3]
+temps.extend([36.5, 37.3])
+
+# How many temperatures do we have in total?
+print("Number of temperatures: ", len(temps))
+
+# Which are the minimum and maximum temperatures. You can use the min and max functions on the list
+print("Minimum: ", min(temps))
+print("Maximum: ", max(temps))
+
+# Sort the temperatures
+print(sorted(temps))
+
+# Calculate the mean temperature. You can use the sum function
+mean = sum(temps) / len(temps)
+print(mean)
+# an alternative would be to use the mean function
+from statistics import fmean
+mean = fmean(temps)
+print(mean)
+```
+:::

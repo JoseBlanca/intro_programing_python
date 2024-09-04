@@ -191,7 +191,7 @@ Write the name and year of release of a movie using two variables.
 ::: { .solution exercise="movie" }
 ::: { .callout-tip collapse="false"}
 
-```python
+```{pyodide}
 movie = "The Matrix"
 year = 1999
 print(movie, "was released in", year)
@@ -200,6 +200,17 @@ print(movie, "was released in", year)
 :::
 :::
 
+Python allows for several variables to be set at the same time.
+
+```{pyodide}
+
+name, surname = "Ada", "Lovelace"
+print(name, " ", surname, "was the first programmer")
+
+temp1, temp2, temp3 = 36.5, 37.5, 39.5
+print("The temperature has risen: ", temp1, " ", temp2, " ", temp3)
+
+```
 
 ## Resources
 
