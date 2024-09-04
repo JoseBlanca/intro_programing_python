@@ -256,7 +256,7 @@ print(numbers)
 - The string [replace](https://docs.python.org/3.3/library/stdtypes.html#str.replace) method can be used to remove unwanted text.
 - The [sorted]((https://docs.python.org/3/library/functions.html#sorted)) function can take a key parameter to modify the items compared during the sorting procedure.
 
-```{python}
+```{pyodide}
 print(sorted("AbCdE", key=lambda letter: letter.lower()))
 ```
 
@@ -611,4 +611,5 @@ from statistics import fmean
 mean = fmean(temps)
 print(mean)
 ```
+:::
 :::
