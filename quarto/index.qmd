@@ -16,13 +16,6 @@ Rustlings assumes that the student has previously read the [Rust introductory bo
 For this course we have decided to add resources to read at the end of each exercise set, so, the student could start by reading these resources, but we have also included examples to ease the use of this course in practical sessions with students with no previous knowlegde of the theory.
 
 
-## Running Python in the web
-
-There are several sites that include Python in its web site and allow to run Python code:
-
-  - The [Future Coder IDE](https://futurecoder.io/course/#ide) allows to write, run and debug Python programs.
-  - In the [Pyodide REPL](https://pyodide.org/en/stable/console.html) the user can execute Python commands.
-
 ## Python books and tutorials
 
 - The official [Python tutorial](https://docs.python.org/3/tutorial/index.html). Also, available in [Spanish](https://docs.python.org/es/3/tutorial/index.html), [French](https://docs.python.org/fr/3/tutorial/index.html), [Italian](https://docs.python.org/it/3/tutorial/index.html), [Portuguese](https://docs.python.org/pt-br/3/tutorial/index.html), and other languages.
@@ -49,6 +42,13 @@ The official Python [documentation](https://docs.python.org/3/).
 ## Technology
 
 This site has been built with the [quarto](https://quarto.org/) publishing system complemented by the [quarto live](https://github.com/r-wasm/quarto-live) extension that allows Python to run in the web browser by using [pyodide](https://pyodide.org/). Without the effort of these [open source](https://en.wikipedia.org/wiki/Open_source) developers this resource wouldn't exist.
+
+## Other sites in which you could run Python in the web
+
+There are several sites that include Python in its web site and allow to run Python code:
+
+  - The [Future Coder IDE](https://futurecoder.io/course/#ide) allows to write, run and debug Python programs.
+  - In the [Pyodide REPL](https://pyodide.org/en/stable/console.html) the user can execute Python commands.
 
 ## Licence
 
