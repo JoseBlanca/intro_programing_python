@@ -130,5 +130,12 @@ Linked exercises will display UI button elements to reveal hints and solutions. 
 
 You may prefer to show exercise hints and solutions in the form of a tabbed panel. This can be achieved by wrapping your fenced .hint and .solution blocks as part of a tabset panel block.
 
+## render
 
+To preview while creating the site:
 
+$ quarto preview
+
+To render the web site:
+
+$ quarto render
