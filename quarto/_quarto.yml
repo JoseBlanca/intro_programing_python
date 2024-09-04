@@ -32,6 +32,8 @@ website:
         contents:
           - text: "if"
             href: control_flow/if.qmd
+          - text: "for loops"
+            href: control_flow/for.qmd
 format:
   html:
     theme: cosmo

@@ -8,7 +8,12 @@ format:
         completion: true
 ---
 
-# if
+## Resources
+
+- [if](https://docs.python.org/3/tutorial/controlflow.html#if-statements) statement in the official documentation.
+- [Conditional statements](https://realpython.com/python-conditional-statements/) in Real Python.
+
+## if
 
 [if](https://docs.python.org/3/tutorial/controlflow.html#if-statements) is one of the basic control flow statements.
 It allow us to execute some code only if a given condition is met.

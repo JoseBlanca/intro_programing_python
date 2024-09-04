@@ -43,32 +43,11 @@ https://python-fiddle.com/challenges/levels/intermediate
 ejercicios año pasado
 
 
-# Control flow: for
-
-## break
-
-## continue
-
-## nested loops
-
-## enumerate, range
-
-
-# functional programming
-
-# Iterables and iterators
-
-range()
-
-# map, filter, reduce
-
 # Compound types: dict
 
 dict.items()
 
 # variables 2
-
-## a, b == 1, 2
 
 ## mutables e inmutables
 
@@ -93,6 +72,14 @@ VSC and uv
 # Modules and packages
 
 # std library modules
+
+# functional programming
+
+# Iterables and iterators
+
+range()
+
+# map, filter, reduce
 
 # Data analysis python modules
 
