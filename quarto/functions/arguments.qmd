@@ -1,0 +1,6 @@
+args and kwargs
+
+default args
+
+references and mutable objects
+

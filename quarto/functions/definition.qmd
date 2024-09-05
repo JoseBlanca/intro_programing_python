@@ -1,0 +1,512 @@
+---
+title: Function definition
+filters:
+  - diagram
+format:
+  live-html:
+    pandoc_args: ['--lua-filter=diagram.lua']
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+[Functions](https://docs.python.org/3/glossary.html#term-function) are the main way of structuring our code.
+So far we have been writting very small pieces of code, but it most reallistic projects we will need to create more complex functionalities.
+
+When we program what we do is to manipulate data.
+Think in a program as a series of manipulations on the data that is stored in memory.
+We take some pieces of data, for example the radius of a circle, and we do a action, like calculating the area.
+So we need ways of defining that data, and for that we use [types](https://en.wikipedia.org/wiki/Data_type) (and [classes](https://en.wikipedia.org/wiki/Class_(computer_programming))), and we create [functions]((https://en.wikipedia.org/wiki/Function_(computer_programming))) (and [methods](https://en.wikipedia.org/wiki/Method_(computer_programming))) to manipulate that data.
+
+Imagine data as things/objects or properties of those objects, and functions as actions that act on the data.
+For example, we have some data, the *radius* of a circle, we apply an action to it, **calc_area**, and we obtain a new piece of data, the *area*.
+Both radius and area are pieces of data, whereas cacl_area is an action, a verb.
+
+Alternatively you can think on a programming function like in a kind of mathematical function, that takes some parameters and returns a result (although as we will see both the parameters and the result are optional).
+
+```{mermaid}
+flowchart LR
+  radius(["radius"])-- calc_area -->area(["area"])
+```
+
+## Resources
+
+- [Python function](https://realpython.com/defining-your-own-python-function/) and [return](https://realpython.com/python-return-statement/) in Real Python.
+- [Functions](https://learn.microsoft.com/en-us/training/modules/functions-python/) in the Microsoft Python for beginners course.
+- [Scopes](https://realpython.com/python-scope-legb-rule/) in Python in Real Python.
+
+## Definition and calling
+
+In Python functions are defined by using the **def** keyword.
+
+```{pyodide}
+
+def say_hello():
+    print("Hello")
+
+```
+
+If you run the previous piece of code, you want see any result. Once you define a function, the function will be ready to be used, but in order to use it you need to call it.
+We call a function by using parentheses (**()**).
+
+```{pyodide}
+
+def say_hello():
+    print("Hello")
+
+say_hello()
+```
+
+The lines that belong to the function are the lines in the block indented after the line with the function definition.
+Fix the following code:
+
+```{pyodide}
+#| exercise: fix_funct_block
+def say_hello()
+    print("Hi!")
+    print("Bye!")
+
+say_hello
+```
+
+::: { .solution exercise="fix_funct_block" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+def say_hello():
+    print("Hi!")
+    print("Bye!")
+
+say_hello()
+
+```
+
+:::
+:::
+
+
+It is important to understand how the flow is changed by the function.
+Once you call the function the flow goes into the function until the function ends. At that point the flow is send back to the line that called the function.
+
+Try to fill out the numbers in the prints of the following code to track the flow of execution.
+In which order will be the lines executed?
+
+```{pyodide}
+#| exercise: function_flow
+
+print("This will be print number: 0")
+
+def say_hello():
+    print("This will be print number: #")
+    print("Hello")
+    print("This will be print number: #")
+
+print("This will be print number: #")
+say_hello()
+print("This will be print number: #")
+
+```
+
+::: { .solution exercise="variable_name" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+
+print("This will be print number: 0")
+
+def say_hello():
+    print("This will be print number: 2")
+    print("Hello")
+    print("This will be print number: 3")
+
+print("This will be print number: 1")
+say_hello()
+print("This will be print number: 4")
+
+```
+
+:::
+:::
+
+## Arguments
+
+Some functions do not require any data to carry out the action, but most do.
+For instance, if we want the previous function to print a more personalized greeting it would need the name of the person.
+
+```{pyodide}
+
+def say_hello(name):
+    print("Hello", name)
+
+person = "Jane"
+say_hello(person)
+```
+
+Passing data to a function is easy, but a lot is going on under the hood:
+
+1. We have created a text string ("Jane"). That means that Python has created and stored a object of type str in memory.
+
+```{mermaid}
+flowchart TB
+    main:::scope
+    subgraph main [ ]
+    person:::invisible
+    end
+    say:::scope
+    subgraph say [ ]
+    name:::invisible
+    end
+    Memory:::memory
+    subgraph Memory
+    Jane["'Jane'"]:::variable
+    end
+    person --> Jane
+    name --> Jane
+    classDef variable fill:#f96
+    classDef invisible opacity:0%
+    classDef memory fill:#aaa
+    classDef scope fill:#ccc
+    linkStyle 0,1 stroke-width:0px
+```
+
+2. We have assigned the variable person to that string, so now person refers to that str object stored in memory.
+```{mermaid}
+flowchart TB
+    main:::scope
+    subgraph main [global scope]
+    person:::variable
+    end
+    say:::scope
+    subgraph say [ ]
+    name:::invisible
+    end
+    Memory:::memory
+    subgraph Memory
+    Jane["'Jane'"]:::variable
+    end
+    person --> Jane
+    name --> Jane
+    classDef variable fill:#f96
+    classDef invisible opacity:0%
+    classDef memory fill:#aaa
+    classDef scope fill:#ccc
+    linkStyle 1 stroke-width:0px
+```
+
+3. When we call the function we pass the reference of the object, the variable person, to the function.
+4. The function receives the reference to the str object and assigns to it a new reference, in this case called name. It is very important to understand that although the object is the same, the "Jane" string, we have created a new reference to it, the new variable name.
+```{mermaid}
+flowchart TB
+    main:::scope
+    subgraph main [global scope]
+    person:::variable
+    end
+    say:::scope
+    subgraph say [say_hello scope]
+    name:::variable
+    end
+    Memory:::memory
+    subgraph Memory
+    Jane["'Jane'"]:::variable
+    end
+    person --> Jane
+    name --> Jane
+    classDef variable fill:#f96
+    classDef invisible opacity:0%
+    classDef memory fill:#aaa
+    classDef scope fill:#ccc
+```
+
+## Scopes
+
+To understand what do we mean when we say that we *pass* some data to a function we need to understand the concept of the [scope](https://en.wikipedia.org/wiki/Scope_(computer_science)).
+
+When we program we store and access data in memory.
+As we have seen we refer to the data stored in memory by using variables.
+We could think that those variables, once they are created, are available in every part of our program.
+Some programming languages used that approach, but when you try to build a program with more than a few lines of code it becomes very difficult to track which part of the program has changed a variable.
+So maintining those large programs is very difficult.
+
+Most programming languages use the concept of the scope.
+The scope defines where in the code a variable is available, and functions define their own scope.
+For instance, if we declare a variable inside a function it won't be available outside.
+
+```{pyodide}
+def say_hello():
+    name = "John"
+    print(1, name)
+
+say_hello()
+print(2, name)
+```
+
+We get a "'name' is not defined error" because the variable name was created inside the say_hello function, so in the say_hello scope, and is not available outside.
+A variable can only be used inside its scope.
+
+Be careful because Python has a global scope, and if you create the variable outside the function it will be available inside.
+
+```{pyodide}
+def say_hello():
+    print(1, name)
+
+name = "John"
+say_hello()
+print(2, name)
+```
+
+In this case the variable name has been created in the global scope, is a global variable available everywhere.
+In general avoid creating global variables, specially if they are just inmutable constants.
+If you think you need a global variable, think twice, in most cases is better not to use them.
+This is an advance topic, but here's a tip for the future you, to keep states it might be much better to use objects, instances of a class, that global variables. But this is a too advance topic for now.
+Just remember, try very hard not to use global varibles, although you can do some exceptions with some inmutable ones use just for global configurations.
+
+## return
+
+We have learn how to pass arguments, data, to a function, let's see how we can return data to the caller.
+
+```{pyodide}
+def calc_rect_area(width, height):
+    area = width * height
+    return area
+
+result = calc_rect_area(2, 3)
+print("The area is:",result)
+
+a, b = 4, 2
+print("The second area is: ", calc_rect_area(a, b))
+
+```
+
+We use the return statement to return a value generated in the function to the caller. Again, like in the parameters passed to the function, the caller will receive a new reference to the value stored in memory that can assign to a new variable.
+return is use to move a result in memory between scopes.
+For instance, in the previous example there is a variable, inside the function, named area, but in the first call we store the reference in a variable named result. area and result are two variables, two references to the same value stored in memory, but they are variables that belong to different scopes.
+In this case area belongs to the scope of the calc_rect_area function and result to the global scope.
+
+Note also that each time that the function returns its scope is erased, so each call will be independent.
+Imagine that we want to store the number of times that a function has been called.
+Could you modify the following function to accomplish that?
+
+```{pyodide}
+#| exercise: funct_state
+def function_that_remembers_its_state():
+    num_times_called = 0
+    num_times_called += 1
+    print(num_times_called)
+
+function_that_remembers_its_state()
+function_that_remembers_its_state()
+```
+
+The most natural way to store states is to use [instances](https://en.wikipedia.org/wiki/Object_(computer_science)) of [classes](https://en.wikipedia.org/wiki/Class_(computer_programming)) (objects), but this is an advance topic that we won't discuss now.
+
+Functions can return multiple results, we just need to separate them with commas.
+Complete the following code.
+
+```{pyodide}
+#| exercise: two_returns
+def return_mutiple_values():
+    # we do some calculations
+    first_result = "Ford"
+    second_result = "Prefect"
+    return first_result, second_result
+
+print(name, surname)
+```
+
+::: { .solution exercise="two_returns"}
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+def return_mutiple_values():
+    # we do some calculations
+    first_result = "Ford"
+    second_result = "Prefect"
+    return first_result, second_result
+
+name, surname = return_mutiple_values()
+print(name, surname)
+
+```
+
+:::
+:::
+
+Think about how is possible that all the different options in the following code work.
+What is going on?
+
+```{pyodide}
+#| exercise: return_tuples
+def funct1():
+    a = 1
+    b = 2
+    return a, b
+
+def funct2():
+    c = (3, 4)
+    return c
+
+x, y = funct1()
+print(x, y)
+z = funct1()
+print(z[0], z[1])
+m, n = z
+print(m, n)
+
+x2, y2 = funct2()
+print(x2, y2)
+z2 = funct2()
+print(z2[0], z2[1])
+m2, n2 = z2
+print(m2, n2)
+
+```
+
+::: { .solution exercise="return_tuples" }
+::: { .callout-tip collapse="false"}
+
+Under the hood both functions are returning the same, a [tuple](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences), an imutable list.
+
+```{pyodide}
+
+# remember that to create a tuple the use of parenthesis is optional in Python
+
+a_tuple = 1, 2
+another_tuple = (1, 2)
+
+```
+
+So in the first function "return a, b" is first creating the tuple (a, b), and then returning it.
+
+When we call a function that returns a tuple we can assing the tuple to a variable, like in:
+
+```{pyodide}
+
+z = funct()
+
+```
+
+But we can also use the mutiple assignment that we studied for lists and tuples.
+
+```{pyodide}
+
+a_tuple = 1, 2
+a, b = a_tuple
+print(a, b)
+
+```
+
+:::
+:::
+
+In fact Python functions can only return just one thing, an object, one object.
+Every Python function always returns just one object.
+
+```{pyodide}
+
+def funct1():
+    print("I do not return?")
+
+def funct2():
+    return "Hi"
+
+def funct3():
+    return 1, 2, 3
+
+a = funct1()
+# None, so one object
+print("Funct 1 returns: ", a)
+
+b = funct2()
+# The string "Hi", so one object
+print("Funct 2 returns: ", b)
+
+c = funct3()
+# The tuple (1, 2, 3)", so one object
+print("Funct 3 returns: ", c)
+
+```
+
+Once a return is executed in a function, the function returns and its scope is destroyed with all its variables.
+What would be the result of executing the following code and why?
+
+```{pyodide}
+#| exercise: several_returns
+
+def funct1():
+    return ("Hi")
+    return ("Bye")
+
+print(funct1())
+print(funct1())
+
+```
+
+::: { .solution exercise="several_returns" }
+::: { .callout-tip collapse="false"}
+
+Everytime we call a function a new scope with new data is created and the function starts its execution in its first line and ends its execution once it encounters the first return.
+That's why no matter how many time we call this function it will always return "Hi" and "Bye" will be never reached.
+
+:::
+:::
+
+Write a function that returns "odd" or "even" depending on the number that we pass.
+
+```{pyodide}
+#| exercise: odd_or_even
+
+def is_odd_or_even(number):
+    ...
+
+print("3 is", is_odd_or_even(3))
+print("6 is", is_odd_or_even(6))
+
+```
+
+::: { .solution exercise="odd_or_even" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+
+def is_odd_or_even(number):
+    remainder = number % 2
+    if remainder:
+        return "odd"
+    else:
+        return "even"
+
+print("3 is", is_odd_or_even(3))
+print("6 is", is_odd_or_even(6))
+
+```
+:::
+:::
+
+## Anonymous functions, lambdas
+
+In Python, and many other programming languages, we can create anonymous functions.
+This is a more abstract idea, but they are used quite commonly in Python, so it would be nice, at least, that you could recognized them.
+
+lambdas are usually very small functions, just one line, and they are used as parameters for other functions.
+For instance, they are very common in as the key argument to the sorted function.
+
+```{pyodide}
+
+words = ['Hi', 'my', 'name', 'is', 'Yoda']
+sorted_words = sorted(words, key=lambda word: word.lower())
+print(sorted_words)
+
+# The equivalent code with a fully fledged function would be:
+
+def to_lower(word):
+    return word.lower()
+sorted_words = sorted(words, key=to_lower)
+print(sorted_words)
+
+# Both versions are completely equivalent,
+# but the lambda version is more compact and that is why is commonly used
+
+```
+
+You can learn more about lambdas in the [official documentation](https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions) or in [Real Python](https://realpython.com/python-lambda/).
