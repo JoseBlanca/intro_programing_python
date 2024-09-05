@@ -15,6 +15,30 @@ We decided to try this approach after following the [rustlings](https://github.c
 Rustlings assumes that the student has previously read the [Rust introductory book](https://doc.rust-lang.org/book/).
 For this course we have decided to add resources to read at the end of each exercise set, so, the student could start by reading these resources, but we have also included examples to ease the use of this course in practical sessions with students with no previous knowlegde of the theory.
 
+## Why Python?
+
+There are other very useful languages, like Javascript for the web, R for statistics, C or Rust for system programming, so, why should we start learning how to program in Python?
+
+Python is:
+
+- one of the easiest languages to start with, and that is nice because learning programming involves getting used to some abstract concepts related to how computers work, so the easier the language, the better the learning experience will be.
+- very productive. The same ease of use that make Python a good learning language make it very productive for professional developers.
+- free software. It is developed by a community and released under an [open source](https://en.wikipedia.org/wiki/Open_source) licence.
+
+These characteristics make Python a very popular tool, in the [2024 stackoverflow survery](https://survey.stackoverflow.co/2024/technology), 51% of the developers had used Python in the last year.
+Only Javascript, with 62.3%, is a more popular programming language.
+Moreover, 67.7% of these developers want to learn an use python.
+
+According to the [2023 Python Developer survey](https://lp.jetbrains.com/python-developers-survey-2023/) Python is used mostly for:
+
+- Web development (21%)
+- Data analysis (10%)
+- Data engineering (6%)
+- Machine learning (10%)
+- Academic research (9%)
+- Education (9%)
+
+So, if you are interested in data analysis or web development, Python is not just a great language to learn, but an interesting professional option.
 
 ## Python books and tutorials
 
