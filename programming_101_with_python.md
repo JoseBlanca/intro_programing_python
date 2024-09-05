@@ -6,27 +6,12 @@ https://jupyterlite.readthedocs.io/
 
 # Introduction
 
-Why programming?
-
-- data analysis
-
 How can you learn:
 
 - There's only one way, practice:
   - course
   - tutorials
   - project
-
-Why Python:
-
-Python drawbacks:
-
-- speed
-    - python is slow
-    - VCF parsing times
-- mobile
-- GUI
-
 
 # Exercise lists:
 
@@ -42,10 +27,13 @@ https://python-fiddle.com/challenges/levels/intermediate
 
 ejercicios año pasado
 
+# Functions
 
-# Compound types: dict
+## Introduce that there are methods
 
-dict.items()
+## function naming conventions
+
+## lambda
 
 # variables 2
 
@@ -55,13 +43,9 @@ dict.items()
 
 ## variable naming conventions
 
-# Functions
+# Compound types: dict
 
-## Introduce that there are methods
-
-## function naming conventions
-
-## lambda
+dict.items()
 
 # Running Python locally
 
