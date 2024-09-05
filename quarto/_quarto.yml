@@ -34,6 +34,11 @@ website:
             href: control_flow/if.qmd
           - text: "for loops"
             href: control_flow/for.qmd
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            href:  https://github.com/JoseBlanca/intro_programing_python
 format:
   html:
     theme: cosmo
