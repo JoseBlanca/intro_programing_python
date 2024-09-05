@@ -13,7 +13,8 @@ There are many great introductions to Python, but we thought that it would be us
 
 We decided to try this approach after following the [rustlings](https://github.com/rust-lang/rustlings/) path, an exercise set aimed at teaching the Rust programming language.
 Rustlings assumes that the student has previously read the [Rust introductory book](https://doc.rust-lang.org/book/).
-For this course we have decided to add resources to read at the end of each exercise set, so, the student could start by reading these resources, but we have also included examples to ease the use of this course in practical sessions with students with no previous knowlegde of the theory.
+For this course we have decided to add resources to read for each topic, so, the student could start by reading these resources, and then proceed to practice with the code examples and exercises.
+Alternatively, the examples could be used in a practical session to teach the theory and, then, the exercises could be use as the practice for the students.
 
 ## Why Python?
 
