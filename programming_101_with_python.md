@@ -31,11 +31,6 @@ ejercicios año pasado
 
 dict.items()
 
-
-# Running Python locally
-
-VSC and uv
-
 # Working with files
 
 # Modules and packages

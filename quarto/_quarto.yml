@@ -40,6 +40,9 @@ website:
             href: functions/definition.qmd
           - text: "Arguments"
             href: functions/arguments.qmd
+      - text: "Install and run Python"
+        href: run_python.qmd
+
     tools:
       - icon: github
         menu:

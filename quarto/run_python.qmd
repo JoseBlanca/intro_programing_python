@@ -1,0 +1,73 @@
+---
+title: Installing and running Python
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+Python code can be run in many different platforms that include: computers with different operating systems, like Windows, MacOS and Linux, embedded systems, and the web browser.
+
+However, a file with Python code, by itself, will not be executable. For instance, imagine that you create an useful Python program and you send it to a colleague. Usually he won’t be able to run it unless he first installs Python. This is what we mean when we say that Python is an [interpreted language](https://en.wikipedia.org/wiki/Interpreter_(computing)). We don’t need to compile the Python code to a binary file capable of being run by the operating system. The advantage of this approach is that we don’t need to compile the code for every operating system and architecture, but the limitation is that we need to install Python.
+
+Python is free and it is not difficult to install, but there are many operating systems and environments and the way in which we install Python in all of them might be different.
+
+## Python online
+
+So far we have run the Python code in the web browser.
+In fact the web pages that we have used so far in the course included a version of the Python interpreter that has run the code inside the browser.
+
+There are other sites that allow to run Python code online like:
+
+  - The [Future Coder IDE](https://futurecoder.io/course/#ide) allows to write, run and debug Python programs.
+  - In the [Pyodide REPL](https://pyodide.org/en/stable/console.html) the user can execute Python commands.
+
+## Operating system specific installers
+
+Running Python online is great, but for many uses we need to install it in our computer and run it locally.
+Python is [open source](https://en.wikipedia.org/wiki/Open_source) and it is freely distributed in [python.org](https://www.python.org/).
+So, one way of getting Python is to go the download section in python.org, download the latest installer for your operating system and install it.
+That will install Python, but you might have some issues with it:
+
+- You will need to remember to install the Python updates.
+- You will be able to install only one Python version at a time.
+- The [PATH](https://en.wikipedia.org/wiki/Path_(computing)) [operating system variable](https://en.wikipedia.org/wiki/Environment_variable) might end up not being correctly configured. So, although Python will be installed the interpreter won't be directly available in the [command-line shell](https://en.wikipedia.org/wiki/Command-line_interface).
+
+Alternativery, you could use a specific installer for your operating system, like the Microsoft Store for windows or the package manager of your Linux distribution.
+There are many different cases and alternatives, and they are covered in the [Python Setup and Usage](https://docs.python.org/3/using/index.html) in python.org.
+
+## Anaconda
+
+Another alternative to install Python locally is to use the [anaconda](https://www.anaconda.com/download) installer.
+Anaconda ships Python, R, and many other tools used in data analysis and it is very convenient because the Anaconda installer and navigator make the experience of using Python very similar in different operating systems.
+
+## Jupyter
+
+An alternative way of using Python in the browser, but with a local installation is [jupyter](https://jupyter.org/).
+This is a tool commonly used in Data analysis, and it is included in the anaconda distribution.
+
+## Virtual environments
+
+Once you start using Python professionaly it will be highly advisable to use virtual environments.
+This is an advanced topic for this course, but you will have to learn about virtual environments if you plan to use Python.
+Here you have a couple of resources:
+
+- [Virtual environments](https://jupyter.org/) in Real Python.
+- [venv](https://docs.python.org/3/library/venv.html) module documentation
+
+## uv
+
+There is a new way to install Python: [uv](https://docs.astral.sh/uv/).
+
+Once you [install](https://docs.astral.sh/uv/getting-started/installation/) uv, it will:
+
+- manage the installation of different [Python]((https://docs.astral.sh/uv/guides/install-python/)) [versions](https://docs.astral.sh/uv/concepts/python-versions/).
+- run Python [scripts](https://docs.astral.sh/uv/guides/scripts/)
+- manage [Python projects](https://docs.astral.sh/uv/concepts/projects/), with their virtual environments and [dependencies](https://docs.astral.sh/uv/concepts/dependencies/), for you.
+
+## Code editor
+
+To edit Python code you will need a code editor.
+[Visual Studio Code](https://code.visualstudio.com/) is now one of the most popular ones.

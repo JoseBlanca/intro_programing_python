@@ -70,13 +70,6 @@ The official Python [documentation](https://docs.python.org/3/).
 
 This site has been built with the [quarto](https://quarto.org/) publishing system complemented by the [quarto live](https://github.com/r-wasm/quarto-live) extension that allows Python to run in the web browser by using [pyodide](https://pyodide.org/). Without the effort of these [open source](https://en.wikipedia.org/wiki/Open_source) developers this resource wouldn't exist.
 
-## Other sites in which you could run Python in the web
-
-There are several sites that include Python in its web site and allow to run Python code:
-
-  - The [Future Coder IDE](https://futurecoder.io/course/#ide) allows to write, run and debug Python programs.
-  - In the [Pyodide REPL](https://pyodide.org/en/stable/console.html) the user can execute Python commands.
-
 ## Licence
 
 This content is released under a [Creative Commons BY](https://creativecommons.org/licenses/by/4.0/) licence.
