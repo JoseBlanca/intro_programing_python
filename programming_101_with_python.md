@@ -27,25 +27,10 @@ https://python-fiddle.com/challenges/levels/intermediate
 
 ejercicios año pasado
 
-# Functions
-
-## Introduce that there are methods
-
-## function naming conventions
-
-## lambda
-
-# variables 2
-
-## mutables e inmutables
-
-## variables are references
-
-## variable naming conventions
-
 # Compound types: dict
 
 dict.items()
+
 
 # Running Python locally
 

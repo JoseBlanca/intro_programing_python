@@ -6,7 +6,6 @@ format:
   live-html:
     mermaid:
       theme: neutral
-    pandoc_args: ['--lua-filter=diagram.lua']
     pyodide:
       cell-options:
         autorun: false
