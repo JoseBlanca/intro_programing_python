@@ -4,6 +4,8 @@ filters:
   - diagram
 format:
   live-html:
+    mermaid:
+      theme: neutral
     pandoc_args: ['--lua-filter=diagram.lua']
     pyodide:
       cell-options:
@@ -149,35 +151,30 @@ Passing data to a function is easy, but a lot is going on under the hood:
 
 ```{mermaid}
 flowchart TB
-    main:::scope
     subgraph main [ ]
     person:::invisible
     end
-    say:::scope
     subgraph say [ ]
     name:::invisible
     end
     Memory:::memory
     subgraph Memory
-    Jane["'Jane'"]:::variable
+    Jane["'Jane'"]
     end
     person --> Jane
     name --> Jane
     classDef variable fill:#f96
     classDef invisible opacity:0%
-    classDef memory fill:#aaa
-    classDef scope fill:#ccc
+    classDef memory fill:#ccc
     linkStyle 0,1 stroke-width:0px
 ```
 
 2. We have assigned the variable person to that string, so now person refers to that str object stored in memory.
 ```{mermaid}
 flowchart TB
-    main:::scope
     subgraph main [global scope]
-    person:::variable
+    person
     end
-    say:::scope
     subgraph say [ ]
     name:::invisible
     end
@@ -187,10 +184,8 @@ flowchart TB
     end
     person --> Jane
     name --> Jane
-    classDef variable fill:#f96
     classDef invisible opacity:0%
-    classDef memory fill:#aaa
-    classDef scope fill:#ccc
+    classDef memory fill:#ccc
     linkStyle 1 stroke-width:0px
 ```
 
@@ -198,24 +193,20 @@ flowchart TB
 4. The function receives the reference to the str object and assigns to it a new reference, in this case called name. It is very important to understand that although the object is the same, the "Jane" string, we have created a new reference to it, the new variable name.
 ```{mermaid}
 flowchart TB
-    main:::scope
     subgraph main [global scope]
-    person:::variable
+    person
     end
-    say:::scope
     subgraph say [say_hello scope]
-    name:::variable
+    name
     end
     Memory:::memory
     subgraph Memory
-    Jane["'Jane'"]:::variable
+    Jane["'Jane'"]
     end
     person --> Jane
     name --> Jane
-    classDef variable fill:#f96
     classDef invisible opacity:0%
-    classDef memory fill:#aaa
-    classDef scope fill:#ccc
+    classDef memory fill:#ccc
 ```
 
 ## Scopes
