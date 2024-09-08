@@ -67,6 +67,8 @@ Once you [install](https://docs.astral.sh/uv/getting-started/installation/) uv, 
 - run Python [scripts](https://docs.astral.sh/uv/guides/scripts/)
 - manage [Python projects](https://docs.astral.sh/uv/concepts/projects/), with their virtual environments and [dependencies](https://docs.astral.sh/uv/concepts/dependencies/), for you.
 
+In this course we will assume that you have installed uv.
+
 ## Code editor
 
 To edit Python code you will need a code editor.

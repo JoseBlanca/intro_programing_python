@@ -40,8 +40,13 @@ website:
             href: functions/definition.qmd
           - text: "Arguments"
             href: functions/arguments.qmd
-      - text: "Install and run Python"
-        href: run_python.qmd
+      - section: "Install and run Python"
+        contents:
+            - text: "Install"
+              href: local_install/run_python.qmd
+            - text: "Local hello world"
+              href: local_install/hello_word2.qmd
+
 
     tools:
       - icon: github
