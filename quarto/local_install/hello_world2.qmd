@@ -37,7 +37,7 @@ All Python programs, by convention, are text files with the extension ".py".
 
 At this point Visual Studio should have created the "hello.py" text file and it will have open it, so we can type our first Python program.
 
-```{{python}}
+```{python}
 print("Hello")
 ```
 
@@ -50,10 +50,12 @@ We could run our Python programs directly using the Python interpreter command: 
 If you haven't [installed uv](https://docs.astral.sh/uv/getting-started/installation/), go ahead and do it.
 Once we have uv available, it will manage the Python installation for us and it will also run Python, just write in Visual Studio Terminal:
 
-```{{shell}}
+```{bash}
 
 $ uv run hello.py
 
 ```
 
-Click enter and, hopefulle, you should have run your first Python program in the Terminal.
+(The dollar sign is part of the prompt, we are just including it to show that the command is meant to be written in the prompt, but the dolar sign itself should not be written. In this case you should only write "uv run hello.py")
+
+Click enter and, hopefully, you should have run your first Python program in the Terminal.

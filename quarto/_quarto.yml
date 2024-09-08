@@ -45,7 +45,7 @@ website:
             - text: "Install"
               href: local_install/run_python.qmd
             - text: "Local hello world"
-              href: local_install/hello_word2.qmd
+              href: local_install/hello_world2.qmd
 
 
     tools:
