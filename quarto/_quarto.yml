@@ -25,8 +25,12 @@ website:
             href: types_and_operators/comparisons_and_bool_operators.qmd
           - text: "Strings"
             href: types_and_operators/strings.qmd
+      - section: "Compound types"
+        contents:
           - text: "Lists"
             href: types_and_operators/lists.qmd
+          - text: "Dictionaries"
+            href: types_and_operators/dictionaries.qmd
       - section: "Control flow"
         href: control_flow/index.qmd
         contents:
@@ -46,8 +50,6 @@ website:
               href: local_install/run_python.qmd
             - text: "Local hello world"
               href: local_install/hello_world2.qmd
-
-
     tools:
       - icon: github
         menu:

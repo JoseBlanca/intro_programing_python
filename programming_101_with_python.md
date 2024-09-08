@@ -1,17 +1,4 @@
 
-# Tech
-
-Jupyterlite
-https://jupyterlite.readthedocs.io/
-
-# Introduction
-
-How can you learn:
-
-- There's only one way, practice:
-  - course
-  - tutorials
-  - project
 
 # Exercise lists:
 
@@ -26,10 +13,6 @@ https://python-fiddle.com/challenges/levels/beginner
 https://python-fiddle.com/challenges/levels/intermediate
 
 ejercicios año pasado
-
-# Compound types: dict
-
-dict.items()
 
 # Working with files
 

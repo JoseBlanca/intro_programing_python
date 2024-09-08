@@ -1,0 +1,143 @@
+---
+title: Dictionaries
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Read about [dict](https://docs.python.org/3/library/stdtypes.html#typesmapping), and more on [dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) in the official documentation.
+- A Real Python introduction to [dictionaries](https://realpython.com/python-dicts/).
+
+## Creation
+
+Dictionaries, like lists, are compound types, they can hold several items.
+Lists are [sequences](https://docs.python.org/3/glossary.html#term-sequence), the elements that they hold are stored one after another, and we can access their items by their index, their position in the sequence.
+
+```{pyodide}
+l = ["John", "Ringo", "Paul", "George"]
+print(l)
+print(l[1])
+```
+
+```{mermaid}
+flowchart LR
+    subgraph values
+    John
+    Ringo
+    Paul
+    George
+    end
+    subgraph indexes
+    0
+    1
+    2
+    3
+    end
+    0 --> John
+    1 --> Ringo
+    2 --> Paul
+    3 --> George
+```
+
+Dictionaries also hold different values, but they are not ordered and, thus, we do not refer to them by their index.
+When we create a dictionary we assign a key to every value and we use those keys to access to the values.
+
+```{mermaid}
+flowchart LR
+    subgraph values
+    Ringo
+    Starr
+    drums
+    end
+    subgraph keys
+    name
+    surname
+    instrument
+    end
+    name --> Ringo
+    surname --> Starr
+    instrument --> drums
+```
+
+```{pyodide}
+d = {"name": "Ringo", "surname": "Starr", "instrument": "drums"}
+print(d)
+print(d["surname"])
+```
+
+We create a dictionary using curly braces (**{}**), and we write the key and the value separated by a colon (**:**): {key1: value1, key2: value2}.
+In the previous example the keys were: "name", "surname", and "instrument", and the values were: "Ringo", "Starr", and "drums".
+As you have seen in the previous example, we can get the values stored in a dictionary by using square brackes: some_dictionary[key].
+
+A dictionary is a [mapping](https://docs.python.org/3/glossary.html#term-mapping), it maps keys to values.
+In other languages these kind of objects are called [hash tables](https://en.wikipedia.org/wiki/Hash_table), hash maps or associative arrays.
+
+We can ask Python to give us the all keys and values of a dictionary.
+
+```{pyodide}
+rectangle = {"color": "Orange", "width": 10, "heigt": 5}
+print(rectangle)
+print(list(rectangle.keys()))
+print(list(rectangle.values()))
+```
+
+Be aware that the methods [keys](https://docs.python.org/3/library/stdtypes.html#dict.keys) and [values](https://docs.python.org/3/library/stdtypes.html#dict.values) return [iterators](https://docs.python.org/3/glossary.html#term-iterator), so to print lists we have to pass those iterators to the [list](https://docs.python.org/3/library/functions.html#func-list) function.
+
+We can also iterate through tuples of keys and values.
+
+```{pyodide}
+rectangle = {"color": "Orange", "width": 10, "height": 5}
+print(rectangle)
+print(list(rectangle.items()))
+```
+
+If we want to know how many items is the dictionary holding we use the [len](https://docs.python.org/3/library/functions.html#len) function.
+
+```{pyodide}
+rectangle = {"color": "Orange", "width": 10, "height": 5}
+print(len(rectangle))
+```
+
+## dicts are mutable
+
+Dictionaries, like lists, are [mutable](https://docs.python.org/3/glossary.html#term-mutable), we can add, modify or remove, items after their creation.
+
+```{pyodide}
+address = {}
+print(address)
+print(len(adress))
+address["street"] = "Elm street"
+address["number"] = 1428
+print(address)
+print(len(adress))
+```
+
+## dict keys are unique
+
+One very important aspect of a dictionary is that keys are unique.
+If we try to store two values under the same key, only one will remain.
+
+```{pyodide}
+pet = {"name": "Ada", "species": "cat"}
+pet["name"] = "Toby"
+pet["species"] = "dog"
+print(pet)
+```
+
+## key in dict
+
+We can check if a key is stored in a dictionary by using the **in** operator.
+
+```{pyodide}
+pet = {"name": "Ada", "species": "cat"}
+print("name" in pet)
+print("breed" in pet)
+
+```
