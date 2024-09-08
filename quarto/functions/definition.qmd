@@ -473,6 +473,37 @@ print("6 is", is_odd_or_even(6))
 :::
 :::
 
+## Methods
+
+So far we haven't talked about [clases](https://en.wikipedia.org/wiki/Class_(computer_programming)) and their instances, the [objects](https://en.wikipedia.org/wiki/Object_(computer_science)) because they are a slightly more advanced topic related to [Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming) (OOP).
+
+Python is a object oriented language, in fact, in Python almost everything is an object.
+And although we are now going to discuss this topic yet it is important to understand the concept and use of [methods](https://en.wikipedia.org/wiki/Method_(computer_programming)), the object "functions".
+In fact we have already used methods when dealing with strings.
+
+```{pyodide}
+
+s = "hello"
+s = s.upper()
+print(s)
+
+```
+
+upper is a method, a function associated with an object.
+In this case the object is the string "hello" and upper is a function that acts on that object.
+By convention functions associated to objects are called methods.
+So upper is a method, a function associated to the objects of type str.
+You can think on a method like on a function that has a a first argument the given object.
+If upper were a standard function the previous code would be:
+
+```
+s = "hello"
+s = upper(s)
+print(s)
+```
+
+Something similar to that would work if upper were a normal function but, instead is a method associated to an object, so the syntax is different, we use a dot after the object, then the name of the method/function, and then the language makes sure that the object is passed as the first argument to this method.
+
 ## Anonymous functions, lambdas
 
 In Python, and many other programming languages, we can create anonymous functions.
