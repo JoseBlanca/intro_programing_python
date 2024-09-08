@@ -504,6 +504,8 @@ print(s)
 
 Something similar to that would work if upper were a normal function but, instead is a method associated to an object, so the syntax is different, we use a dot after the object, then the name of the method/function, and then the language makes sure that the object is passed as the first argument to this method.
 
+If you want to understand Python you need to learn about objects, classes, methods and properties, because Python is a deeply object-oriented language, but this is a topic that we can leave for later.
+
 ## Anonymous functions, lambdas
 
 In Python, and many other programming languages, we can create anonymous functions.
