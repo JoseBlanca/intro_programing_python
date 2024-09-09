@@ -151,6 +151,215 @@ print(i, word)
 
 ## for exercises
 
+Create a program that given a list of words prints if they are short (less than 4 characters long), not so long (between 4 and 7 characters), and very long (more than 7 characters).
+
+```{pyodide}
+#| exercise: long_words
+foods = ['bacon', 'tuna', 'ham', 'sausages', 'beef']
+for food in foods:
+    ...
+# The expected result is
+# bacon is a not so long word
+# tuna is a not so long word
+# ham is a short word
+# sausages is a long word
+# beef is a not so long word
+```
+
+::: { .hint exercise="long_words" }
+::: { .callout-tip collapse="false"}
+
+Remember that you can use the [len](https://docs.python.org/3/library/functions.html#len) function to get the number of characters of a string and you could create an if, elif, else.
+
+:::
+:::
+
+::: { .solution exercise="long_words" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+foods = ['bacon', 'tuna', 'ham', 'sausages', 'beef']
+for food in foods:
+    len_food = len(food)
+    if len_food < 4:
+        print(f"{food} is a short word")
+    elif len_food <=7:
+        print(f"{food} is a not so long word")
+    else:
+        print(f"{food} is a long word")
+```
+
+:::
+:::
+
+Write a program that outputs which people were a Beatle member and their index in the list.
+
+```{pyodide}
+#| exercise: beatles_for
+
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= ['John', 'Paul', 'George', 'Ringo']
+
+for index, person in people:
+    ...
+
+```
+
+::: { .hint exercise="beatles_for" }
+::: { .callout-tip collapse="false"}
+
+Remember that you can use enumerate to get the index in any for, and that the in operator allows you to check if an item is in a list.
+
+:::
+:::
+
+::: { .solution exercise="beatles_for" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= ['John', 'Paul', 'George', 'Ringo']
+
+for index, person in enumerate(people):
+    if person in beatles:
+        print(f'{person}, number {index} in the list is a Beatle')
+```
+
+If the list were large it would be much efficient to use a dictionary or a [set](https://docs.python.org/3/tutorial/datastructures.html#sets) than a list.
+The solution using a set would be:
+
+```{pyodide}
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= set(['John', 'Paul', 'George', 'Ringo'])
+
+for index, person in enumerate(people):
+    if person in beatles:
+        print(f'{person}, number {index} in the list is a Beatle')
+```
+
+Using [filter](https://docs.python.org/3/library/functions.html#filter) and a lambda we could even skip many iterations of the for.
+
+```{pyodide}
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= set(['John', 'Paul', 'George', 'Ringo'])
+
+for index, person in filter(lambda idx_person: idx_person[1] in beatles, enumerate(people)):
+    print(f'{person}, number {index} in the list is a Beatle')
+```
+
+:::
+:::
+
+We are reading a comma-separated values ([CSV](https://en.wikipedia.org/wiki/Comma-separated_values)) text file.
+In each file we have measures and we want to calculate the mean value.
+
+```{pyodide}
+#| exercise: mean_value
+
+line = "13.5,34.5,23.6,45.7,23.0"
+
+print(mean)
+
+```
+
+::: { .hint exercise="mean_value" }
+::: { .callout-tip collapse="false"}
+
+Remember that the str split method can split a text string into a list and the float funtion can transform a text into a number.
+
+:::
+:::
+
+::: { .solution exercise="mean_value" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+line = "13.5,34.5,23.6,45.7,23.0"
+num_numbers = 0
+total = 0
+for text_number in line.split(","):
+    total += float(text_number)
+    num_numbers += 1
+mean = total / num_numbers
+print(mean)
+```
+
+Alternativerly you could use the [map](https://docs.python.org/3/library/functions.html#map) and [sum](https://docs.python.org/3/library/functions.html#sum) functions.
+
+```{pyodide}
+line = "13.5,34.5,23.6,45.7,23.0"
+numbers = list(map(float, line.split(",")))
+mean = sum(numbers) / len(numbers)
+print(mean)
+```
+
+Or the [mean](https://docs.python.org/3/library/statistics.html#statistics.mean) function and a [list comprenhension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions).
+
+```{pyodide}
+from statistics import mean
+line = "13.5,34.5,23.6,45.7,23.0"
+numbers = [float(text_number) for text_number in line.split(",")]
+print(mean(numbers))
+```
+
+:::
+:::
+
+Write a program that stores all the multiples of 7 from 1 to n.
+
+```{pyodide}
+#| exercise: multiple7
+n = 25
+
+multiples = []
+
+
+
+print(multiples)
+```
+
+::: { .hint exercise="multiple7" }
+::: { .callout-tip collapse="false"}
+
+Remember that you can use the [range](https://docs.python.org/3/library/functions.html#func-range) function to get the numbers and the [modulo](https://realpython.com/python-modulo-operator/) operator to get the remainder of an integer division.
+
+:::
+:::
+
+::: { .solution exercise="multiple7" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+n = 25
+
+multiples = []
+for number in range(1, n):
+  if not number % 7:
+    multiples.append(number)
+print(multiples)
+```
+
+Alternatively, it could be solved using [filter](https://docs.python.org/3/library/functions.html#filter) and a lambda function.
+
+```{pyodide}
+n = 25
+
+multiples = list(filter(lambda number: not number %7, range(1, n)))
+print(multiples)
+
+```
+
+Or a [list comprenhension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) (this is a very common style that you will find in Python code).
+
+```{pyodide}
+n = 25
+multiples = [number for number in range(1, 25) if not number % 7]
+print(multiples)
+```
+
+:::
+:::
+
 Create a program that collects the quotes from each author in different lists.
 
 ```{pyodide}
