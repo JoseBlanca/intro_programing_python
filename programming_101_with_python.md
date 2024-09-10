@@ -2,6 +2,10 @@
 
 # Exercise lists:
 
+he mirado hasta el for en industriales
+
+añadir los ejercicios del máster del año pasado
+
 https://pynative.com/python-if-else-and-for-loop-exercise-with-solutions/
 
 https://www.practicepython.org/

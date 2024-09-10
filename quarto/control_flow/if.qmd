@@ -47,8 +47,37 @@ name = "Jane"
 if name == "Jane":
     print("Yes, she is Jane")
     print("and she is great")
-
 ```
+
+Fix the following code to print "Done!" even when the condition is not met.
+
+```{pyodide}
+#| exercise: fix_if_block
+money = 10
+if money < 1000000:
+    print("You are not rich")
+    print("Done!")
+```
+
+::: { .hint exercise="fix_if_block"}
+::: { .callout-note collapse="false"}
+
+Remember that a block ends when the indentation returns to the previous level.
+
+:::
+:::
+
+::: { .solution exercise="fix_if_block"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+money = 10
+if money < 1000000:
+    print("You are not rich")
+print("Done!")
+```
+:::
+:::
 
 ## else
 

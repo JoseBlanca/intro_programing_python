@@ -330,6 +330,22 @@ print(total)
 :::
 :::
 
+How many digit a number has.
+
+```{pyodide}
+#| exercise: number_digits
+# For example, 17768 has 5 digits
+```
+
+::: { .solution exercise="number_digits"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+number = 17768
+print("The number ", number, " has ", len(str(number)), " digits")
+```
+:::
+:::
 
 ## Indexing
 
@@ -459,13 +475,30 @@ Another useful string [method](https://docs.python.org/3/glossary.html#term-meth
 It allows us to look for ocurrences of a substring inside of a string. (Remember that we count from zero.)
 
 ```{pyodide}
-
 print("acACGTactt".find("ACGT"))
 
 # when the substring is not found, the find method returns -1
 print("acACGTactt".find("acgt"))
-
 ```
+
+Find the position of the substring "wor" in the string "Hello world", and the use that position to extract the "world" substring from "Hello world"
+```{pyodide}
+#| excercise: world_position
+s1= "Hello world"
+s2 = "wor"
+```
+
+::: { .solution exercise="world_position" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+s1= "Hello world"
+s2 = "wor"
+position = s1.find(s2)
+print(s1[position:])
+```
+:::
+:::
+
 
 ## Operations with text strings
 

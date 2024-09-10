@@ -522,6 +522,49 @@ print(numbers == numbers2)
 
 ```
 
+## Empty lists or tuples are false
+
+Create an empty list and an empty tuple and trasnform it into a boolean (type cast it into a boolean). Create also a list and a tuple with one element and type cast it to boolean.
+
+```{pyodide}
+#| exercise: empty_list
+l = []
+```
+
+::: { .hint exercise="empty_list" }
+::: { .callout-tip collapse="false"}
+
+Remember that you can transform to boolean using the [bool](https://docs.python.org/3/library/functions.html#bool) function.
+
+You won't be able to create an empty tuple using the following syntax:
+
+```{python}
+t = ()
+```
+
+But you can use the [tuple](https://docs.python.org/3/library/functions.html#func-tuple) function.
+
+:::
+:::
+
+::: { .solution exercise="empty_list" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+l = []
+print(bool(l))
+t = tuple()
+print(bool(t))
+l = [1]
+print(bool(l))
+t = (1,)
+print(bool(t))
+```
+
+:::
+:::
+
+
 ## More methods, help
 
 The functionallity offered by the list and tuple types is very rich, if you want to explore it in more detail remember the official documentation and the help function.

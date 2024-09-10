@@ -19,7 +19,6 @@ for allows us to execute a [block](block.qmd) of code for each item.
 The variable defined after the for keyword will take the value of each item, one at a time, one for each iteration.
 
 ```{pyodide}
-
 salutations = ["Hello", "hi", "Ciao"]
 
 for salutation in salutations:
@@ -28,8 +27,30 @@ for salutation in salutations:
     # out of strings.
     print(salutation)
 print("for loop done!")
-
 ```
+
+What would happen if we executed the following code? How would you fix it?
+
+```{pyodide}
+#| exercise: for_block
+salutations = ["Hello", "hi", "Ciao"]
+
+for salutation in salutations:
+    print(salutation)
+    print("for loop done!")
+```
+
+::: { .solution exercise="for_block" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+for salutation in salutations:
+    print(salutation)
+print("for loop done!")
+```
+
+:::
+:::
 
 Internally the for loop works by calling the [next](https://docs.python.org/3/library/functions.html#next) on an [iterator](https://docs.python.org/3/glossary.html#term-iterator) from the given [iterable](https://docs.python.org/3/glossary.html#term-iterable).
 An iterator is an object that supports the generation of one item at a time when given to the next function until it runs out of items.
@@ -55,12 +76,108 @@ print(salutation)
 This kind of for loop, the one implemented in the Python, in other languages is known as a [foreach](https://en.wikipedia.org/wiki/Foreach_loop) loop.
 To have the functionallity available in other programming languages, in which the for statement just iterates over some numbers, you could combine a for loop with the [range](https://docs.python.org/3/library/functions.html#func-range) function.
 
+Write a for loop that prints the first 10 natural numbers.
+
+```{pyodide}
+#| exercise: for_numbers
+
+# expected result
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
+# 6
+# 7
+# 8
+# 9
+# Done!
+```
+
+::: { .hint exercise="for_numbers"}
+::: { .callout-note collapse="false"}
+
+You can use a list or the [range](https://docs.python.org/3/library/functions.html#func-range) function.
+
+:::
+:::
+
+::: { .solution exercise="for_numbers"}
+::: { .callout-note collapse="false"}
+
+With a list.
+
+```{pyodide}
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+for i in numbers:
+    print(i)
+print("Done!")
+```
+
+With the range function.
+
 ```{pyodide}
 
 for i in range(10):
     print(i)
 print("Done!")
 ```
+
+:::
+:::
+
+Create a program that writes the following:
+
+```{pyodide}
+#| exercise: number_lists
+1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5
+```
+
+::: { .solution exercise="number_lists"}
+::: { .callout-note collapse="false"}
+
+There are many ways of solving this exercise, here you have some.
+
+
+```{pyodide}
+numbers = []
+for i in [1, 2, 3, 4, 5]:
+    numbers.append(str(i))
+    print(' '.join(numbers))
+```
+
+```{pyodide}
+for i in range(1, 6):
+    numbers = list(range(1, i + 1))
+    number_strs = []
+    for number in numbers:
+        number_strs.append(str(number))
+    print(' '.join(number_strs))
+```
+
+Using [map](https://docs.python.org/3/library/functions.html#map) and [range](https://docs.python.org/3/library/functions.html#func-range).
+
+```{pyodide}
+for i in range(1, 6):
+    numbers = map(str, range(1, i + 1))
+    print(' '.join(numbers))
+```
+
+Using a [list comprenhension](https://realpython.com/list-comprehension-python/).
+
+```{pyodide}
+for i in range(1, 6):
+    numbers = [str(number) for number in range(1, i + 1)]
+    print(' '.join(numbers))
+```
+
+:::
+:::
 
 Additionally, Python has a [while](https://docs.python.org/3/reference/compound_stmts.html#the-while-statement) statement, another way of doing loops.
 
@@ -150,6 +267,90 @@ print(i, word)
 ```
 
 ## for exercises
+
+Print the multiplication table for a given number.
+
+```{pyodide}
+#| exercise: multiplication_table
+
+number = 7
+```
+
+::: { .solution exercise="multiplication_table" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+number = 7
+for i in range(1, 11):
+    result = number * i
+    print(f"{number} * {i} = {result}")
+```
+
+:::
+:::
+
+
+Sum all numbers from 1 to a given number.
+
+```{pyodide}
+#| exercise: sum_numbers
+
+# For example, if the number is 5, then 1 + 2 + 3 + 4 + 5
+number = 5
+
+```
+
+::: { .solution exercise="sum_numbers" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+number = 5
+sum_so_far = 0
+for i in range(1, number + 1):
+    sum_so_far += i
+print(sum_so_far)
+```
+
+```{pyodide}
+number = 5
+print(sum(range(1, number + 1)))
+```
+
+:::
+:::
+
+Calculate the factorial for a number.
+
+```{pyodide}
+#| exercise: factorial
+# For example, if the number is 5, then 1 * 2 * 3 * 4 * 5
+number = 5
+
+```
+
+::: { .solution exercise="factorial" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+number = 5
+
+factorial_so_far = 1
+for i in range(1, number + 1):
+    factorial_so_far *= i
+print(factorial_so_far)
+```
+
+Using a functional approach with [reduce](https://realpython.com/python-reduce-function/).
+
+```{pyodide}
+from functools import reduce
+from operator import mul
+number = 5
+print(reduce(mul,range(1, number + 1)))
+```
+
+:::
+:::
 
 Create a program that given a list of words prints if they are short (less than 4 characters long), not so long (between 4 and 7 characters), and very long (more than 7 characters).
 
