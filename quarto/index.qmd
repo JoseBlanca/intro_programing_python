@@ -27,9 +27,11 @@ Python is:
 - very productive. The same ease of use that make Python a good learning language make it very productive for professional developers.
 - free software. It is developed by a community and released under an [open source](https://en.wikipedia.org/wiki/Open_source) licence.
 
-These characteristics make Python a very popular tool, in the [2024 stackoverflow survery](https://survey.stackoverflow.co/2024/technology), 51% of the developers had used Python in the last year.
-Only Javascript, with 62.3%, is a more popular programming language.
-Moreover, 67.7% of these developers want to learn an use python.
+These characteristics make Python a very popular tool.
+
+According to IEEE Spectrum Python is the top programming language of [2024](https://spectrum.ieee.org/top-programming-languages-2024).
+In the [2024 stackoverflow survery](https://survey.stackoverflow.co/2024/technology), 51% of the developers had used Python in the last year; only Javascript, with 62.3%, is a more popular programming language.
+Moreover, 67.7% of these developers want to learn an use Python.
 
 According to the [2023 Python Developer survey](https://lp.jetbrains.com/python-developers-survey-2023/) Python is used mostly for:
 
