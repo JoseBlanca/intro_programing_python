@@ -68,6 +68,7 @@ print("area = ", area)
 :::
 :::
 
+Create a program that calculates the area of a circle.
 
 ```{pyodide}
 #| exercise: circle_area

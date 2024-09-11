@@ -208,49 +208,6 @@ flowchart TB
     classDef memory fill:#ccc
 ```
 
-## Scopes
-
-To understand what do we mean when we say that we *pass* some data to a function we need to understand the concept of the [scope](https://en.wikipedia.org/wiki/Scope_(computer_science)).
-
-When we program we store and access data in memory.
-As we have seen we refer to the data stored in memory by using variables.
-We could think that those variables, once they are created, are available in every part of our program.
-Some programming languages used that approach, but when you try to build a program with more than a few lines of code it becomes very difficult to track which part of the program has changed a variable.
-So maintining those large programs is very difficult.
-
-Most programming languages use the concept of the scope.
-The scope defines where in the code a variable is available, and functions define their own scope.
-For instance, if we declare a variable inside a function it won't be available outside.
-
-```{pyodide}
-def say_hello():
-    name = "John"
-    print(1, name)
-
-say_hello()
-print(2, name)
-```
-
-We get a "'name' is not defined error" because the variable name was created inside the say_hello function, so in the say_hello scope, and is not available outside.
-A variable can only be used inside its scope.
-
-Be careful because Python has a global scope, and if you create the variable outside the function it will be available inside.
-
-```{pyodide}
-def say_hello():
-    print(1, name)
-
-name = "John"
-say_hello()
-print(2, name)
-```
-
-In this case the variable name has been created in the global scope, is a global variable available everywhere.
-In general avoid creating global variables, specially if they are just inmutable constants.
-If you think you need a global variable, think twice, in most cases is better not to use them.
-This is an advance topic, but here's a tip for the future you, to keep states it might be much better to use objects, instances of a class, that global variables. But this is a too advance topic for now.
-Just remember, try very hard not to use global varibles, although you can do some exceptions with some inmutable ones use just for global configurations.
-
 ## return
 
 We have learn how to pass arguments, data, to a function, let's see how we can return data to the caller.
@@ -273,7 +230,124 @@ return is use to move a result in memory between scopes.
 For instance, in the previous example there is a variable, inside the function, named area, but in the first call we store the reference in a variable named result. area and result are two variables, two references to the same value stored in memory, but they are variables that belong to different scopes.
 In this case area belongs to the scope of the calc_rect_area function and result to the global scope.
 
-Note also that each time that the function returns its scope is erased, so each call will be independent.
+Fix the following code
+
+```{pyodide}
+#| exercise: fix_triangle
+from math import sqrt
+def calc_triangle_area(side1, side2, side3):
+    semiperimeter = (side1 + side2 + side3) / 2.0
+    area2 = semiperimeter * (semiperimeter - side1) * (semiperimeter - side2) * (semiperimeter - side3)
+    area = sqrt(area2)
+
+print(calc_triangle_area(4, 5, 3))
+area = calc_triangle_area(2, 2, 3)
+print(area)
+```
+
+::: { .hint exercise="fix_triangle"}
+::: { .callout-note collapse="false"}
+
+Does the function return something?
+
+:::
+:::
+
+::: { .solution exercise="fix_triangle" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+from math import sqrt
+def calc_triangle_area(side1, side2, side3):
+    semiperimeter = (side1 + side2 + side3) / 2.0
+    area2 = semiperimeter * (semiperimeter - side1) * (semiperimeter - side2) * (semiperimeter - side3)
+    area = sqrt(area2)
+    return area
+
+print(calc_triangle_area(4, 5, 3))
+area = calc_triangle_area(2, 2, 3)
+print(area)
+```
+
+:::
+:::
+
+Write a program with two functions, one that transforms from Fahrenheit to Celsius, and another one from Celsius to Fahrenheit.
+
+```{pyodide}
+#| exercise: fahrenheit
+def fahrenheit_to_celsius(temp):
+    celsius = (temp - 32.0) * (5.0 / 9.0)
+
+def celsius_to_fahrenheit(temp):
+    fahrenheit = (temp * 9.0 / 5.0) + 32
+
+celsius = 30
+fahrenheit = 
+
+fahrenheit = 100
+celsius = 
+```
+
+::: { .solution exercise="fahrenheit"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+def fahrenheit_to_celsius(temp):
+    celsius = (temp - 32.0) * (5.0 / 9.0)
+    return celsius
+
+def celsius_to_fahrenheit(temp):
+    fahrenheit = (temp * 9.0 / 5.0) + 32
+    return fahrenheit
+
+celsius = 30
+fahrenheit = celsius_to_fahrenheit(celsius)
+print(f"{celsius} celsius in fahrenheit is: {fahrenheit}")
+
+fahrenheit = 100
+celsius = fahrenheit_to_celsius(fahrenheit)
+print(f"{fahrenheit} fahrenheit in celsius is: {celsius}")
+```
+
+:::
+:::
+
+Define a function that reverses a list, like the reversed [funtion](https://docs.python.org/3/library/functions.html#reversed).
+
+```{pyodide}
+#| exercise: reversed
+def my_reversed(a_list):
+    ...
+    return reversed_list
+
+reversed_list = my_reversed([1, 4, True, "Hi", None])
+print(reversed_list)
+```
+
+::: { .hint exercise="reversed"}
+::: { .callout-note collapse="false"}
+
+Remember that indexing has the posibility of reversing using -1 as the step (some_sequence[::-1]).
+
+:::
+:::
+
+::: { .solution exercise="reversed"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+def my_reversed(a_list):
+    return a_list[::-1]
+
+reversed_list = my_reversed([1, 4, True, "Hi", None])
+print(reversed_list)
+```
+:::
+:::
+
+
+Note also that each time that the function returns its scope, the variables created inside the function and available to it, is erased, so each call will be independent.
 Imagine that we want to store the number of times that a function has been called.
 Could you modify the following function to accomplish that?
 
@@ -389,6 +463,65 @@ print(a, b)
 :::
 :::
 
+Write a function that given a list of numbers it calculates and returns the maximum and the minimum.
+
+```{pyodide}
+#| exercise: min_max
+def calc_max_min(numbers):
+    ...
+
+some_numbers = [5, 6, 7, 3, 2]
+minimum, maximum = calc_max_min(numbers)
+print("Minimum:", minimum)
+print("Maximum:", maximum)
+``` 
+
+::: { .hint exercise="min_max" }
+::: { .callout-tip collapse="false"}
+
+You could iterate through the numbers using a for loop.
+In each iteration you could check **if** the number is lower than the current minimum or is larger than the current maximum.
+In the first iteration the current minimum and maximum could be None.
+
+:::
+:::
+
+::: { .solution exercise="min_max" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+def calc_max_min(numbers):
+    min_ = None
+    max_ = None
+    for number in numbers:
+        if min_ is None or number < min_:
+            min_ = number
+        if max_ is None or number > max_:
+            max_ = number
+    return min_, max_
+
+some_numbers = [5, 6, 7, 3, 2]
+minimum, maximum = calc_max_min(some_numbers)
+print("Minimum:", minimum)
+print("Maximum:", maximum)
+```
+
+Alternatively you could do it with the [min](https://docs.python.org/3/library/functions.html#min) and [max](https://docs.python.org/3/library/functions.html#max) functions.
+
+```{pyodide}
+def calc_max_min(numbers):
+    return min(numbers), max(numbers)
+
+some_numbers = [5, 6, 7, 3, 2]
+minimum, maximum = calc_max_min(some_numbers)
+print("Minimum:", minimum)
+print("Maximum:", maximum)
+```
+:::
+:::
+
+
+
 In fact Python functions can only return just one thing, an object, one object.
 Every Python function always returns just one object.
 
@@ -472,6 +605,60 @@ print("6 is", is_odd_or_even(6))
 ```
 :::
 :::
+
+## Scopes
+
+To understand what do we mean when we say that we *pass* some data to a function we need to understand the concept of the [scope](https://en.wikipedia.org/wiki/Scope_(computer_science)).
+
+When we program we store and access data in memory.
+As we have seen we refer to the data stored in memory by using variables.
+We could think that those variables, once they are created, are available in every part of our program.
+Some programming languages used that approach, but when you try to build a program with more than a few lines of code it becomes very difficult to track which part of the program has changed a variable.
+So maintining those large programs is very difficult.
+
+Most programming languages use the concept of the scope.
+The scope defines where in the code a variable is available, and functions define their own scope.
+For instance, if we declare a variable inside a function it won't be available outside.
+
+```{pyodide}
+def say_hello():
+    name = "John"
+    print(1, name)
+
+say_hello()
+print(2, name)
+```
+
+We get a "'name' is not defined error" because the variable name was created inside the say_hello function, so in the say_hello scope, and is not available outside.
+A variable can only be used inside its scope.
+It is said that the function has a local scope in which its variables are available.
+
+Be careful because Python also has a global scope, and if you create the variable outside the function it will be available inside.
+
+```{pyodide}
+def say_hello():
+    print(1, name)
+
+name = "John"
+say_hello()
+print(2, name)
+```
+
+In this case the variable name has been created in the global scope, is a global variable available everywhere.
+In general avoid creating global variables, specially if they are just inmutable constants.
+If you think you need a global variable, think twice, in most cases is better not to use them.
+This is an advance topic, but here's a tip for the future you, to keep states it might be much better to use objects, instances of a class, that global variables. But this is a too advance topic for now.
+Just remember, try very hard not to use global varibles, although you can do some exceptions with some inmutable ones use just for global configurations.
+It is common to use this kind of global variables, inmutables and related to configuration, and, by convention, people name them using all caps variable names.
+
+```{pyodide}
+I_AM_A_GLOBAL_VARIABLE = 'be_very_careful'
+
+def some_function():
+    print(I_AM_A_GLOBAL_VARIABLE)
+
+some_function()
+```
 
 ## Methods
 

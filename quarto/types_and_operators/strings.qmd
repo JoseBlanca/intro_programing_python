@@ -330,7 +330,7 @@ print(total)
 :::
 :::
 
-How many digit a number has.
+How many digits a number has.
 
 ```{pyodide}
 #| exercise: number_digits
@@ -471,6 +471,26 @@ exercise. Check if some text is a palyndrome
 :::
 :::
 
+Write a program that given a number prints its digits in reverse order and separated by spaces.
+
+```{pyodide}
+#| exercise: reverse_number
+number = 56783
+
+# The result should be "3 8 7 6 5"
+```
+
+::: { .solution exercise="reverse_number"}
+::: { .callout-note collapse="false"}
+
+```{pyodide}
+number = 56783
+
+print(' '.join(reversed(str(number))))
+```
+:::
+:::
+
 Another useful string [method](https://docs.python.org/3/glossary.html#term-method) is find.
 It allows us to look for ocurrences of a substring inside of a string. (Remember that we count from zero.)
 
@@ -532,6 +552,34 @@ The multiplication operation is also defined for str and int. It just repeats th
 ```{pyodide}
 print("Hi!" * 10)
 ```
+
+Write a program that given a number n returns the value of the operation: n + nn + nnn
+```{pyodide}
+#| exercise: sum_concatenated_nums
+n = 5
+# The result should be 5 + 55 + 555 -> 615
+```
+
+::: { .hint exercise="sum_concatenated_nums" }
+::: { .callout-tip collapse="false"}
+
+You can transform, type cast, numbers into strings and string into numbers with the functions: [int](https://docs.python.org/3/library/functions.html#int) and [str](https://docs.python.org/3/library/functions.html#func-str).
+
+:::
+:::
+
+::: { .solution exercise="sum_concatenated_nums" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+n = 5
+n = str(5)
+result = int(n) + int(n * 2) + int(n * 3)
+print(result)
+```
+
+:::
+:::
 
 We could check is a string is included in another string by using the *in* operator.
 
