@@ -231,7 +231,9 @@ print("After selling an item, the number of items will be", number_of_items)
 # a -= 3
 ```
 
-```python
+::: { .solution exercise="expect_unary" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
 a = 2
 a += 3
 a *= 5
@@ -239,3 +241,5 @@ a /= 5
 a -= 3
 print(a)
 ```
+:::
+:::
