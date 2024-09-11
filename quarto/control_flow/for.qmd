@@ -62,13 +62,13 @@ salutations = iter(["Hello", "hi", "Ciao"])
 
 # This for is equivalent of doing
 salutations = iter(salutations)
-salutation = next(salutation)
+salutation = next(salutations)
 print(salutation)
-salutation = next(salutation)
+salutation = next(salutations)
 print(salutation)
-salutation = next(salutation)
+salutation = next(salutations)
 print(salutation)
-salutation = next(salutation)
+salutation = next(salutations)
 print(salutation)
 
 ```
@@ -258,11 +258,11 @@ words = ["Highly", "illogical"]
 tuples = enumerate(words)
 tuple_ = next(tuples)
 print(tuple_)
-i, word = tuple
+i, word = tuple_
 print(i, word)
 tuple_ = next(tuples)
 print(tuple_)
-i, word = tuple
+i, word = tuple_
 print(i, word)
 ```
 
