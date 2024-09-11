@@ -172,15 +172,6 @@ print("Your favorite pokemon is", your_pokemon)
 :::
 :::
 
-
-It is very importan to understand the difference between variables and text:
-  - variable names are not enclosed by quotes.
-
-```{pyodide}
-a_variable = 42
-"a_text_string"
-```
-
 Write the name and year of release of a movie using two variables.
 
 ```{pyodide}
@@ -190,13 +181,42 @@ Write the name and year of release of a movie using two variables.
 
 ::: { .solution exercise="movie" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 movie = "The Matrix"
 year = 1999
 print(movie, "was released in", year)
 ```
+:::
+:::
 
+It is very importan to understand the difference between variables and text:
+
+- variable names are not enclosed by quotes.
+
+```{pyodide}
+a_variable = 42
+print("a_variable")
+print(a_variable)
+```
+
+Fix the following code:
+
+```{pyodide}
+#| exercise: fix_variables
+a = 4
+b = 7
+c = "a" + "b"
+print("c is seven:", c)
+```
+
+::: { .solution exercise="fix_variables" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+a = 4
+b = 7
+c = a + b
+print("c is seven:", c)
+```
 :::
 :::
 

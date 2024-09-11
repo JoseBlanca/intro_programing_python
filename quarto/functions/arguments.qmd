@@ -181,6 +181,40 @@ print(a)
 print(b)
 ```
 
+Give x a value in order the get the result to be 10.
+Should x be 4 or 6?
+
+```{pyodide}
+#| exercise: get_ten
+
+a = 6
+x = 
+c = a
+c = 5
+result = a + b
+print(result)
+print(result == 10)
+```
+
+::: { .solution exercise="get_ten" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+a = 6
+x = 4
+c = a
+c = 5
+result = a + x
+print(result)
+print(result == 10)
+```
+
+:::
+:::
+
+
+With lists the behaviour seems different.
+
 ```{pyodide}
 
 a = ["hello", "Dirk"]
