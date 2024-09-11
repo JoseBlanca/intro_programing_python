@@ -2,6 +2,8 @@
 title: Types
 format:
   live-html:
+    mermaid:
+      theme: neutral
     pyodide:
       cell-options:
         autorun: false
@@ -112,6 +114,17 @@ print(result_to_be_calculated)
 In Python we don't need to specify the type of a variable before using it, and we can even change the type of object that the variable refers to. That is not the case in other languages, like C or Rust. In those static languages the compiler needs to know the type of the variable beforehand, and the type of a variable can not be changed.
 
 ```{pyodide}
+#| setup: true
+#| exercise: type02
+
+# this is to avoid a bug in quarto-live, that,
+# for some reason does not print the result of type
+def type(obj):
+    return obj.__class__.__name__
+```
+
+```{pyodide}
+#| exercise: type02
 my_number = None
 print(type(my_number), my_number)
 my_number = 42
@@ -228,3 +241,15 @@ another_object = "4"
 print(f"The binary representation for {another_object} is: {ord(another_object):b}")
 ```
 
+```{mermaid}
+flowchart LR
+    subgraph memory
+        0b110100
+    end
+    int["as int: 52"]
+    0b110100 --> int
+    float["as float: 7.3e-44"]
+    0b110100 --> float
+    str["as str: '4'"]
+    0b110100 --> str
+```
