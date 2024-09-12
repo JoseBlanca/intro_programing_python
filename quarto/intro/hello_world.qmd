@@ -33,19 +33,13 @@ There are many ways of installing Python like:
   - Using a Python version manager like [uv](https://docs.astral.sh/uv/).
   - Having Python included in your web browser thanks to [Pyodide](https://pyodide.org/).
 
-In this exercise we are going to use [JupyterLite](https://jupyterlite.readthedocs.io/), a version of the [Jupyter](https://docs.jupyter.org/), a system that allows to write and run Python code directly in a web page, that does not require any previous installation because it already includes Python, thanks to Pyodide.
+In this exercise we are going to use [Pyodide](https://pyodide.org/), a Python version that allow us to run Python code directly in a web page without requiring any previous installation.
 
 The Notebook document is composed by cells, some are text (in markdown format), and others contain Python code that can be executed.
 To execute a Python cell:
 
   - Select the cell that you want to execute.
   - Click the play symbol on top of the page or press shift + enter.
-
-## Resources
-
-- Explanation of the Jupyter [Notebook interface](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#notebook-user-interface).
-- Real Python Jupyter [Notebook introduction](https://realpython.com/jupyter-notebook-introduction/).
-- Jupyter [Notebook tutorial](https://www.dataquest.io/blog/jupyter-notebook-tutorial/) by dataquest.
 
 ## Print Hello world
 
