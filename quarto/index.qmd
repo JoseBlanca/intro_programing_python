@@ -54,9 +54,8 @@ So, if you are interested in data analysis or web development, Python is not jus
 - Microsoft course: [Python for beginners](https://learn.microsoft.com/en-us/training/paths/beginner-python/).
 - [Google Python class](https://developers.google.com/edu/python). Also available in [Spanish](https://developers.google.com/edu/python), [German](https://developers.google.com/edu/python), [French](https://developers.google.com/edu/python), and [Indonesian](https://developers.google.com/edu/python).
 - The Python community maintains a [list of Python courses and tutorials](https://wiki.python.org/moin/BeginnersGuide/NonProgrammers).
-- [Introducción a la programación con con Python3](https://repositori.uji.es/xmlui/handle/10234/102653)
+- [Introducción a la programación con Python3](https://repositori.uji.es/xmlui/handle/10234/102653)
 - A course in Spanish of focused in [Data Analysis with Python](https://github.com/JoseBlanca/py_industriales)
-
 
 ## Other interactive Python courses for beginers
 
