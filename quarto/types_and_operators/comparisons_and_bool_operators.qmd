@@ -10,18 +10,24 @@ format:
 
 # Resources
 
-- Official documentation on [boolean operators](https://docs.python.org/3/library/stdtypes.html) for the built-in types.
+- Official documentation on [comparisons](https://docs.python.org/3/library/stdtypes.html#comparisons), and [boolean operators](https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not).
 - Real python tutorial on [boolean operators](https://realpython.com/python-and-operator/).
 
 ## Comparisons
 
 A critical part of any programming language is the comparison between items.
 For instance, is a number equal to the result of an operation? Is is bigger or maybe smaller?
-Some of the operators used are: equal (**==**), less than (**<**), greater than (**>**), not equal (**!=**), less or equal (**<=**), greater or equal (**>**).
+Some of the operators used are:
+
+- equal (**==**),
+- less than (**<**),
+- less or equal (**<=**),
+- greater than (**>**),
+- greater or equal (**>=**),
+- not equal (**!=**).
 
 ```{pyodide}
 #| exercise: simple_comparisons
-
 # Which would be the expected result of the following operations?
 print("1 == 1:", 1 == 1)
 # 1 == 2
@@ -33,8 +39,7 @@ print("1 == 1:", 1 == 1)
 
 ::: { .solution exercise="simple_comparisons" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 print("1 == 1:", 1 == 1)
 print("1 == 2:", 1 == 2)
 print("1 != 2:", 1 != 2)
@@ -42,17 +47,16 @@ print("1 < 2:", 1 < 2)
 print("1 > 2:", 1 > 2)
 print("1 <= 2:", 1 <= 2)
 ```
-
 :::
 :::
 
+## Assignment and equality
 
 It is very important to understand the difference between the assingment operator (**=**) and the comparison operator (**==**).
 The assigment operator is used to assign a value (an object) to a variable, whereas the comparison operator is used to find out if two objects are the same or not.
 
 ```{pyodide}
 #| exercise: fix_assign
-
 # Fix this code
 
 name1 = "John"
@@ -62,27 +66,25 @@ print(a = b)
 
 ::: { .hint exercise="fix_assign" }
 ::: { .callout-tip collapse="false"}
-
 Remember that the comparison operator is **==**, not **=**.
 :::
 :::
-
 ::: { .solution exercise="fix_assign" }
 ::: { .callout-tip collapse="false"}
-
 name1 = "John"
 name2 = "John"
 print(a == b)
-
 :::
 :::
 
-There is a catch with the floats. It is OK to check if they are greater or lower, but do not use the equality operator (**==**) to check if they are the same because the comparison might fail. Remember that floats are approximate.
-If you want to check if two floats are very similar you have to use the [isclose](https://docs.python.org/3/library/math.html#math.isclose) function. This function is not directly avilable, you have to import it from the math module, we will work with modules in the future.
+There is a catch with the floats.
+It is OK to check if they are greater or lower, but do not use the equality operator (**==**) to check if they are the same because the comparison might fail.
+Remember that floats are approximate.
+If you want to check if two floats are very similar you have to use the [isclose](https://docs.python.org/3/library/math.html#math.isclose) function.
+This function is not directly avilable, you have to import it from the [math](https://docs.python.org/3/library/math.html) module, we will work with [modules](https://docs.python.org/3/glossary.html#term-module) in the future.
 
 ```{pyodide}
 #| exercise: isclose
-
 from math import isclose
 
 print(isclose(1.0, 1.0000000000000001))
@@ -94,8 +96,7 @@ print(2.0 == 2)
 
 ::: { .solution exercise="isclose" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 from math import isclose
 
 print(isclose(1.0, 1.0000000000000001))
@@ -104,7 +105,6 @@ print(isclose(2.0, == 2))
 ```
 :::
 :::
-
 
 
 ```{pyodide}
@@ -123,16 +123,12 @@ print("0.1 + 0.1 = 0.2:", 0.1 + 0.1 == 0.2)
 
 ::: { .hint exercise="isclose" }
 ::: { .callout-tip collapse="false"}
-
 Use the comparison operator for the integers and the isclose function for the floats.
-
 :::
 :::
-
 ::: { .solution exercise="isclose" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 from math import isclose
 print("0.1 + 0.1 = 0.2:", isclose(0.1 + 0.1, 0.2))
 print("0.8 - 0.3 = 0.5:", isclose(0.1 + 0.1, 0.2))
@@ -146,6 +142,7 @@ print("0.2 + 0.1 = 0.3:", isclose(0.2 + 0.1, 0.3))
 :::
 :::
 
+## None is None
 
 None represents another special case. You might check if a variable is None using the equality operator, but is it recommended to use the **is** operator.
 
@@ -166,7 +163,8 @@ print("a is not None", a is not None)
 
 ## Operations with booleans
 
-The boolean type has special operators: *and*, *or*, *not*. These operators define a [boolean arithmetic](https://en.wikipedia.org/wiki/Boolean_algebra).
+The boolean type has special operators: [*and*, *or*, *not*](https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not).
+These operators define a [boolean arithmetic](https://en.wikipedia.org/wiki/Boolean_algebra).
 
 ```{pyodide}
 three_is_positive = True
@@ -182,7 +180,6 @@ print("negative or even: ", (not three_is_positive) or (not three_is_odd))
 
 ```{pyodide}
 #| exercise: exp_bools
-
 # Which would be the result of the following operations?
 print("True or False: ", True or False)
 # True and False
@@ -194,8 +191,7 @@ print("True or False: ", True or False)
 
 ::: { .solution exercise="exp_bools" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 print("True or False:", True or False)
 print("True and False:", True and False)
 print("True and not False:", True and not False)
@@ -203,7 +199,6 @@ print("4 <= 4 and True:", 4 <= 4 and True)
 print("3 > 2 and 4 > 8:", 3 > 2 and 4 > 8)
 print("3 > 2 or 4 > 8:", 3 > 2 or 4 > 8)
 ```
-
 :::
 :::
 
@@ -211,7 +206,6 @@ Explore the boolean arithmetic which are the results for all the combinations of
 
 ```{pyodide}
 #| exercise: bool_tables
-
 print("True and True: ", True and True)
 print("True and False: ", True and False)
 # and so on ...
@@ -219,16 +213,13 @@ print("True and False: ", True and False)
 
 ::: { .solution exercise="bool_tables" }
 ::: { .callout-tip collapse="false"}
-
 Try all True and False combinations with and and or.
-
 :::
 :::
 
 ::: { .solution exercise="bool_tables" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 print("True and True: ", True and True)
 print("True and False: ", True and False)
 print("False and True: ", False and True)
@@ -238,9 +229,6 @@ print("True or True: ", True or True)
 print("True or False: ", True or False)
 print("False or True: ", False or True)
 print("False or False: ", False or False)
-
 ```
-
 :::
 :::
-

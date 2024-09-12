@@ -8,8 +8,7 @@ format:
         completion: true
 ---
 
-
-In any programming language we can do operations on data and, in most, for the basic operation a operator syntax is defined.
+In any programming language we can do operations on data and, in most, for the basic operations an operator syntax is defined.
 
 ## Resources
 
@@ -19,7 +18,6 @@ In any programming language we can do operations on data and, in most, for the b
 ## Basic numeric operations
 
 For instance, in Python we can sum to numbers using the **+** operator.
-
 
 ```{pyodide}
 a = 41
@@ -57,14 +55,12 @@ print("area = ", area)
 
 ::: { .solution exercise="rect_area" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 width = 20
 height = 5
 area = width * area
 print("area = ", area)
 ```
-
 :::
 :::
 
@@ -84,15 +80,13 @@ print("area = ", area)
 
 ::: { .solution exercise="circle_area" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 import math
 pi = math.pi
 r = 10
 area = 2 * pi * (r**2)
 print("area = ", area)
 ```
-
 :::
 :::
 
@@ -124,7 +118,6 @@ print("remainder", remainder)
 
 ::: { .solution exercise="exp_int_div" }
 ::: { .callout-tip collapse="false"}
-
 ```python
 print("9 % 3 ", 9 % 3)
 print("14 % 2 ", 14 % 2)
@@ -133,49 +126,41 @@ print("9 // 3 ", 9 // 3)
 print("14 //2 ", 14 //2)
 print("14 % 3 ", 14 % 3)
 ```
-
 :::
 :::
-
 
 Find out if the numbers 10938 and 9893 are divisible by 3.
 
 ```{pyodide}
-
 #| exercise: div_3
 # Find out if the numbers 10938 and 9893 are divisible by 3.
 ```
 
 ::: { .hint exercise="div_3"}
 ::: { .callout-note collapse="false"}
-
 Use the mod operator **%**, and the type casting to bool.
-
 :::
 :::
-
 ::: { .solution exercise="div_3" }
 ::: { .callout-tip collapse="false"}
-
-```python
-
+```{pyodide}
 number = 10938
 remainder = number % 3
 print("Is ", number, "divisible by 3? The remainder is:", remainder, "So is it not divisible? ", bool(remainder))
 number = 9893
 remainder = number % 3
 print("Is ", number, "divisible by 3? The remainder is:", remainder, "So is it not divisible? ", bool(remainder))
-
 ```
-
 :::
 :::
-
 
 ## Common unary operators
 
-The operators that we have seen so far take two elements, for instance the add operator (**+**) takes two numbers and returns the sum of both. These operators are called binary because they take two elements.
-But there are also unary operators, that only act in one element. The one most commonly used is the **+=** operator.
+The operators that we have seen so far take two elements.
+For instance the add operator (**+**) takes two numbers and returns the sum of both.
+These operators are called binary because they take two items.
+But there are also unary operators; they only act over one element.
+The one most commonly used is the **+=** operator.
 
 ```{pyodide}
 # These two operations are equivalent
@@ -206,8 +191,7 @@ print("After selling an item, the number of items will be", number_of_items)
 
 ::: { .solution exercise="unary_op" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 my_age = 42
 my_age += 1
 print("After my birthday, my age will be", my_age)
@@ -216,7 +200,6 @@ number_of_items = 10
 number_of_items -= 1
 print("After selling an item, the number of items will be", number_of_items)
 ```
-
 :::
 :::
 

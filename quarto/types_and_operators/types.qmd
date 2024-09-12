@@ -21,7 +21,7 @@ format:
 
 ## Types
 
-In a computer language the variables have [types](https://en.wikipedia.org/wiki/Data_type). For instance, we have already used numbers and text strings.
+In a computer language variables have [types](https://en.wikipedia.org/wiki/Data_type). For instance, we have already used numbers and text strings.
 
 ```{pyodide}
 #| setup: true
@@ -50,11 +50,12 @@ print('Type of the variable "number" is:', type(number))
 print('Type of the string "42":', type("42"))
 ```
 
-The type for the string is str. In most computer languages the text is called string or something similar because for the computer a text is a [string of characters](https://en.wikipedia.org/wiki/String_(computer_science)).
+The type for the number 42 is int and for the text string "My favorite number is" is str.
+In most computer languages text is called string, or something similar, because, for the computer, a text is a [string of characters](https://en.wikipedia.org/wiki/String_(computer_science)).
 
 ## Number types: int and float
 
-In the previous example the type for the number was int ([integer](https://en.wikipedia.org/wiki/Integer_(computer_science))), but, in python, and most other languages, we have another very important numeric type: float ([floating point number](https://en.wikipedia.org/wiki/Floating-point_arithmetic)).
+In the previous example the type for the number was int ([integer](https://en.wikipedia.org/wiki/Integer_(computer_science))), but, in Python, and most other languages, we have another very important numeric type: float ([floating point number](https://en.wikipedia.org/wiki/Floating-point_arithmetic)).
 
 
 ```{pyodide}
@@ -64,14 +65,15 @@ integer = 42  # type is int
 floating_point = 42.0  # type is float
 ```
 
-The main practical difference between the integer and float types is that the arithmetic for integers will be exact, but for float will be only approximate. This is not a Python quirk, but a general feature of the computers.
+The main practical difference between the integer and float types is that the arithmetic for integers will be exact, but for float will be only approximate.
+This is not a Python quirk, but a general feature of the computers.
 
 ```{pyodide}
 number = 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1
 print(f'{number:.50f}')
 ```
 
-The main practical limitation, besides the inherent error due to the approximation, of the floating point arithmetic is that you have to be careful when you compare floats.
+Another practical limitation, besides the inherent error due to the approximation, of the floating point arithmetic is that you have to be careful when you compare floats.
 
 ```{pyodide}
 first_one = 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1
@@ -82,7 +84,7 @@ print("Are first and second one the same number?", first_one == second_one)
 import math
 print("Are first and second one close?", math.isclose(first_one, second_one))
 
-# with integer we don't have this problem
+# with integers we don't have this problem
 first_ten = 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
 second_ten = 10
 print("Are first and second ten the same number?", first_ten == second_ten)
@@ -99,9 +101,22 @@ i_am_not_here = False
 print(type(i_am_not_here), i_am_not_here)
 ```
 
-Another special type that you will find quite often in Python code is None. This type can only have one value: None. It is usally employed when you want to have a variable that still has no value, it signifies that it is empty.
+Another special type that you will find quite often in Python code is None.
+This type can only have one value: None.
+It is usally employed when you want to have a variable that still has no value, it signifies that it is empty.
 
 ```{pyodide}
+#| setup: true
+#| exercise: type03
+
+# this is to avoid a bug in quarto-live, that,
+# for some reason does not print the result of type
+def type(obj):
+    return obj.__class__.__name__
+```
+
+```{pyodide}
+#| excercise: type03
 result_to_be_calculated = None
 print(type(result_to_be_calculated), result_to_be_calculated)
 # Now we can calculate the result
@@ -111,11 +126,13 @@ print(result_to_be_calculated)
 
 ## Python is dynamic
 
-In Python we don't need to specify the type of a variable before using it, and we can even change the type of object that the variable refers to. That is not the case in other languages, like C or Rust. In those static languages the compiler needs to know the type of the variable beforehand, and the type of a variable can not be changed.
+In Python we don't need to specify the type of a variable before using it, and we can even change the type of object that the variable refers to.
+That is not the case in other languages, like C or Rust.
+In those static languages the compiler needs to know the type of the variable beforehand, and the type of a variable can not be changed.
 
 ```{pyodide}
 #| setup: true
-#| exercise: type02
+#| exercise: type04
 
 # this is to avoid a bug in quarto-live, that,
 # for some reason does not print the result of type
@@ -124,7 +141,7 @@ def type(obj):
 ```
 
 ```{pyodide}
-#| exercise: type02
+#| exercise: type04
 my_number = None
 print(type(my_number), my_number)
 my_number = 42
@@ -142,6 +159,10 @@ my_number: int = 42
 my_number: float = 42.0
 my_number: str = "42"
 ```
+
+Be careful because Python does not enforce those type hints.
+If you wanted to use them for anything else than documentation you would need a type checker like [mypy](https://mypy-lang.org/).
+But if you are starting in programming, just forget about this, the idea to remember is that the objects refered to by the variables have types.
 
 ## Type casting
 
@@ -171,23 +192,17 @@ Find out which int and str values will be True and False when converted to boole
 
 ```{pyodide}
 #| exercise: bool_type_casting
-
 print(bool(value_to_test))
 ```
 
 ::: { .hint exercise="bool_type_casting"}
 ::: { .callout-note collapse="false"}
-
 Try with different int and str values, like 0, 1, 2, 3, "Hello", " ", "".
-
 :::
 :::
-
 ::: { .solution exercise="bool_type_casting" }
 ::: { .callout-tip collapse="false"}
-
-```python
-
+```{pyodide}
 # Any int, but 0, will be True
 print("0", bool(0))
 print("1", bool(0))
@@ -198,10 +213,8 @@ print('""', bool(""))
 print('"Hello"', bool("Hello"))
 print('" "', bool(" "))
 ```
-
 :::
 :::
-
 
 Try to convert a boolean to integer.
 
@@ -213,19 +226,19 @@ Try to convert a boolean to integer.
 
 ::: { .solution exercise="bool_to_int" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 print("True", int(True))
 print("False", int(False))
 ```
-
 :::
 :::
 
 
 ## Why do we need types?
 
-For a programming language using types is unavoidable. Different languages have different types, but they all have types. Why? Because, internally, the only thing that a computer can really store in memory is a binary number, and the same binary number can be interpreted as different objects depending on its type.
+For a programming language using types is unavoidable. Different languages have different types, but they all have types.
+Why?
+Because, internally, the only thing that a computer can really stores in memory is a binary number, and the same binary number can be interpreted as different objects depending on its type.
 
 ```{pyodide}
 print("The same binary number can represented an integer or a string, depending on its type")

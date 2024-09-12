@@ -8,74 +8,67 @@ format:
         completion: true
 ---
 
-
-# Strings
-
 ## Resources
 
 - Official documentation for the [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) class.
 - Google [string tutorial](https://developers.google.com/edu/python/strings), available in different languages.
 - Real Python [string tutorial](https://realpython.com/python-strings/).
-- [String tutorial](https://github.com/JoseBlanca/py_industriales/blob/main/python/cadenas_de_texto.ipynb) in Spanish.
 - Official [string formatting](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) documentation.
 - Real Python [string formatting](https://realpython.com/python-string-formatting/) tutorial.
 
 ## String literals
 
-In most programming laguages the type used for text are called strings, because they are considered string of characters.
+In most programming laguages the type used for text is called strings;
+a text is a string of characters.
 In Python you can create an object of type [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) by using a string literal, like:
 
 ```{pyodide}
-
 some_text = "This is a text string literal"
-
 ```
 
 String literals can be defined with single and double quotes.
 
 ```{pyodide}
-
 greetings1 = "Hello"
 greetings2 = 'Hello'
 print(greetings1, "and", greetings2, "are exactly the same:", greetings1 == greetings2)
-
 ```
 
 It is also common to use triple quotes. The advantage of the triple quotes is that they can include string literals with several lines.
 
 ```{pyodide}
-
 hamlet = """To be, or not to be, that is the question:
 Whether 'tis nobler in the mind to suffer
 The slings and arrows of outrageous fortune"""
 
 print(hamlet)
 
-text_with_single_triple_quotes = '''This is an example
-of a text
-created with single triple quotes.
+text_with_single_triple_quotes = '''Chapter 1
+ 
+The story so far:
+ 
+In the beginning the Universe was created.
+ 
+This has made a lot of people very angry and been widely regarded as a bad move.
 '''
 print(text_with_single_triple_quotes)
-
 ```
 
 Fix the following code:
 
 ```{pyodide}
-
 "greetings" = "Hello Ada"
 print(greetings)
-
 ```
 
 ## String methods
 
-The string type has a rich functionality available. We can, for instance create upper- or lowercase versions of the strings.
+The string type has a rich functionality available, through its [methods](https://docs.python.org/3/library/stdtypes.html#string-methods).
+We can, for instance create upper- or lowercase versions of the strings.
 This funcionality is accessed via the string class [methods](https://en.wikipedia.org/wiki/Method_(computer_programming)).
 It is still too early to formally introduce the concept what is a method, so lets just show some examples.
 
 ```{pyodide}
-
 lowercase_text = "Some TEXT with lower and UPPER case letters.".lower()
 uppercase_text = lowercase_text.upper()
 print(lowercase_text)
@@ -83,18 +76,15 @@ print(uppercase_text)
 ```
 
 So methods are used by writing a dot (**.**), the name of the methods and two parentheses.
-You can ask for the whole documentation of the str methods by using the [help](https://docs.python.org/3/library/functions.html#help) function.
+You can ask for the whole documentation of any type, class or function using the [help](https://docs.python.org/3/library/functions.html#help) function.
 
 ```{pyodide}
-
 help(str)
-
 ```
 
 Let's see some examples of the most commonly used string methods.
 
 ```{pyodide}
-
 # remove extracharacters at the begining and at the end
 
 string_with_spaces = "   Some text    "
@@ -114,13 +104,11 @@ print("The number of as is: ", dna_sequence.count('a'))
 # We can replace an string with another string
 
 print("My name is Joe".replace("Joe", "Jane"))
-
 ```
 
 We can also split a string into a list of strings.
 
 ```{pyodide}
-
 text = "The Answer to the Ultimate Question of Life, the Universe, and Everything is 42"
 
 # split by spaces or tabs
@@ -132,40 +120,33 @@ print(words)
 # we could also split using any other character
 letters = "a,b,c,d,e,f".split(",")
 print(letters)
-
 ```
 
 If we have a list of strings we can join them.
 
 ```{pyodide}
-
 words = ["I", "am", "learning", "Python"]
 text = " ".join(words)
 print(text)
 print("".join(words))
 print("- -".join(words))
-
 ```
 
 We can also get every letter by using list.
 
 ```{pyodide}
-
 print(list("Some text"))
 print(list("ABCDEF"))
 ```
 
-To find out the lenght of a string we use the function [len](https://docs.python.org/3/library/functions.html#len).
+To find out the lenght of a string we use the [len](https://docs.python.org/3/library/functions.html#len) function.
 
 ```{pyodide}
-
 text = "Some text"
 print("The length of the text is: ", len(text))
-
 ```
 
 Calculate the GC content, percentage of Gs and Cs of a DNA sequence.
-
 
 ```{pyodide}
 #| exercise: gc_content
@@ -176,25 +157,19 @@ print("The GC content is ")
 
 ::: { .hint exercise="gc_content"}
 ::: { .callout-note collapse="false"}
-
 You can remove characters using replace("character", "").
-
 :::
 :::
-
 ::: { .solution exercise="gc_content"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 sequence = "CGT AGC TAT CGA TGC TAG TCG TAG TCT AGC TAG TCA"
 sequence = sequence.replace(" ", "")
 num_gcs = sequence.count("C") + sequence.count("G")
 print("The GC content is: ", num_gcs / len(sequence) * 100)
 ```
-
 :::
 :::
-
 
 We are writting some software that deal with file names, and we would like to change every .txt file into a .doc file. How could we change these file names?
 
@@ -207,13 +182,11 @@ print(file_name.)
 
 ::: { .solution exercise="replace_txt" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 file_name = 'my_text.txt'
 
 print(file_name.replace('.txt', '.doc'))
 ```
-
 :::
 :::
 
@@ -229,15 +202,11 @@ print(line_with_tabs)
 
 ::: { .hint exercise="comma_tab"}
 ::: { .callout-note collapse="false"}
-
-The tab character is represented by "\t".
-
+The tab character is represented by "\t" and end of line by "\n".
 :::
 :::
-
 ::: { .solution exercise="comma_tab"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 
 line = "name,surname,age\n"
@@ -248,7 +217,6 @@ print(line.replace(",", "\t"))
 
 print("\t".join(line.split(",")))
 ```
-
 :::
 :::
 
@@ -265,7 +233,6 @@ print(age)
 
 ::: { .hint exercise="read_line"}
 ::: { .callout-note collapse="false"}
-
 Remember that you can remove the feed line and return characters using the strip method and that you can split a sting with the split method.
 
 Once you have the three items you can do:
@@ -278,13 +245,10 @@ age = items[age]
 # or
 name, surname, age = items
 ```
-
 :::
 :::
-
 ::: { .solution exercise="read_line"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 line = 'John,Doe,20\n'
 items = line.strip().split(',')
@@ -293,7 +257,6 @@ print(name)
 print(surname)
 print(age)
 ```
-
 :::
 :::
 
@@ -319,14 +282,12 @@ print(total)
 
 ::: { .solution exercise="total"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 first = 20
 second = "40"
 total = first + int(second)
 print(total)
 ```
-
 :::
 :::
 
@@ -339,7 +300,6 @@ How many digits a number has.
 
 ::: { .solution exercise="number_digits"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 number = 17768
 print("The number ", number, " has ", len(str(number)), " digits")
@@ -362,24 +322,25 @@ print(wonderland[2])
 print(wonderland[3])
 print(wonderland[4])
 
-# In Python we can ask for the last character by using negative numbers
+# In Python we can also ask for the last character by using negative numbers
 
 print(wonderland[-1])
 print(wonderland[-2])
 print(wonderland[-3])
 print(wonderland[-4])
 print(wonderland[-4])
-
 ```
 
 ![Python positive and negative string indexes](../static/python_str_indexes.png "Python positive and negative string indexes")
 
 We will see that this is a general property of any [sequence type](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) in Python, all of them can be indexed in the same way.
 
-Indexes allow us to ask for not just one, but several items, in the string case several characters using the colon (**:**) to separate the first and the last position. Take into account that the first position will be included in the selection but the last one will be not.
+Indexes allow us to ask for not just one, but several items.
+In the string case we will get a string with several characters.
+To get them we use the colon (**:**) to separate the first and the last position.
+Take into account that the first position will be included in the selection but the last one will be not.
 
 ```{pyodide}
-
 wonderland = "Alice was beginning to get very tired"
 
 print(wonderland[0:5])
@@ -400,7 +361,6 @@ print(wonderland[:])
 # Of couse, we can also use, as indexes, negative number
 
 print(wonderland[-5:])
-
 ```
 
 Predict the result of running the following code:
@@ -413,7 +373,7 @@ print(a[:6])
 ```
 
 The combination of the start and end position is called slice. By using this kind of indexing we are slicing the string.
-Slices can also be build using the [slice]((https://docs.python.org/3/library/functions.html#slice)) built-in functions, but this is a more avanced topic.
+Slices can also be built using the [slice]((https://docs.python.org/3/library/functions.html#slice)) built-in functions, but this is a more avanced topic.
 
 Slices, besides start and stop, allow for a third number, the step, that indicates the increment between the index of the selected items. For instance, we could use the step to select every three characters.
 
@@ -429,7 +389,9 @@ sequence = 'Hello'
 print(sequence[::-1])
 ```
 
-Another way of reversing a string, or any Python [sequence](https://docs.python.org/3/glossary.html#term-sequence), is to use the [reversed](https://docs.python.org/3/library/functions.html#reversed). The result won't be exactly the same because reversed returns an [iterator](https://docs.python.org/3/glossary.html#term-iterator) that has to be converted into a string. The reversed function could seem more cumbersome, but iterators have many advantages in different context. But we won't discuss them here because this is a more advanced topic.
+Another way of reversing a string, or any Python [sequence](https://docs.python.org/3/glossary.html#term-sequence), is to use the [reversed](https://docs.python.org/3/library/functions.html#reversed) function.
+The result won't be exactly the same because reversed returns an [iterator](https://docs.python.org/3/glossary.html#term-iterator) that has to be converted into a string.
+The reversed function could seem more cumbersome, but iterators have many advantages in different contexts. But we won't discuss them here because this is a more advanced topic.
 
 ```{pyodide}
 string = 'Hello'
@@ -448,16 +410,11 @@ print("The string is a palindrome:", )
 
 ::: { .hint exercise="palindrome"}
 ::: { .callout-note collapse="false"}
-
 You could check if the reversed string is equal to the original string.
-
 :::
 :::
-
-
 ::: { .solution exercise="palindrome"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 string = 'racecar'
 
@@ -467,7 +424,6 @@ print("The string is a palindrome:", is_palindrome)
 
 exercise. Check if some text is a palyndrome
 ```
-
 :::
 :::
 
@@ -482,7 +438,6 @@ number = 56783
 
 ::: { .solution exercise="reverse_number"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 number = 56783
 
@@ -518,7 +473,6 @@ print(s1[position:])
 ```
 :::
 :::
-
 
 ## Operations with text strings
 
