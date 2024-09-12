@@ -8,11 +8,16 @@ format:
         completion: true
 ---
 
+## Resources
 
+- [Variables in Python](https://realpython.com/python-variables/) in Real Python.
+- [print](https://docs.python.org/3/library/functions.html#print) function official documentation.
+- A [print](https://realpython.com/python-print/) function tutorial in Real Python.
+- [Variable unpaking](https://realpython.com/lessons/tuple-assignment-packing-unpacking/) tutorial in Real Python.
 
 ## Flow
 
-The computer code is execute one line (or statement) at a time.
+The computer executes the programming code one line (or statement) at a time.
 The order in which the lines are executed is called flow.
 
 ```{pyodide}
@@ -20,7 +25,6 @@ print("This line will be executed first.")
 print("This line will be executed second.")
 print("This line will be executed last.")
 ```
-
 
 Order the lines in the following code, we want the computer to first say Hello, then Your Name, and, finally, an invitation to play.
 
@@ -31,36 +35,31 @@ print("Do you want to play a nice game of chess?")
 
 print("Hello")
 ```
-
 ::: { .hint exercise="fix_flow"}
 ::: { .callout-note collapse="false"}
-## Hint 
-
 Remember that the lines are executed in order, so change the order of the lines.
-
 :::
 :::
-
 ::: { .solution exercise="fix_flow" }
 ::: { .callout-tip collapse="false"}
-
 ```python
 print("Hello")
 print("John")
 print("Do you want to play a nice game of chess?")
 ```
-
 :::
 :::
-
 
 ## Variables
 
 When we run programs we store information in the memory of the computer for later use. This is a fundamental idea in computers.
 You can think about the memory of a computer as a file cabinet in which we can store values like numbers and strings of letters.
-Internally the memory is divided in small pieces, like the drawers of a filing cabinet, and the computer assings a numeric adress to each of those drawers. So, for instance, we could tell the computer to store the number 42 in the address 00000100, but it would be very cumbersome to use these numeric addresses, so, instead, the we use [variables](https://en.wikipedia.org/wiki/Variable_(computer_science)), names that we create, to refer to the memory locations and contents.
+Internally the memory is divided in small pieces, like the drawers of a filing cabinet, and the computer assings a numeric adress to each of those drawers.
+So, for instance, we could tell the computer to store the number 42 in the address 00000100, but it would be very cumbersome to use these numeric addresses, so, instead, the we use [variables](https://en.wikipedia.org/wiki/Variable_(computer_science)), names that we create, to refer to the memory locations and contents.
 
-In different programming languages and expressions a variable can refer to the value stored or to the memory address ([pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))). In Python a variable will always be a reference to the object stored. You can think of it as a label in the file cabinet drawer or an arrow that points to the content of the drawer.
+In different programming languages a variable can refer to the value stored or to the memory address ([pointer](https://en.wikipedia.org/wiki/Pointer_(computer_programming))).
+In Python a variable will always be a reference to the object stored.
+You can think of it as a label in the file cabinet drawer or an arrow that points to the drawer.
 
 ![Value stored in a variable](../static/memory_and_variables.png "Value stored in a variable")
 
@@ -93,13 +92,28 @@ print("Hello ", name, " ", surname)
 
 ::: { .solution exercise="variable_name" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 name = "Jane"
 surname = "Doe"
 print("Hello ", name, " ", surname)
 ```
+:::
+:::
 
+Write the name and year of release of any movie using two variables.
+
+```{pyodide}
+#| exercise: movie
+# write here the code to print the name and year of a movie
+```
+
+::: { .solution exercise="movie" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+movie = "The Matrix"
+year = 1999
+print(movie, "was released in", year)
+```
 :::
 :::
 
@@ -118,17 +132,14 @@ print("My name is ", name)
 
 ::: { .solution exercise="variable_change" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 name = "John"
 name = "Alice"
 
 print("My name is ", name)
 ```
-
 :::
 :::
-
 
 Given the following code, think about the expected output, what will the program print when you execute it?
 
@@ -140,6 +151,7 @@ name = "FALKEN"
 print(name)
 ```
 
+## Variables are not text strings
 
 Fix the following code to print the correct name of your Pokemons.
 
@@ -153,43 +165,21 @@ print("Your favorite pokemon is", "your_pokemon")
 
 ::: { .hint exercise="ex_3"}
 ::: { .callout-note collapse="false"}
-
 Remember that variable names are not enclosed by quotes and that if you put something inside a quote Python will consider it a text string.
-
 :::
 :::
-
 ::: { .solution exercise="variables_and_strings" }
 ::: { .callout-tip collapse="false"}
-
-```python
+```{pyodide}
 my_pokemon = "Pikachu"
 your_pokemon = "Ampharos"
 print("My favorite pokemon is", my_pokemon)
 print("Your favorite pokemon is", your_pokemon)
 ```
-
 :::
 :::
 
-Write the name and year of release of a movie using two variables.
-
-```{pyodide}
-#| exercise: movie
-# write here the code to print the name and year of a movie
-```
-
-::: { .solution exercise="movie" }
-::: { .callout-tip collapse="false"}
-```{pyodide}
-movie = "The Matrix"
-year = 1999
-print(movie, "was released in", year)
-```
-:::
-:::
-
-It is very importan to understand the difference between variables and text:
+It is very important to understand the difference between variables and text:
 
 - variable names are not enclosed by quotes.
 
@@ -220,6 +210,8 @@ print("c is seven:", c)
 :::
 :::
 
+## Assignment unpaking
+
 Python allows for several variables to be set at the same time.
 
 ```{pyodide}
@@ -231,9 +223,3 @@ temp1, temp2, temp3 = 36.5, 37.5, 39.5
 print("The temperature has risen: ", temp1, " ", temp2, " ", temp3)
 
 ```
-
-## Resources
-
-- [Variables in Python](https://realpython.com/python-variables/) in Real Python.
-- [print](https://docs.python.org/3/library/functions.html#print) function official documentation.
-- A [print](https://realpython.com/python-print/) function tutorial in Real Python.
