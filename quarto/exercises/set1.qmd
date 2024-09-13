@@ -44,7 +44,6 @@ Print the multiplication table for a given number.
 
 ```{pyodide}
 #| exercise: multiplication_table
-
 number = 7
 ```
 
@@ -65,10 +64,8 @@ Sum all numbers from 1 up to a given number.
 
 ```{pyodide}
 #| exercise: sum_numbers
-
 # For example, if the number is 5, then 1 + 2 + 3 + 4 + 5
 number = 5
-
 ```
 
 ::: { .solution exercise="sum_numbers" }
@@ -244,13 +241,11 @@ Write a program that outputs which people were a Beatle member and their index i
 
 ```{pyodide}
 #| exercise: beatles_for
-
 people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
 beatles= ['John', 'Paul', 'George', 'Ringo']
 
 for index, person in people:
     ...
-
 ```
 
 ::: { .hint exercise="beatles_for" }
@@ -355,11 +350,9 @@ In each file we have measures and we want to calculate the mean, max, min and su
 
 ```{pyodide}
 #| exercise: mean_value
-
 line = "13.5,34.5,23.6,45.7,23.0"
 
 print(mean)
-
 ```
 
 ::: { .hint exercise="mean_value" }
@@ -528,7 +521,6 @@ Create a program that collects the quotes from each author in different lists.
 
 ```{pyodide}
 #| exercise: phil_quotes
-
 text = '''Plato: Never discourage anyone who continually makes progress, no matter how slow.
 Plato: The beginning is the most important part of the work.
 Socrates: To find yourself, think for yourself.
@@ -541,7 +533,6 @@ aristotle_quotes = []
 
 for line in text.splitlines():
     ...
-
 ```
 
 ::: { .solution exercise="phil_quotes" }
@@ -585,7 +576,6 @@ To do it you have to go from the end to the start and transform A into T, T into
 
 ```{pyodide}
 #| exercise: revcomp
-
 complementary = {"A": "T",
                  "T": "A",
                  "C": "G",
