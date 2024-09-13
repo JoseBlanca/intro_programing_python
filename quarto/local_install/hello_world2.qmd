@@ -28,7 +28,7 @@ In different operating systems there are different terminal applications. In Lin
 During the course we recommend to use the editor [Visual Studio Code](https://code.visualstudio.com/) to write Python code and this editor includes its our terminal, so you won't need any other software.
 If you haven't installed Visual Studio Code yet, we recommend that you do it.
 
-## Hello world
+## Hello world with uv
 
 First, create a folder/directory in which you will create and store the Python programs.
 Then open Visual Studio Code and in the File menu select Open Folder and Open the Folder that you just created.
@@ -59,3 +59,12 @@ $ uv run hello.py
 (The dollar sign is part of the prompt, we are just including it to show that the command is meant to be written in the prompt, but the dolar sign itself should not be written. In this case you should only write "uv run hello.py")
 
 Click enter and, hopefully, you should have run your first Python program in the Terminal.
+
+In most courses and tutorials you would not have installed uv, but just Python.
+In this case you would run the following command instead.
+
+```{bash}
+
+$ python hello.py
+
+```
