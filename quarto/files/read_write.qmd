@@ -1,0 +1,166 @@
+---
+title: Read and write files
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Real Python [working](https://realpython.com/working-with-files-in-python/) and reading and [writing files](https://realpython.com/read-write-files-python/) tutorials.
+- [Reading and Writting files](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files) section in the official Python tutorial.
+- [Context managers](https://realpython.com/python-with-statement/) in Real Python.
+- Official documentation for the [with](https://docs.python.org/3/reference/compound_stmts.html#with) statement.
+- A Real Python tutorial about [flush](https://realpython.com/python-flush-print-output/).
+- If you ever need to work with temporary files, the [tempfile](https://docs.python.org/3/library/tempfile.html) module is very useful.
+
+## open
+
+In many ocassions we will need that our programs read information stored in files, thus a very common action will be to open a file.
+In Python we could open a file with the [open](https://docs.python.org/3/library/functions.html#open) function.
+
+Let's imagine that we have a text file stored in the same directory/folder as our Python code.
+For instance, we could had downloaded [Alice in wonderland](https://www.gutenberg.org/ebooks/11.txt.utf-8) from [Project Gutenberg](https://www.gutenberg.org/).
+This file is named 11.txt.utf-8, and we could open it using the following code.
+
+```{python}
+#| eval: false
+file_name = "11.txt.utf-8"
+file = open(file_name, 'rt')
+```
+
+The [open](https://docs.python.org/3/library/functions.html#open) function can take several parameters, but the most important ones are the [file path](https://docs.python.org/3/glossary.html#term-path-like-object) and the mode.
+
+The mode indicates if we are trying to open an existing file for **r**eading (r mode) or creating new file for **w**riting.
+Moreover, it indicates if we are dealing with a [**t**ext](https://en.wikipedia.org/wiki/Text_file) or binary [**f**iles](https://en.wikipedia.org/wiki/Binary_file).
+In this example the mode was "rt", so we are trying to open a **t**ext file for **r**eading and what the open function returns to us is a [Text IO](https://docs.python.org/3/library/io.html#text-i-o) [file object](https://docs.python.org/3/glossary.html#term-file-object) that will allow us to read the file.
+
+### Read text
+
+Now that we know how to open a file, let's try to read it.
+The most common way to read a text file is to use a for loop.
+
+```{python}
+#| eval: false
+file_name = "11.txt.utf-8"
+file = open(file_name, 'rt')
+
+for line in file:
+    print(line)
+```
+
+Try to print only the first 10 lines.
+
+```{pyodide}
+#| exercise: read_ten
+file_name = "11.txt.utf-8"
+file = open(file_name, 'rt')
+
+for line in file:
+    print(line)
+```
+
+::: { .solution exercise="read_ten" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+file_name = "11.txt.utf-8"
+file = open(file_name, 'rt')
+
+n_line = 0
+for line in file:
+    if n_line >= 10:
+        break
+    print(line.strip())
+    n_line += 1
+```
+
+It would be easier to use [enumerate](https://docs.python.org/3/library/functions.html#enumerate).
+
+```{pyodide}
+file_name = "11.txt.utf-8"
+file = open(file_name, 'rt')
+
+for n_line, line in enumerate(file):
+    if n_line >= 10:
+        break
+    print(line.strip())
+```
+:::
+:::
+
+## Write
+
+We could also create a new file to write in it by using the mode "wt" (**w**rite, **t**ext).
+Once we have the file object we can write in it using the [write](https://docs.python.org/3/library/io.html#io.TextIOBase.write) method.
+
+```{python}
+#| eval: false
+file_name = "my_output_file.txt"
+file = open(file_name, 'wt')
+file.write("Hello world")
+```
+
+Create a file, and write in it two lines, like "Hi" and "Bye", in it.
+
+```{pyodide}
+#| exercise: write_two
+# write two lines
+```
+
+::: { .solution exercise="variable_name" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+file = open("my_file.txt", 'wt')
+file.write("Hi!\n")
+file.write("Bye\n")
+```
+:::
+:::
+
+## close and with
+
+So far we have not closed our file object after we are done with them, but we really should.
+So, the proper way to read a file would be:
+
+```{python}
+#| eval: false
+file_name = "some_file.txt"
+file = open(file_name, 'rt')
+
+for line in file:
+    print(line)
+
+file.close()
+```
+
+File objects are limited by the operating system, so that's one reason for closing them.
+If we don't do it Python will try to do it for us after the variable that holds the file object goes out of scope, but it's better if we do it by ourselves.
+
+Even better, we could use the [with](https://docs.python.org/3/reference/compound_stmts.html#with) statement.
+with will take care of closing the file after finishing the with block, even in the event of an exception ocurring within the block.
+
+```{python}
+#| eval: false
+file_name = "some_file.txt"
+
+with open(file_name, 'rt') as file:
+    for line in file:
+        print(line)
+
+```
+
+## Buffers and flush 
+
+Closing the file is even more important when writing files.
+We could think that every time that we use the write method Python writes the given contents in disk, but this is not so.
+In fact what the write method does is to write the given content in a memory buffer.
+It writes in memory because memory is much faster than disk.
+It would be very slow to write down in disk every time.
+When does Python decides to really write down in disk? Well, from time to time, but usually we do not take care of that.
+What we know for sure is that Python writes down everything that is to write when whe close the file calling the [close](https://docs.python.org/3/library/io.html#io.IOBase.close) method.
+So, close the file.
+
+If you need to make sure that Python writes down to disk everything you have written so far you could also use the [flush](https://docs.python.org/3/library/io.html#io.IOBase.flush) method, but don't do it every time that you write, because that would be very slow.

@@ -1,0 +1,28 @@
+---
+title: Path
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- [File and directory](https://docs.python.org/3/library/filesys.html) access section in the official documentation.
+- [pathlib](https://docs.python.org/3/library/pathlib.html) module documentation.
+
+hieralchical file systems
+file
+directory/folder
+
+paths, subdirs and the / operator
+
+exists
+name
+suffix
+
+path.open
+
+dir list

@@ -1,0 +1,86 @@
+---
+title: Exercises 2
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Find the most common words
+
+Download a text file, like [Alice in wonderland](https://www.gutenberg.org/ebooks/11.txt.utf-8) from [Project Gutenberg](https://www.gutenberg.org/), count the number of time each word appears and print the 50 most common words.
+
+Take into account that the Alice in wonderland text really only starts after the line "CHAPTER I." and ends with the line "THE END".
+
+```{pyodide}
+#| exercise: count_words
+
+```
+
+::: { .solution exercise="count_words" }
+::: { .callout-tip collapse="false"}
+
+A solution using a dictionary to keep the counts.
+
+```{pyodide}
+file_name = "11.txt.utf-8"
+file = open(file_name, 'rt')
+
+in_alice = False
+counts = {}
+for line in file:
+    line = line.strip()
+    if line == "CHAPTER I.":
+        in_alice = True
+    elif line == "THE END":
+        in_alice = False
+    if not in_alice:
+        continue
+    
+    line = line.lower()
+    for character in [":", ",", ".", "-", "(", ")", "—", "_", "-", "“", "”", "!", "?"]:
+        line = line.replace(character, " ")
+    for word in line.split():
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+
+words_and_counts = list(reversed(sorted(counts.items(), key=lambda word_count: word_count[1])))[:50]
+for word, count in words_and_counts:
+    print(word, count)
+```
+
+A solution using the [Counter](https://docs.python.org/3/library/collections.html#collections.Counter) class from the [collections](https://docs.python.org/3/library/collections.html) module.
+
+```{pyodide}
+from collections import Counter
+
+file_name = "11.txt.utf-8"
+file = open(file_name, 'rt')
+
+in_alice = False
+counts = Counter()
+for line in file:
+    line = line.strip()
+    if line == "CHAPTER I.":
+        in_alice = True
+    elif line == "THE END":
+        in_alice = False
+    if not in_alice:
+        continue
+    
+    line = line.lower()
+    for character in [":", ",", ".", "-", "(", ")", "—", "_", "-", "“", "”", "!", "?"]:
+        line = line.replace(character, " ")
+    words = line.split()
+    counts.update(words)
+
+for word, count in counts.most_common(50):
+    print(word, count)
+```
+:::
+:::
+

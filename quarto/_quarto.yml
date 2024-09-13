@@ -53,10 +53,16 @@ website:
             href: functions/arguments.qmd
       - section: "Install and run Python"
         contents:
-            - text: "Install"
-              href: local_install/run_python.qmd
-            - text: "Local hello world"
-              href: local_install/hello_world2.qmd
+          - text: "Install"
+            href: local_install/run_python.qmd
+          - text: "Local hello world"
+            href: local_install/hello_world2.qmd
+      - section: "Files"
+        contents:
+          - text: "Read & write"
+            href: files/read_write.qmd
+          - text: "Paths"
+            href: files/paths.qmd
     tools:
       - icon: github
         menu:
@@ -67,6 +73,3 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-
