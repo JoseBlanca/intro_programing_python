@@ -1,0 +1,614 @@
+---
+title: Exercises
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Odd and even
+
+For the numbers from 1 to 20 write which ones are odd and even.
+
+```{pyodide}
+#| exercise: odd_even
+
+for number in range(1, ):
+    ...
+```
+
+::: { .hint exercise="odd_even" }
+::: { .callout-tip collapse="false"}
+[range](https://docs.python.org/3/library/functions.html#func-range) needs a start and stop.
+
+You can use the module operator (**%**) to check **if** a number is even.
+:::
+:::
+::: { .solution exercise="odd_even" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+for number in range(1, 21):
+    if number % 2:
+        print("Number is odd:", number)
+    else:
+        print("Number is even:", number)
+```
+:::
+:::
+
+## Multiplication table
+
+Print the multiplication table for a given number.
+
+```{pyodide}
+#| exercise: multiplication_table
+
+number = 7
+```
+
+::: { .solution exercise="multiplication_table" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+number = 7
+for i in range(1, 11):
+    result = number * i
+    print(f"{number} * {i} = {result}")
+```
+:::
+:::
+
+## Accumulate sums
+
+Sum all numbers from 1 up to a given number.
+
+```{pyodide}
+#| exercise: sum_numbers
+
+# For example, if the number is 5, then 1 + 2 + 3 + 4 + 5
+number = 5
+
+```
+
+::: { .solution exercise="sum_numbers" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+number = 5
+sum_so_far = 0
+for i in range(1, number + 1):
+    sum_so_far += i
+print(sum_so_far)
+```
+
+```{pyodide}
+number = 5
+print(sum(range(1, number + 1)))
+```
+:::
+:::
+
+## Sum digits
+
+Write a program that sums all the digits of a number.
+
+```{pyodide}
+#| exercise: sum_digits
+n = 123
+# The result should be 1 + 2 + 3 -> 6
+```
+
+::: { .hint exercise="sum_digits" }
+::: { .callout-tip collapse="false"}
+You can transform, type cast, strings into numbers and number into strings using [int](https://docs.python.org/3/library/functions.html#int) and [str](https://docs.python.org/3/library/functions.html#func-str).
+
+Remember also that strings are [iterable](https://docs.python.org/3/glossary.html#term-iterable), so if you give a string to a for it will iterate through every character.
+:::
+:::
+::: { .solution exercise="sum_digits" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+n = 123
+
+sum_so_far = 0
+for digit in str(n):
+    sum_so_far += int(digit)
+print("Sum:", sum_so_far)
+```
+
+You could also create a list with the numbers, and the use [sum](https://docs.python.org/3/library/functions.html#sum).
+
+```{pyodide}
+n = 123
+
+digits = []
+for digit in str(n):
+    digits.append(int(digit))
+print("Sum:", sum(digits))
+```
+
+The same result could be calculated without using a for loop using functional programming.
+
+```{pyodide}
+n = 123
+result = sum(map(int, str(n)))
+print("Sum:", result)
+```
+:::
+:::
+
+## Factorial
+
+Calculate the factorial for a number.
+
+```{pyodide}
+#| exercise: factorial
+# For example, if the number is 5, then 1 * 2 * 3 * 4 * 5
+number = 5
+
+```
+
+::: { .solution exercise="factorial" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+number = 5
+
+factorial_so_far = 1
+for i in range(1, number + 1):
+    factorial_so_far *= i
+print(factorial_so_far)
+```
+
+Using a functional approach with [reduce](https://realpython.com/python-reduce-function/).
+
+```{pyodide}
+from functools import reduce
+from operator import mul
+number = 5
+print(reduce(mul,range(1, number + 1)))
+```
+:::
+:::
+
+## Long and short words
+
+Create a program that given a list of words prints if they are short (less than 4 characters long), not so long (between 4 and 7 characters), and very long (more than 7 characters).
+
+```{pyodide}
+#| exercise: long_words
+foods = ['bacon', 'tuna', 'ham', 'sausages', 'beef']
+for food in foods:
+    ...
+# The expected result is
+# bacon is a not so long word
+# tuna is a not so long word
+# ham is a short word
+# sausages is a long word
+# beef is a not so long word
+```
+
+::: { .hint exercise="long_words" }
+::: { .callout-tip collapse="false"}
+Remember that you can use the [len](https://docs.python.org/3/library/functions.html#len) function to get the number of characters of a string and you could create an if, elif, else.
+:::
+:::
+::: { .solution exercise="long_words" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+foods = ['bacon', 'tuna', 'ham', 'sausages', 'beef']
+for food in foods:
+    len_food = len(food)
+    if len_food < 4:
+        print(f"{food} is a short word")
+    elif len_food <=7:
+        print(f"{food} is a not so long word")
+    else:
+        print(f"{food} is a long word")
+```
+:::
+:::
+
+## Filter numbers
+
+Create a program that given a list of numbers it filters out the ones bigger than 10.
+
+```{pyodide}
+#| exercise: small_numbers
+numbers = [1, 5, 10, 11, 4, 16, 4]
+
+print(small_numbers)
+```
+::: { .hint exercise="small_numbers" }
+::: { .callout-tip collapse="false"}
+Remember that you can create an empty list and append items to it one by one.
+:::
+:::
+::: { .solution exercise="small_numbers" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+numbers = [1, 5, 10, 11, 4, 16, 4]
+
+small_numbers = []
+for number in numbers:
+    if number < 10:
+        small_numbers.append(number)
+print(small_numbers)
+```
+:::
+:::
+
+## Find Beatles
+
+Write a program that outputs which people were a Beatle member and their index in the list.
+
+```{pyodide}
+#| exercise: beatles_for
+
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= ['John', 'Paul', 'George', 'Ringo']
+
+for index, person in people:
+    ...
+
+```
+
+::: { .hint exercise="beatles_for" }
+::: { .callout-tip collapse="false"}
+Remember that you can use enumerate to get the index in any for, and that the in operator allows you to check if an item is in a list.
+:::
+:::
+::: { .solution exercise="beatles_for" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= ['John', 'Paul', 'George', 'Ringo']
+
+for index, person in enumerate(people):
+    if person in beatles:
+        print(f'{person}, number {index} in the list is a Beatle')
+```
+
+If the list were large it would be much efficient to use a dictionary or a [set](https://docs.python.org/3/tutorial/datastructures.html#sets) than a list.
+The solution using a set would be:
+
+```{pyodide}
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= set(['John', 'Paul', 'George', 'Ringo'])
+
+for index, person in enumerate(people):
+    if person in beatles:
+        print(f'{person}, number {index} in the list is a Beatle')
+```
+
+Using [filter](https://docs.python.org/3/library/functions.html#filter) and a lambda we could even skip many iterations of the for.
+
+```{pyodide}
+people = ['Brian', 'George', 'John', 'Little', 'Paul', 'Pete', 'Ringo', 'Stuart']  
+beatles= set(['John', 'Paul', 'George', 'Ringo'])
+
+for index, person in filter(lambda idx_person: idx_person[1] in beatles, enumerate(people)):
+    print(f'{person}, number {index} in the list is a Beatle')
+```
+:::
+:::
+
+## Remove vowels
+
+Write a program that removes all vowels (aeiou) from a given text.
+
+```{pyodide}
+#| exercise: remove_vowels
+vowels = list("aeiou")
+text = "Far out in the uncharted backwaters of the unfashionable end of the Western Spiral arm of the Galaxy lies a small unregarded yellow sun."
+
+```
+::: { .hint exercise="remove_vowels"}
+::: { .callout-note collapse="false"}
+
+You can use the in operator to check if a substring is found inside another string.
+
+A possibility is to create a for loop that iterates through every letter in the text and that stores the letter in a list only if it is not a vowel.
+:::
+:::
+::: { .solution exercise="remove_vowels"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+vowels = list("aeiou")
+text = "Far out in the uncharted backwaters of the unfashionable end of the Western Spiral arm of the Galaxy lies a small unregarded yellow sun."
+
+filtered_letters = []
+for letter in text:
+    if letter in vowels:
+        continue
+    filtered_letters.append(letter)
+print("".join(filtered_letters))
+```
+
+The same could be done without a for loop, using the [filter](https://docs.python.org/3/library/functions.html#filter) function.
+
+
+```{pyodide}
+vowels = list("aeiou")
+text = "Far out in the uncharted backwaters of the unfashionable end of the Western Spiral arm of the Galaxy lies a small unregarded yellow sun."
+
+filtered_letters = filter(lambda letter: letter not in vowels, text)
+print("".join(filtered_letters))
+```
+
+Or with a [list comprenhension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions).
+
+```{pyodide}
+vowels = list("aeiou")
+text = "Far out in the uncharted backwaters of the unfashionable end of the Western Spiral arm of the Galaxy lies a small unregarded yellow sun."
+
+filtered_letters = [letter for letter in text if letter not in vowels]
+print("".join(filtered_letters))
+```
+:::
+:::
+
+## Read numbers in CSV
+
+We are reading a comma-separated values ([CSV](https://en.wikipedia.org/wiki/Comma-separated_values)) text file.
+In each file we have measures and we want to calculate the mean, max, min and sum.
+
+```{pyodide}
+#| exercise: mean_value
+
+line = "13.5,34.5,23.6,45.7,23.0"
+
+print(mean)
+
+```
+
+::: { .hint exercise="mean_value" }
+::: { .callout-tip collapse="false"}
+Remember that the str split method can split a text string into a list and the float funtion can transform a text into a number.
+:::
+:::
+::: { .solution exercise="mean_value" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+line = "13.5,34.5,23.6,45.7,23.0"
+num_numbers = 0
+total = 0
+numbers = []
+for text_number in line.split(","):
+    number = float(text_number)
+    total += number
+    num_numbers += 1
+    numbers.append(number)
+mean = total / num_numbers
+print("mean:",mean)
+print("sum:", sum(numbers))
+print("max:", max(numbers))
+print("min:", min(numbers))
+```
+
+Alternativerly you could use the [map](https://docs.python.org/3/library/functions.html#map) and [sum](https://docs.python.org/3/library/functions.html#sum) functions.
+
+```{pyodide}
+line = "13.5,34.5,23.6,45.7,23.0"
+numbers = list(map(float, line.split(",")))
+mean = sum(numbers) / len(numbers)
+print("mean:", mean)
+print("sum:", sum(numbers))
+print("max:", max(numbers))
+print("min:", min(numbers))
+```
+
+Or the [mean](https://docs.python.org/3/library/statistics.html#statistics.mean) function and a [list comprenhension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions).
+
+```{pyodide}
+from statistics import mean
+line = "13.5,34.5,23.6,45.7,23.0"
+numbers = [float(text_number) for text_number in line.split(",")]
+print("mean:", mean(numbers))
+print("sum:", sum(numbers))
+print("max:", max(numbers))
+print("min:", min(numbers))
+```
+:::
+:::
+
+## Store multiples
+
+Write a program that stores all the multiples of 7 from 1 to n.
+
+```{pyodide}
+#| exercise: multiple7
+n = 25
+
+multiples = []
+
+print(multiples)
+```
+
+::: { .hint exercise="multiple7" }
+::: { .callout-tip collapse="false"}
+Remember that you can use the [range](https://docs.python.org/3/library/functions.html#func-range) function to get the numbers and the [modulo](https://realpython.com/python-modulo-operator/) operator to get the remainder of an integer division.
+:::
+:::
+
+::: { .solution exercise="multiple7" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+n = 25
+
+multiples = []
+for number in range(1, n):
+  if not number % 7:
+    multiples.append(number)
+print(multiples)
+```
+
+Alternatively, it could be solved using [filter](https://docs.python.org/3/library/functions.html#filter) and a lambda function.
+
+```{pyodide}
+n = 25
+
+multiples = list(filter(lambda number: not number %7, range(1, n)))
+print(multiples)
+```
+
+Or a [list comprenhension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) (this is a very common style that you will find in Python code).
+
+```{pyodide}
+n = 25
+multiples = [number for number in range(1, 25) if not number % 7]
+print(multiples)
+```
+:::
+:::
+
+## Count words
+
+Create a program that given some text it counts how many times a word appears.
+
+```{pyodide}
+#| exercise: count_words
+text = """Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.
+Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea."""
+
+counts = {}
+for line in text.splitlines():
+    for word in line.strip(".").strip().split():
+      ...
+
+```
+
+::: { .solution exercise="count_words" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+text = """Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.
+Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea."""
+
+counts = {}
+for line in text.splitlines():
+    for word in line.strip(".").strip().split():
+      if word in counts:
+            counts[word] += 1
+      else:
+            counts[word] = 1
+print(counts)
+```
+
+Alternatively you could use the [Counter](https://docs.python.org/3/library/collections.html#collections.Counter) class of the [collections](https://docs.python.org/3/library/collections.html) module.
+
+```{pyodide}
+from collections import Counter
+text = """Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.
+Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea."""
+
+counts = Counter()
+for line in text.splitlines():
+    for word in line.strip(".").strip().split():
+        counts[word] += 1
+print(counts)
+```
+
+Or you could do it with a nested list comprenhension.
+
+```{pyodide}
+from collections import Counter
+text = """Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.
+Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea."""
+
+counts = Counter(word for line in text.splitlines()
+                 for word in line.strip(".").strip().split())
+print(counts)
+```
+:::
+:::
+
+## Collect quotes
+
+Create a program that collects the quotes from each author in different lists.
+
+```{pyodide}
+#| exercise: phil_quotes
+
+text = '''Plato: Never discourage anyone who continually makes progress, no matter how slow.
+Plato: The beginning is the most important part of the work.
+Socrates: To find yourself, think for yourself.
+Aristotle: It is the mark of an educated mind to be able to entertain a thought without accepting it.
+Aristotle: The more you know, the more you realize you don't know.'''
+
+socrates_quotes = []
+plato_quotes = []
+aristotle_quotes = []
+
+for line in text.splitlines():
+    ...
+
+```
+
+::: { .solution exercise="phil_quotes" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+text = '''Plato: Never discourage anyone who continually makes progress, no matter how slow.
+Plato: The beginning is the most important part of the work.
+Socrates: To find yourself, think for yourself.
+Aristotle: It is the mark of an educated mind to be able to entertain a thought without accepting it.
+Aristotle: The more you know, the more you realize you don't know.'''
+
+socrates_quotes = []
+plato_quotes = []
+aristotle_quotes = []
+
+for line in text.splitlines():
+  author, quote = line.split(':')
+  author = author.lower()
+  quote = quote.strip()
+  if author == "socrates":
+    socrates_quotes.append(quote)
+  elif author == "plato":
+    plato_quotes.append(quote)
+  elif author == "aristotle":
+    aristotle_quotes.append(quote)
+
+print("Socrates")
+print(socrates_quotes)
+print("Plato")
+print(plato_quotes)
+print("Aristotle")
+print(aristotle_quotes)
+```
+:::
+:::
+
+## Reverse and complement DNA
+
+Write a program capable of creating a reversed and complementary sequence of DNA.
+To do it you have to go from the end to the start and transform A into T, T into A, C into G and G into C.
+
+```{pyodide}
+#| exercise: revcomp
+
+complementary = {"A": "T",
+                 "T": "A",
+                 "C": "G",
+                 "G": "C"}
+dna = "CAGTCTAGCTAGTC"
+
+# The expected result is: "GACTAGCTAGACTG"
+```
+
+::: { .solution exercise="revcomp" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+complementary = {"A": "T",
+                 "T": "A",
+                 "C": "G",
+                 "G": "C"}
+dna = "CAGTCTAGCTAGTC"
+
+revcomp_dna = ""
+for nucleotide in reversed(dna):
+    comp = complementary[nucleotide]
+    revcomp_dna += comp
+print(revcomp_dna)
+```
+:::
+:::

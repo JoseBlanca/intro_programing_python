@@ -2,6 +2,9 @@ project:
   type: website
 
 website:
+  page-navigation: true
+  repo-url: https://github.com/JoseBlanca/intro_programing_python
+  repo-actions: [source, issue]
   title: "Introduction to programming with Python"
   sidebar:
     style: "docked"
@@ -38,6 +41,10 @@ website:
             href: control_flow/if.qmd
           - text: "for loops"
             href: control_flow/for.qmd
+      - section: "Exercises"
+        contents:
+          - text: "Exercises"
+            href: exercises/set1.qmd
       - section: "Functions"
         contents:
           - text: "Definition"
