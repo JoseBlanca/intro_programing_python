@@ -12,17 +12,86 @@ format:
 
 - [File and directory](https://docs.python.org/3/library/filesys.html) access section in the official documentation.
 - [pathlib](https://docs.python.org/3/library/pathlib.html) module documentation.
+- [File sytem](https://en.wikipedia.org/wiki/File_system) entry in wikipedia.
+- [File system](https://bioinf.comav.upv.es/courses/unix/sistema_de_ficheros.html) tutorial (in spanish).
 
-hieralchical file systems
-file
-directory/folder
+## Paths
 
-paths, subdirs and the / operator
+The location of a file in a file system is given by its [path](https://en.wikipedia.org/wiki/Path_(computing)) that is composed by its location in the directories, subdirectories and file name.
+Some examples of paths are: "c:\\users\\jane\\documents\\letter.doc", "/users/jane/documents/letter.doc", or "/home/jane/documents/letter.doc".
 
-exists
-name
-suffix
+One relevant difference between Windows and Unix-like (MacOS or Linux) operating systems is that in windows the [path elements are separated by](https://en.wikipedia.org/wiki/Path_(computing)#History) the "\\" character, whereas in MacOS and Linux the separator is "/".
+Python is a multiplatform language, but we have to take into account these details if we want to write software capable of running in different operating systems.
 
-path.open
+## Path objects
 
-dir list
+In Python we could use strings to store path information and, in fact, that used to be the case, but now it is very common to work with Path objects available in the [pathlib](https://docs.python.org/3/library/pathlib.html) module.
+I would recommend to use these convenient objects instead of plain string objects.
+
+```{pyodide}
+from pathlib import Path
+
+path = Path("my_file.txt")
+
+```
+
+One advantage of the [Path](https://docs.python.org/3/library/pathlib.html#basic-use) objects is that we can join them together very easily.
+
+```{pyodide}
+from pathlib import Path
+
+directory = Path("some_folder")
+whole_path = directory / "my_file.txt"
+print(whole_path)
+```
+
+The Path class some very convenient methods, like [home](https://docs.python.org/3/library/pathlib.html#pathlib.Path.home) that will give us the [$HOME](https://en.wikipedia.org/wiki/Environment_variable#True_environment_variables) directory for the current user or [cwd](https://docs.python.org/3/library/pathlib.html#pathlib.Path.cwd) that will return the [current working directory](https://en.wikipedia.org/wiki/Working_directory).
+
+```{pyodide}
+from pathlib import Path
+
+home = Path.home()
+print(home)
+
+cwd = Path.cwd()
+print(cwd)
+```
+
+Paths objects have a rich functionality. For instance, we can check if they exist in the file system.
+
+```{pyodide}
+from pathlib import Path
+
+home = Path.home()
+print(home.exists())
+
+my_path = Path("hi.txt")
+print(my_path.exists())
+```
+
+We can list the contents of a directory.
+
+```{pyodide}
+from pathlib import Path
+
+home = Path.home()
+print(home.iterdir())
+```
+
+And we can get their names and suffixes.
+
+```{pyodide}
+
+from pathlib import Path
+
+my_path = Path.home() / "my_data.txt"
+print(my_path.name)
+print(my_path.suffix)
+print(my_path.parent)
+```
+
+We can also:
+
+- open a file using the [open](https://docs.python.org/3/library/pathlib.html#pathlib.Path.open) method of the Path objects
+- create a directory using [mkdir](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir)
+- remove a file with [unlink](https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink) or a directory with [rmdir](https://docs.python.org/3/library/pathlib.html#pathlib.Path.rmdir).
