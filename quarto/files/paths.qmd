@@ -95,3 +95,32 @@ We can also:
 - open a file using the [open](https://docs.python.org/3/library/pathlib.html#pathlib.Path.open) method of the Path objects
 - create a directory using [mkdir](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir)
 - remove a file with [unlink](https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink) or a directory with [rmdir](https://docs.python.org/3/library/pathlib.html#pathlib.Path.rmdir).
+
+In your home directory create a file named "hello.txt", write in it the text "Hello world", then get a directory listing and check that the file is really there, after that, open the file and read the text in it. Finally, remove the file and check that it has been really deleted.
+
+```{pyodide}
+#| exercise: file_manipuation
+```
+
+::: { .solution exercise="file_manipuation" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from pathlib import Path
+home = Path.home()
+print(home)
+hello_path = home / "hello.txt"
+with hello_path.open("wt") as file:
+  file.write("Hello world\n")
+
+print(list(home.iterdir()))
+print(hello_path.exists())
+with hello_path.open("rt") as file:
+  print(file.read())
+
+hello_path.unlink()
+print(hello_path.exists())
+```
+:::
+:::
+
+¿Cuál es el directorio de trabajo actual? ¿Hay algún fichero en él? ¿Del primero de los ficheros que aparecen en el listado, cuál es la ruta completa? ¿Se podría extraer de esta ruta el nombre del directorio y el fichero? ¿Cuál es la $HOME de nuestro usuario? ¿Del fichero ‘programa.py’ cuáles son el nombre y la extensión?
