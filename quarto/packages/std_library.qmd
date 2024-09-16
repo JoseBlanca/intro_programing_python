@@ -1,0 +1,30 @@
+
+---
+title: Standard library
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+There are many packages available in the default Python installation.
+We have already used some of them, like pathlib.
+You can find a [list](https://docs.python.org/3/library/index.html) with all of them in the official documentation.
+Here we are just going to mention a couple as an example.
+
+## Resources
+
+- [Standard library](https://docs.python.org/3/library/index.html) official documentation.
+
+## shutil
+
+The [shutil](https://docs.python.org/3/library/shutil.html) module allow us to copy and delete files and directories.
+[copy](https://docs.python.org/3/library/shutil.html#shutil.copy) copies files, and [copytree](https://docs.python.org/3/library/shutil.html#shutil.copytree) directories.
+Remember that in the [pathlib](https://docs.python.org/3/library/pathlib.html) module there was more functionality to create an delete files and directories.
+
+## subprocess
+
+[subprocess](https://docs.python.org/3/library/subprocess.html) allows you to run programs from Python.
+The easiest way to use it is its [run](https://docs.python.org/3/library/subprocess.html#subprocess.run) function.

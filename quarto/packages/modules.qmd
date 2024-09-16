@@ -1,0 +1,82 @@
+---
+title: Modules and packages
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- [Modules](https://docs.python.org/3/tutorial/modules.html) section on the official Python tutorial.
+- Real Python tutorials on [modules and packages](https://realpython.com/python-modules-packages/) and the [import](https://realpython.com/python-import/) statement.
+- pip information in [wikipedia](https://en.wikipedia.org/wiki/Pip_(package_manager)) and in the official [documentation](https://pip.pypa.io/).
+- [Virtual environment](https://realpython.com/python-virtual-environments-a-primer/) primer in Real Python.
+- [uv](https://docs.astral.sh/uv/) documentation.
+
+## Modules
+
+Programming is about mixing ideas; you take the idea of reading a file with data with the idea of doing a statistical test and of plotting a chart and you have created a program that analyzes and plots the data that you needed.
+Programming languages are usually quite limited in what they can directly do, but they are expanded by adding preprogrammed functionality.
+Moreover, if would be very inefficient to program the same functionallity over and over again, for instance, to create the same parsing or statistical functions in every program that you need. Thus programming languages have ways of not [repeating yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
+In Python it is very easy to create a piece of code, like a function, in one file and using it in another.
+Let's create a file called greeting.py that implements the following function.
+
+```{pyodide}
+def print_hello():
+    print("Hello world")
+```
+
+Now, in the same directory we are going to create a new program that will use this function.
+Let's create the file hello.py with the following code.
+
+```{pyodide}
+from greeting import print_hello
+
+print_hello()
+```
+
+When you run hello.py the first line imports the function print_hello from greeting.py and the function is ready to run.
+You have created and used your first Python module: greeting.
+
+[import](https://docs.python.org/3/reference/simple_stmts.html#import) can be used in a different way.
+Let's create the file hello2.py
+
+```{pyodide}
+import greeting
+
+greeting.print_hello()
+```
+
+In this case we have imported the greeting module and then we have used the print_hello function inside of this module by using a point notation.
+
+## Packages and the standard library
+
+Modules can be organized in directories and subdirectories creating packages.
+By default Python ships with many packages, collectively called [the standard library](https://docs.python.org/3/library/index.html), ready to be used.
+
+## Installing packages
+
+As we have already seen Python can import modules found in the same directory, but it is also able to look for packages and modules elsewhere.
+There is a list of directories in which Python looks for these packages and modules, the [python path](https://docs.python.org/3/library/sys_path_init.html).
+If you are curious you can check which are those directories:
+
+```{pyodide}
+import sys
+
+print(sys.path)
+```
+
+Usually, you don't need to worry about these details, they are taken care by the tools that install and manage the Python packages.
+The most popular tool is [pip](https://pip.pypa.io/) and this is the tool that I have used the most, but I have recently switched to [uv](https://docs.astral.sh/uv/).
+
+Python packages are collected in the [pypi](https://pypi.org/) repository.
+Both pip and uv, by default, grab from pypi then packages that you want to install.
+The Python ecosystem, the amount of functionallity available is huge and no course can describe all the packages available (more than half a million).
+The best way to find out which are the most relevant packages for your needs are reading about the kind of problems that you want to solve and interacting with the community that works on them.
+
+Before installing packages I highly recommend to read about virual environments.
+If you plan to use Python professionaly you must understand and use them.

@@ -16,14 +16,6 @@ https://python-fiddle.com/challenges/levels/intermediate
 
 ejercicios año pasado
 
-# Working with files
-
-# Modules and packages
-
-# std library modules
-
-subprocess
-
 # exceptions
 
 # functional programming

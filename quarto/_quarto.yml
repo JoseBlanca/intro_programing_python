@@ -63,6 +63,12 @@ website:
             href: files/read_write.qmd
           - text: "Paths"
             href: files/paths.qmd
+      - section: "Modules and packages"
+        contents:
+          - text: Modules
+            href: packages/modules.qmd
+          - text: Standard library
+            href: packages/std_library.qmd
     tools:
       - icon: github
         menu:
