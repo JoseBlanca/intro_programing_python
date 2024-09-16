@@ -1,0 +1,118 @@
+---
+title: Exceptions
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+Hopefully you will manage to write the program you wanted to, but, for sure, in the process there will be many failures.
+Don't worry, it is normal, and Python will try to help you solve them by informing you about the problems.
+
+## Resources
+
+- Real Python introductions to [exceptions](https://realpython.com/python-exceptions/) and [tracebacks](https://realpython.com/python-traceback/).
+- [Errors and exceptions](https://docs.python.org/3/tutorial/errors.html) in the official Python tutorial.
+- [Built in exceptions](https://docs.python.org/3/library/exceptions.html#concrete-exceptions).
+
+## Syntax errors
+
+When the Python interpreter finds invalid code it won't be able to run the program, and it will generate a [syntax error](https://docs.python.org/3/tutorial/errors.html#syntax-errors).
+These errors will try to inform you about where the error is in the code, so take a look at it.
+
+```{pyodide}
+for i in range(10)
+    print(i)
+```
+
+## Exceptions
+
+Once the program in already running many different kind of problems might arise and Python will throw an [exception](https://docs.python.org/3/tutorial/errors.html#exceptions) in those cases.
+
+```{pyodide}
+def do_division():
+    return 1 / 0
+
+do_division()
+```
+
+There are different kind of exceptions.
+
+[IndexError](https://docs.python.org/3/library/exceptions.html#IndexError). In a [sequence]((https://docs.python.org/3/glossary.html#term-sequence)), you have tried to access an index out of range.
+
+```{pyodide}
+players = ["Paul", "Ringo", "John", "George"]
+print(players[4])
+```
+
+[KeyError](https://docs.python.org/3/library/exceptions.html#KeyError). In a mapping, like a dictionary, you have tried to access a key that does not exist.
+
+```{pyodide}
+student = {"name": "Jane", "course": 3}
+print(student["grade"])
+```
+
+- [ValueError](https://docs.python.org/3/library/exceptions.html#ValueError). The arguments given to the function are not correct.
+
+```{pyodide}
+def calc_area(width, height):
+    return width * height
+
+calc_area(radius=3)
+```
+
+- [NameError](https://docs.python.org/3/library/exceptions.html#NameError). A variable has not been found in the available scopes.
+
+```{pyodide}
+print(hello)
+```
+
+- [AttributeError](https://docs.python.org/3/library/exceptions.html#AttributeError) is usually raised when you try to use a [method](https://docs.python.org/3/glossary.html#term-method) or a [property](https://en.wikipedia.org/wiki/Property_(programming)), an [attribute](https://docs.python.org/3/glossary.html#term-attribute), that the object does not have.
+
+All these exceptions are accompanied by a [traceback](https://en.wikipedia.org/wiki/Stack_trace) that informs you about the calls that have been done in the program up until the exceptions happened.
+
+```
+Traceback (most recent call last):
+  File "/home/jose/tmp/curso/file.py", line 4, in <module>
+    do_division()
+  File "/home/jose/tmp/curso/file.py", line 2, in do_division
+    return 1 / 0
+           ~~^~~
+ZeroDivisionError: division by zero
+```
+
+## Exception control
+
+Sometimes you are expecting that an exception might happen and you can deal with it.
+You can catch and deal with the exception using [try](https://docs.python.org/3/reference/compound_stmts.html#try) and [except](https://docs.python.org/3/reference/compound_stmts.html#except-clause).
+
+
+```{pyodide}
+def calc_mean(numbers):
+    try:
+        n_numbers = len(numbers)
+        mean = sum(numbers) / n_numbers
+    except ZeroDivisionError:
+        mean = None
+    return mean
+
+print(calc_mean([]))
+print(calc_mean([1, 2]))
+```
+
+Do not write excepts without an particular exception type to catch. In general that would be a very bad practice because the exception catched could be an unexpected one.
+
+```{pyodide}
+def calc_mean(numbers):
+    try:
+        n_numbers = len(numbers)
+        mean = sum(numbers) / n_numbers
+    except:  # This would work, but don't do it
+        mean = None
+    return mean
+
+print(calc_mean([]))
+print(calc_mean([1, 2]))
+```

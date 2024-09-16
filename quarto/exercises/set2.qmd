@@ -84,3 +84,125 @@ for word, count in counts.most_common(50):
 :::
 :::
 
+## Write a Hangman game
+
+```{pyodide}
+#| exercise: hangman
+DICTIONARY = ['hola', 'caracola', 'casa', 'barco']
+INITIAL_NUM_ATTEMPS = 10
+
+```
+
+::: { .solution exercise="hangman" }
+::: { .callout-tip collapse="false"}
+```
+import random
+
+DICTIONARY = ['hola', 'caracola', 'casa', 'barco']
+INITIAL_NUM_ATTEMPS = 10
+
+def create_revealed_string(secret_word, guessed_letters):
+
+    num_letters_missing = 0
+    revealed_string = ''
+    for letter in secret_word:
+        if letter.upper() in guessed_letters:
+            revealed_letter = letter
+        else:
+            revealed_letter = '-'
+            num_letters_missing += 1
+        revealed_string += revealed_letter
+    return revealed_string
+
+
+def play_game():
+    secret_word = random.choice(DICTIONARY)
+    guessed_letters = set()
+    num_attempts = INITIAL_NUM_ATTEMPS
+    won = None
+    while True:
+        guessed_letter = input('Pick a letter ')
+        guessed_letters.add(guessed_letter.upper())
+
+        revealed_string = create_revealed_string(secret_word, guessed_letters)
+        num_attempts -= 1
+
+        num_letters_to_guess = revealed_string.count('-')
+        if not num_letters_to_guess:
+            won = True
+            break
+        elif num_letters_to_guess:
+            if num_attempts:
+                print('The guess so far: ', revealed_string, guessed_letters)
+            else:
+                won = False
+                break
+
+    if won:
+        print('Congratulations, you have won the game')
+    else:
+        print('You have lost')
+    print('The secret word was: ', secret_word)
+
+
+play_game()
+```
+:::
+:::
+
+## Read a fasta file
+
+In bioinformatics we use fasta files to store DNA sequences.
+This is an example of a fasta file with three sequences.
+
+```
+>seq1
+CGCTAGCTAGTCTATCGATCTAGTCTAGCT
+>seq2 some description after the space
+TGTCGATCGTAGTCATCTGATCGACGTATCTA
+CTCGAGTCATGCTATCATCATGCTAG
+>seq3
+TCAGTCGATGCTATCATCGTAGCTGATCGATCTGGCA
+CTAGCAGTCGATC
+```
+
+Write a program that reads the sequences found in a fasta file and stores them in a list of dictionaries, one dictionary per sequence.
+
+```{pyodide}
+#| exercise: fasta
+```
+
+::: { .solution exercise="fasta" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from io import StringIO
+
+def parse_fasta(fhand):
+    seq = None
+    for line in fhand:
+        line = line.strip()
+        if line[0] == ">":
+            if seq:
+                yield seq
+            items = line[1:].split(" ", 1)
+            if len(items) == 1:
+                seq = {"name": items[0], "seq": ""}
+            elif len(items) == 2:
+                name, description = items
+                seq = {"name": name, "seq": "", "description": description}
+            else:
+                raise RuntimeError("Fixme, we should not be here")
+        else:
+            seq["seq"] += line
+    if seq:
+        yield seq
+
+if __name__ == "__main__":
+    fasta_fhand = StringIO(">seq1 description\nATCT\nACTGC\n>seq2\nACTGTG\n")
+    seqs = parse_fasta(fasta_fhand)
+    print(list(seqs))
+```
+:::
+:::
+
+Now, create functions capable of calculating the percentage of GCs in the sequences and their lengths.

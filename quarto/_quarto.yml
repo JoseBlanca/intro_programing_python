@@ -69,6 +69,14 @@ website:
             href: packages/modules.qmd
           - text: Standard library
             href: packages/std_library.qmd
+      - section: "Exceptions"
+        contents:
+          - text: "Exceptions"
+            href: exceptions.qmd
+      - section: "Exercises 2"
+        contents:
+          - text: "Exercises"
+            href: exercises/set2.qmd
     tools:
       - icon: github
         menu:
