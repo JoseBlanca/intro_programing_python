@@ -57,16 +57,42 @@ print(text_with_single_triple_quotes)
 Fix the following code:
 
 ```{pyodide}
-"greetings" = "Hello Ada"
+#| exercise: fix_str_var
+"greetings" = 'Hello Ada'
 print(greetings)
 ```
+::: { .solution exercise="fix_str_var"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+greetings = 'Hello Ada'
+print(greetings)
+```
+:::
+:::
+
+```{pyodide}
+#| exercise: fix_triple_str
+greetings = ""Hello
+Ada""
+print(greetings)
+```
+::: { .solution exercise="fix_triple_str"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+greetings = """Hello
+Ada"""
+print(greetings)
+```
+:::
+:::
+
 
 ## String methods
 
-The string type has a rich functionality available, through its [methods](https://docs.python.org/3/library/stdtypes.html#string-methods).
+The string type, through its [methods](https://docs.python.org/3/library/stdtypes.html#string-methods), has a rich functionality available.
 We can, for instance create upper- or lowercase versions of the strings.
-This funcionality is accessed via the string class [methods](https://en.wikipedia.org/wiki/Method_(computer_programming)).
-It is still too early to formally introduce the concept what is a method, so lets just show some examples.
+This funcionality is accessed via the string class methods.
+It is still too early to formally introduce the concept what is a [method](https://en.wikipedia.org/wiki/Method_(computer_programming)), so lets just show some examples.
 
 ```{pyodide}
 lowercase_text = "Some TEXT with lower and UPPER case letters.".lower()
@@ -75,7 +101,8 @@ print(lowercase_text)
 print(uppercase_text)
 ```
 
-So methods are used by writing a dot (**.**), the name of the methods and two parentheses.
+So, methods are used by writing a dot (**.**), the name of the method and two parentheses.
+
 You can ask for the whole documentation of any type, class or function using the [help](https://docs.python.org/3/library/functions.html#help) function.
 
 ```{pyodide}
@@ -93,17 +120,14 @@ string_with_no_spaces = string_with_spaces.strip()
 print("*" + string_with_no_spaces + "*")
 
 # Count number of occurences
-
 dna_sequence = "CTAGCTATCGAT"
 print("The number of As is: ", dna_sequence.count('A'))
 
 # Be careful because lower and upper letters are different
-
 print("The number of as is: ", dna_sequence.count('a'))
 
 # We can replace an string with another string
-
-print("My name is Joe".replace("Joe", "Jane"))
+print("My name is Jane".replace("Jane", "Marvin"))
 ```
 
 We can also split a string into a list of strings.
@@ -158,6 +182,8 @@ print("The GC content is ")
 ::: { .hint exercise="gc_content"}
 ::: { .callout-note collapse="false"}
 You can remove characters using replace("character", "").
+
+You can count the letters with the count method.
 :::
 :::
 ::: { .solution exercise="gc_content"}
@@ -179,7 +205,6 @@ file_name = 'my_text.txt'
 
 print(file_name.)
 ```
-
 ::: { .solution exercise="replace_txt" }
 ::: { .callout-tip collapse="false"}
 ```{pyodide}
@@ -190,7 +215,7 @@ print(file_name.replace('.txt', '.doc'))
 :::
 :::
 
-We have file with values separated by commas and we want the separated by tabs, how could we do it.
+We have file with values separated by commas and we want them separated by tabs, how could we do it.
 
 ```{pyodide}
 #| exercise: comma_tab
@@ -199,7 +224,6 @@ line = "name,surname,age\n"
 
 print(line_with_tabs)
 ```
-
 ::: { .hint exercise="comma_tab"}
 ::: { .callout-note collapse="false"}
 The tab character is represented by "\t" and end of line by "\n".
@@ -230,7 +254,6 @@ print(name)
 print(surname)
 print(age)
 ```
-
 ::: { .hint exercise="read_line"}
 ::: { .callout-note collapse="false"}
 Remember that you can remove the feed line and return characters using the strip method and that you can split a sting with the split method.
@@ -240,7 +263,7 @@ Once you have the three items you can do:
 ```{pyodide}
 name = items[0]
 surname = items[1]
-age = items[age]
+age = items[2]
 
 # or
 name, surname, age = items
@@ -279,7 +302,6 @@ second = "40"
 total = first + second
 print(total)
 ```
-
 ::: { .solution exercise="total"}
 ::: { .callout-note collapse="false"}
 ```{pyodide}
@@ -297,7 +319,6 @@ How many digits a number has.
 #| exercise: number_digits
 # For example, 17768 has 5 digits
 ```
-
 ::: { .solution exercise="number_digits"}
 ::: { .callout-note collapse="false"}
 ```{pyodide}
@@ -309,10 +330,9 @@ print("The number ", number, " has ", len(str(number)), " digits")
 
 ## Indexing
 
-Strings are a sequence of characters and they can be indexed, we can get some of the characters, by using the square brackets: **[]**.
+Strings are [sequences](https://docs.python.org/3/glossary.html#term-sequence) of characters and they can be indexed; we can get some of the characters, by using the square brackets: **[]**.
 
 ```{pyodide}
-
 wonderland = "Alice was beginning to get very tired"
 
 # In most programming languages indexes start at zero, the first character is 0
@@ -328,14 +348,14 @@ print(wonderland[-1])
 print(wonderland[-2])
 print(wonderland[-3])
 print(wonderland[-4])
-print(wonderland[-4])
+print(wonderland[-5])
 ```
 
 ![Python positive and negative string indexes](../static/python_str_indexes.png "Python positive and negative string indexes")
 
 We will see that this is a general property of any [sequence type](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) in Python, all of them can be indexed in the same way.
 
-Indexes allow us to ask for not just one, but several items.
+Indexes also allow us to ask for not just one, but several items.
 In the string case we will get a string with several characters.
 To get them we use the colon (**:**) to separate the first and the last position.
 Take into account that the first position will be included in the selection but the last one will be not.
@@ -347,19 +367,15 @@ print(wonderland[0:5])
 print(wonderland[6:9])
 
 # We can ommit the first position. That will be interpreted as, from the begining.
-
 print(wonderland[:9])
 
 # Or we could ommit the last position, up until the end.
-
 print(wonderland[10:])
 
-# If we ommint both the first and last we will get a complete copy of the string, from the begining to the end
-
+# If we ommit both the first and last, we will get a complete copy of the string, from the begining to the end
 print(wonderland[:])
 
-# Of couse, we can also use, as indexes, negative number
-
+# Of couse, we can also use, as indexes, negative numbers
 print(wonderland[-5:])
 ```
 
@@ -373,7 +389,7 @@ print(a[:6])
 ```
 
 The combination of the start and end position is called slice. By using this kind of indexing we are slicing the string.
-Slices can also be built using the [slice]((https://docs.python.org/3/library/functions.html#slice)) built-in functions, but this is a more avanced topic.
+Slices can also be built using the [slice]((https://docs.python.org/3/library/functions.html#slice)) built-in function, but this is a more avanced topic.
 
 Slices, besides start and stop, allow for a third number, the step, that indicates the increment between the index of the selected items. For instance, we could use the step to select every three characters.
 
@@ -421,8 +437,6 @@ string = 'racecar'
 is_palindrome = string[::-1] == string
 
 print("The string is a palindrome:", is_palindrome)
-
-exercise. Check if some text is a palyndrome
 ```
 :::
 :::
@@ -446,7 +460,7 @@ print(' '.join(reversed(str(number))))
 :::
 :::
 
-Another useful string [method](https://docs.python.org/3/glossary.html#term-method) is find.
+Another useful string [method](https://docs.python.org/3/glossary.html#term-method) is [find](https://docs.python.org/3/library/stdtypes.html#str.find).
 It allows us to look for ocurrences of a substring inside of a string. (Remember that we count from zero.)
 
 ```{pyodide}
@@ -456,13 +470,12 @@ print("acACGTactt".find("ACGT"))
 print("acACGTactt".find("acgt"))
 ```
 
-Find the position of the substring "wor" in the string "Hello world", and the use that position to extract the "world" substring from "Hello world"
+Find the position of the substring "wor" in the string "Hello world", and then use that position to extract the "world" substring from "Hello world"
 ```{pyodide}
-#| excercise: world_position
+#| exercise: world_position
 s1= "Hello world"
 s2 = "wor"
 ```
-
 ::: { .solution exercise="world_position" }
 ::: { .callout-tip collapse="false"}
 ```{pyodide}
@@ -491,8 +504,8 @@ print("Hello" "John")
 Predict the result of running the following code:
 
 ```{pyodide}
-a= "GAATTC"
-b= "CTTAAG"
+a = "GAATTC"
+b = "CTTAAG"
 
 print(a[0:3] + b[3:6])
 print(a[0:3] + b[3:6] + a[3:6])
@@ -513,29 +526,23 @@ Write a program that given a number n returns the value of the operation: n + nn
 n = 5
 # The result should be 5 + 55 + 555 -> 615
 ```
-
 ::: { .hint exercise="sum_concatenated_nums" }
 ::: { .callout-tip collapse="false"}
-
 You can transform, type cast, numbers into strings and string into numbers with the functions: [int](https://docs.python.org/3/library/functions.html#int) and [str](https://docs.python.org/3/library/functions.html#func-str).
-
 :::
 :::
-
 ::: { .solution exercise="sum_concatenated_nums" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 n = 5
 n = str(5)
 result = int(n) + int(n * 2) + int(n * 3)
 print(result)
 ```
-
 :::
 :::
 
-We could check is a string is included in another string by using the *in* operator.
+We could check if a string is included in another string by using the *in* operator.
 
 ```{pyodide}
 print("GATA" in "GCCGTATGCATGATATGCTAGCTAG")
@@ -592,22 +599,17 @@ Fix the following code:
 #| exercise: fix_jon2
 name = "Jon"
 surname = "Snow"
-Age = 20
+age = 20
 birth_place = "Northern Kingdom"
-print(name + ' ' + surname + ' is ‘ + age + ' years old and is from the ' + birth_place)
+print(name + ' ' + surname + ' is ' + Age + ' years old and is from the ' + birth_place)
 ```
-
 ::: { .hint exercise="fix_jon2"}
 ::: { .callout-note collapse="false"}
-
 You can create a string from a number by using the str function.
-
 :::
 :::
-
 ::: { .solution exercise="fix_jon2"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 name = "Jon"
 surname = "Snow"
@@ -618,16 +620,14 @@ print(name + ' ' + surname + ' is ' + str(age) + ' years old and he is from ' + 
 
 print(f"{name} {surname} is {age} years old and he is from {birth_place}"")
 ```
-
 :::
 :::
-
 
 ## f-strings
 
-[f-strings](https://docs.python.org/3/glossary.html#term-f-string) are a very common and powerful way of creating string.
-You will see them a lot in the Python code.
-They allow, for instance to create a string from a variable in a very suscint way using curly braces (**{}**).
+[f-strings](https://docs.python.org/3/glossary.html#term-f-string) are a very common and powerful way of creating strings.
+You will see them a lot in Python code.
+They allow, for instance to create a string from a variable in a very suscint way: using curly braces (**{}**).
 
 ```{pyodide}
 the_answer = 42

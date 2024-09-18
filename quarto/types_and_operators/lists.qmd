@@ -2,6 +2,8 @@
 title: Lists
 format:
   live-html:
+    mermaid:
+      theme: neutral
     pyodide:
       cell-options:
         autorun: false
@@ -12,12 +14,12 @@ format:
 
 - [Lists and tuples](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) in the official documentation, and [more on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists).
 - A Real Python introduction to [lists](https://realpython.com/python-list/).
-- [lists](https://developers.google.com/edu/python/lists) on the google course (available in different languages).
+- [lists](https://developers.google.com/edu/python/lists) on the Python google course (available in different languages).
 
 ## Lists
 
 So far we have seen basic, or [scalar](https://en.wikipedia.org/wiki/Scalar_processor#Scalar_data_type), [types](types.qmd) like: int, float, str, bool and None.
-[Lists](https://docs.python.org/3/library/stdtypes.html#list) are a [compound type](https://en.wikipedia.org/wiki/Composite_data_type), a type capable of holding different items.
+[List](https://docs.python.org/3/library/stdtypes.html#list) is a [compound type](https://en.wikipedia.org/wiki/Composite_data_type), a type capable of holding different items.
 
 ```{pyodide}
 
@@ -26,18 +28,7 @@ a_list_of_numbers = [1, 2, 3, 4]
 print(a_list_of_numbers)
 ```
 
-Lists can be heterogeneous, they can hold inside elements of different types.
-
-```{pyodide}
-
-person = ["Jane", "Doe", 25, True]
-
-print(person)
-```
-
-In Python there is another type, very similar to a list, but that is limited to have all its elements of the same type, the [array](https://docs.python.org/3/library/array.html). Arrays are more efficient than lists, but in most cases the difference is not noticeable and lists are just fine.
-
-Lists can hold any kind of type, not just basic type, but also compound types, like another list.
+Lists can hold any kind of type, not just basic types, but also compound types, like another list.
 
 ```{pyodide}
 import pprint
@@ -46,7 +37,8 @@ row1 = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
 row2 = ["pawn"] * 8
 row7 = row2[:]
 row8 = ["rook", "knight", "bishop", "king", "queen", "bishop", "knight", "rook"]
-chessboard = [row1, row2, [], [], [], [], row7, row8]
+empty_row = [None] *8
+chessboard = [row1, row2, empty_row, empty_row, empty_row, empty_row, row7, row8]
 
 pprint.pprint(chessboard)
 ```
@@ -60,6 +52,17 @@ matrix = [vector1, vector2]
 
 print(matrix)
 ```
+
+Lists can be heterogeneous, they can hold inside elements of different types.
+
+```{pyodide}
+
+person = ["Jane", "Doe", 25, True]
+
+print(person)
+```
+
+In Python there is another type, very similar to a list, but that is limited to have all its elements of the same type, the [array](https://docs.python.org/3/library/array.html). Arrays are more efficient than lists, but in most cases the difference is not noticeable and lists are just fine.
 
 ### List creation with list
 
@@ -115,7 +118,7 @@ print(":4", numbers[:4])
 
 ```
 
-You have to be careful. When the index is just one number you will get one item, but if the index is a slice you will always get a list, even if you are selecting just one number.
+You have to be careful. When the index is just one number you will get one item, but if the index is a slice you will always get a list, even if you are selecting just one item.
 
 ```{pyodide}
 numbers = list(range(10))
@@ -129,7 +132,6 @@ print("They are not equal:", one_number != a_list_with_one_number)
 Predict the result of running the following code:
 
 ```{pyodide}
-
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print (numbers[2:4])  
 print (numbers[2:])
@@ -138,14 +140,12 @@ print (numbers[0:4])
 print (numbers[:])    
 print (numbers[-1])
 print (numbers[:-3])
-
 ```
 
 Create a list with the numbers from 0 to 9, extract the odd and even numbers, the first 5 and the  last 5.
 
 ```{pyodide}
 #| exercise: extract_numbers
-
 numbers = list(range(10))
 ...
 
@@ -153,7 +153,6 @@ numbers = list(range(10))
 
 ::: { .solution exercise="extract_numbers" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 numbers = list(range(10))
 print(numbers[::2])
@@ -161,7 +160,6 @@ print(numbers[1::2])
 print(numbers[:5])
 print(numbers[5:])
 ```
-
 :::
 :::
 
@@ -170,30 +168,24 @@ print(numbers[5:])
 Lists can be sorted using the [sorted](https://docs.python.org/3/library/functions.html#sorted) function.
 
 ```{pyodide}
-
 letters = list("zklajkodtñyitqzinivmyiflrtx")
 print(letters)
 print(sorted(letters))
-
 ```
 
 sorted does the sorting doing [pairwise](https://en.wikipedia.org/wiki/Pairwise) comparisons of the elements. For a list of numbers the result is what we could expect.
 
 
 ```{pyodide}
-
 numbers = [10, 1.0, 3, 2.7, 5.5]
 print(sorted(numbers))
-
 ```
 
 For for the letters, or many other kinds of objects, the result can be weird.
 
 ```{pyodide}
-
 letters = ["b", "Z", "a", "X"]
 print(sorted(letters))
-
 ```
 
 The sorted function has a parameter, key, that allows to modify the elements compared. key will be a function that takes one element and returns the element to be compared.
@@ -202,7 +194,6 @@ This is a topic somewhat more advanced, but you have an excellent [sorting](http
 ```{pyodide}
 letters = ["d", "Z", "a", "C"]
 print(sorted(letters, key=lambda letter: letter.lower()))
-
 ```
 
 Sort the words in alphabetical order.
@@ -210,10 +201,31 @@ Sort the words in alphabetical order.
 ```{pyodide}
 #| exercise: sort_words
 text = "It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had lost something"
-
 ```
+::: { .hint exercise="sort_words"}
+::: { .callout-note collapse="false"}
+- The string [split](https://docs.python.org/3.3/library/stdtypes.html#str.split) method will split the text into a list of strings.
+- The string [replace](https://docs.python.org/3.3/library/stdtypes.html#str.replace) method can be used to remove unwanted text.
+- The [sorted]((https://docs.python.org/3/library/functions.html#sorted)) function can take a key parameter to modify the items compared during the sorting procedure.
 
-The sorted functions creates a new list, the original list will be intact.
+```{pyodide}
+print(sorted("AbCdE", key=lambda letter: letter.lower()))
+```
+:::
+:::
+::: { .solution exercise="sort_words"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+text = "It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had lost something"
+text_without_commas = text.replace(",", "")
+words = text_without_commas.split()
+words = sorted(words, key=lambda word: word.lower())
+print(words)
+```
+:::
+:::
+
+The sorted function creates a new list, the original list will be intact.
 
 ```{pyodide}
 numbers = [3, 5, 2, 1]
@@ -222,7 +234,7 @@ print(numbers)
 print(sorted_numbers)
 ```
 
-If you wanted to sort the original list you could use the sort method.
+If you wanted to sort the original list in place you could use the [sort](https://docs.python.org/3/library/stdtypes.html#list.sort) method.
 
 ```{pyodide}
 numbers = [3, 5, 2, 1]
@@ -230,37 +242,32 @@ numbers.sort()
 print(numbers)
 ```
 
-::: { .hint exercise="sort_words"}
-::: { .callout-note collapse="false"}
-
-- The string [split](https://docs.python.org/3.3/library/stdtypes.html#str.split) method will split the text into a list of strings.
-- The string [replace](https://docs.python.org/3.3/library/stdtypes.html#str.replace) method can be used to remove unwanted text.
-- The [sorted]((https://docs.python.org/3/library/functions.html#sorted)) function can take a key parameter to modify the items compared during the sorting procedure.
+Fix the following code:
 
 ```{pyodide}
-print(sorted("AbCdE", key=lambda letter: letter.lower()))
+#| exercise: fix_sort_method
+numbers = [3, 5, 2, 1]
+numbers = numbers.sort()
+print(numbers)
 ```
-
-:::
-:::
-
-::: { .solution exercise="sort_words"}
+::: { .hint exercise="fix_sort_method"}
 ::: { .callout-note collapse="false"}
-
+The sort method sorts the list in place and it does not return the list.
+:::
+:::
+::: { .solution exercise="fix_sort_method" }
+::: { .callout-tip collapse="false"}
 ```{pyodide}
-text = "It was the White Rabbit, trotting slowly back again, and looking anxiously about as it went, as if it had lost something"
-text_without_commas = text.replace(",", "")
-words = text_without_commas.split()
-words = sorted(words, key=lambda word: word.lower())
-print(words)
+numbers = [3, 5, 2, 1]
+numbers.sort()
+print(numbers)
 ```
-
 :::
 :::
 
 ### reverse
 
-As we did with strings we can reverse a list, or any other [sequence](https://docs.python.org/3/glossary.html#term-sequence), using the function [reversed](https://docs.python.org/3/library/functions.html#reversed).
+As we did with strings, we can also reverse a list, or any other [sequence](https://docs.python.org/3/glossary.html#term-sequence), using the function [reversed](https://docs.python.org/3/library/functions.html#reversed).
 reversed returns an [iterator](https://docs.python.org/3/glossary.html#term-iterator), so in order to have a list we need to use the [list](https://docs.python.org/3/library/functions.html#func-list) function on the reversed result.
 
 ```{pyodide}
@@ -302,7 +309,7 @@ year, month, day = 1997, "August", 29
 print(year, month, day)
 ```
 
-This is a feature commonly used in Python that, sometimes is known as destructuring assignment.
+This is a feature commonly used in Python that, sometimes, is known as destructuring assignment.
 These assignments will fail if the number of items at both sides are different.
 
 ```{pyodide}
@@ -380,8 +387,46 @@ print(dna)
 But what is going one in this code is more subtle:
 
 - dna = "atcg" creates, and stores in memory, the string "atcg" and assigns the dna varible as a reference to it.
+
+```{mermaid}
+flowchart LR
+    subgraph memory
+        actg
+        ""
+    end
+    subgraph variables
+        dna
+    end
+    dna --> actg
+```
+
 - dna.upper() creates a new string "ATCG"
-- dna = dna.upper() assing the dna variable to the new string "ATCG"
+```{mermaid}
+flowchart LR
+    subgraph memory
+        actg
+        ACTG
+    end
+    subgraph variables
+        dna
+    end
+    dna --> actg
+```
+
+- dna = dna.upper() assings the dna variable to the new string "ATCG"
+
+```{mermaid}
+flowchart LR
+    subgraph memory
+        actg
+        ACTG
+    end
+    subgraph variables
+        dna
+    end
+    dna --> ACTG
+```
+
 - There is now no variable referencing to the original "actg" string, so even if it would still be in memory it would be inaccessible to us.
 - At some point the Python interpreter will remove the original "actg" string from memory because it is not referenced by any variable, but this is of no concern to us. (This process is known in computer science as [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)), and Python is a garbage collected language).
 
@@ -391,14 +436,26 @@ As an example, let's use the append method, that appends a item to the list.
 ```{pyodide}
 dna = ["A", "C", "G", "T"]
 dna2 = dna
-dna.append("C")
+dna.sort()
 print(dna)
 print(dna2)
 ```
 
-As you can see the variables dna and dna2 refer to the same list in memory, so when we change that list, in this case by adding a new letter, both variables print the same result.
-It is worth mentioning that the append method, unlike the string methods, does not return a new list.
+```{mermaid}
+flowchart LR
+    subgraph memory
+        list[G, C, A, T]
+    end
+    subgraph variables
+        dna
+        dna2
+    end
+    dna --> list
+    dna2 --> list
+```
 
+As you can see the variables dna and dna2 refer to the same list in memory, so when we change that list, in this case by sorting it, both variables print the same result.
+It is worth mentioning that the sort method, unlike the string methods or the sorted function, does not return a new list.
 
 ### append and extend
 
@@ -455,7 +512,7 @@ append adds one item to the list and, in this case, this element happens to be t
 
 ### Modify the list using indexes
 
-Lists can also ve changed by using the indexing syntax.
+Lists can also be changed by using the indexing syntax.
 
 ```{pyodide}
 
@@ -492,7 +549,7 @@ print("method 2, c:", c)
 
 ### tuples
 
-In python there is another type, very similar to a list, but inmutable, the [tuple](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
+In Python there is another type, very similar to a list, but inmutable, the [tuple](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
 We create tuples using parentheses instead of square brackets.
 
 ```{pyodide}
