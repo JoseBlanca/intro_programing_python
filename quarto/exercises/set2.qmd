@@ -84,6 +84,340 @@ for word, count in counts.most_common(50):
 :::
 :::
 
+## Read the genetic code into a dictionary
+
+The dictionary should have the codon as the key and the aminoacid name as the value.
+
+```{pyodide}
+#| exercise: genetic_code_dict
+AA_TABLE = '''Codon aa_full_name aa_abreviation
+TTT Phenylalanine F
+TTC Phenylalanine F
+TTA Leucine L
+TTG Leucine L
+TCT Serine S
+TCC Serine S
+TCA Serine S
+TCG Serine S
+TAT Tyrosine Y
+TAC Tyrosine Y
+TAA Stop X
+TAG Stop  X
+TGT Cysteine C
+TGC Cysteine C
+TGA Stop X
+TGG Tryptophan W
+CTT Leucine L
+CTC Leucine L
+CTA Leucine L
+CTG Leucine L
+CCT Proline P
+CCC Proline P
+CCA Proline P
+CCG Proline P
+CAT Histidine H
+CAC Histidine H
+CAA Glutamine Q
+CAG Glutamine Q
+CGT Arginine R
+CGC Arginine R
+CGA Arginine R
+CGG Arginine R
+ATT Isoleucine I
+ATC Isoleucine I
+ATA Isoleucine I
+ATG Methionine M
+ACT Threonine T
+ACC Threonine T
+ACA Threonine T
+ACG Threonine T
+AAT Asparagine N
+AAC Asparagine N
+AAA Lysine K
+AAG Lysine K
+AGT Serine S
+AGC Serine S
+AGA Arginine R
+AGG Arginine R
+GTT Valine V
+GTC Valine V
+GTA Valine V
+GTG Valine V
+GCT Alanine A
+GCC Alanine A
+GCA Alanine A
+GCG Alanine A
+GAT Aspartate D
+GAC Aspartate D
+GAA Glutamate E
+GAG Glutamate E
+GGT Glycine G
+GGC Glycine G
+GGA Glycine G
+GGG Glycine G
+'''
+```
+::: { .hint exercise="genetic_code_dict"}
+::: { .callout-note collapse="false"}
+
+splitlines
+
+:::
+:::
+::: { .solution exercise="genetic_code_dict"}
+::: { .callout-tip collapse="false"}
+```{pyodide}
+AA_TABLE = '''Codon aa_full_name aa_abreviation
+TTT Phenylalanine F
+TTC Phenylalanine F
+TTA Leucine L
+TTG Leucine L
+TCT Serine S
+TCC Serine S
+TCA Serine S
+TCG Serine S
+TAT Tyrosine Y
+TAC Tyrosine Y
+TAA Stop X
+TAG Stop  X
+TGT Cysteine C
+TGC Cysteine C
+TGA Stop X
+TGG Tryptophan W
+CTT Leucine L
+CTC Leucine L
+CTA Leucine L
+CTG Leucine L
+CCT Proline P
+CCC Proline P
+CCA Proline P
+CCG Proline P
+CAT Histidine H
+CAC Histidine H
+CAA Glutamine Q
+CAG Glutamine Q
+CGT Arginine R
+CGC Arginine R
+CGA Arginine R
+CGG Arginine R
+ATT Isoleucine I
+ATC Isoleucine I
+ATA Isoleucine I
+ATG Methionine M
+ACT Threonine T
+ACC Threonine T
+ACA Threonine T
+ACG Threonine T
+AAT Asparagine N
+AAC Asparagine N
+AAA Lysine K
+AAG Lysine K
+AGT Serine S
+AGC Serine S
+AGA Arginine R
+AGG Arginine R
+GTT Valine V
+GTC Valine V
+GTA Valine V
+GTG Valine V
+GCT Alanine A
+GCC Alanine A
+GCA Alanine A
+GCG Alanine A
+GAT Aspartate D
+GAC Aspartate D
+GAA Glutamate E
+GAG Glutamate E
+GGT Glycine G
+GGC Glycine G
+GGA Glycine G
+GGG Glycine G
+'''
+
+genetic_code = {}
+first_line = True
+for line in AA_TABLE.splitlines():
+    if first_line:
+        first_line = False
+        continue
+    line = line.strip()
+    if not line:
+        continue
+    codon, long_name, short_name = line.split()
+    genetic_code [codon] = short_name
+print(genetic_code)
+```
+:::
+:::
+
+## Write a program that translate a coding sequence into a protein
+
+```{pyodide}
+#| exercise: translate_protein
+
+dna_coding_seq = 'atgtggacttga'
+prot_seq = translate(dna_coding_seq)
+```
+
+::: { .hint exercise="translate_protein"}
+::: { .callout-note collapse="false"}
+
+You can get the position of every codon using the [range](https://docs.python.org/3/library/functions.html#func-range) function.
+Remember that range has a step argument that can be set to 3.
+
+:::
+:::
+::: { .solution exercise="translate_protein" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+AA_TABLE = '''Codon aa_full_name aa_abreviation
+TTT Phenylalanine F
+TTC Phenylalanine F
+TTA Leucine L
+TTG Leucine L
+TCT Serine S
+TCC Serine S
+TCA Serine S
+TCG Serine S
+TAT Tyrosine Y
+TAC Tyrosine Y
+TAA Stop X
+TAG Stop  X
+TGT Cysteine C
+TGC Cysteine C
+TGA Stop X
+TGG Tryptophan W
+CTT Leucine L
+CTC Leucine L
+CTA Leucine L
+CTG Leucine L
+CCT Proline P
+CCC Proline P
+CCA Proline P
+CCG Proline P
+CAT Histidine H
+CAC Histidine H
+CAA Glutamine Q
+CAG Glutamine Q
+CGT Arginine R
+CGC Arginine R
+CGA Arginine R
+CGG Arginine R
+ATT Isoleucine I
+ATC Isoleucine I
+ATA Isoleucine I
+ATG Methionine M
+ACT Threonine T
+ACC Threonine T
+ACA Threonine T
+ACG Threonine T
+AAT Asparagine N
+AAC Asparagine N
+AAA Lysine K
+AAG Lysine K
+AGT Serine S
+AGC Serine S
+AGA Arginine R
+AGG Arginine R
+GTT Valine V
+GTC Valine V
+GTA Valine V
+GTG Valine V
+GCT Alanine A
+GCC Alanine A
+GCA Alanine A
+GCG Alanine A
+GAT Aspartate D
+GAC Aspartate D
+GAA Glutamate E
+GAG Glutamate E
+GGT Glycine G
+GGC Glycine G
+GGA Glycine G
+GGG Glycine G
+'''
+
+def create_genetic_code():
+    genetic_code = {}
+    first_line = True
+    for line in AA_TABLE.splitlines():
+        if first_line:
+            first_line = False
+            continue
+        line = line.strip()
+        if not line:
+            continue
+        codon, long_name, short_name = line.split()
+        genetic_code [codon] = short_name
+    return genetic_code
+
+def translate(dna_seq):
+    genetic_code = create_genetic_code()
+    aminoacids = []
+    for codon_start in range(0, len(dna_seq), 3):
+        codon = dna_seq[codon_start: codon_start + 3]
+        aminoacid = genetic_code[codon.upper()]
+        aminoacids.append(aminoacid)
+    return ''.join(aminoacids)
+    
+dna_coding_seq = 'atgtggacttga'
+prot_seq = translate(dna_coding_seq)
+print(prot_seq)
+```
+:::
+:::
+
+## Guess the number game
+
+Write a program that chooses a random number between 1 and 10 and asks the user to guess it several times.
+The program should finish once the user guesses correctly or once the number of available attemps has run out.
+
+```{pyodide}
+#| exercise: guess_random_number
+import random
+
+max_num_attemps = 3
+
+max_number = 10
+number_to_guess = random.randint(1, max_number)
+```
+::: { .hint exercise="guess_random_number"}
+::: { .callout-note collapse="false"}
+
+The function [randint](https://docs.python.org/3/library/random.html#random.randint) of the [random](https://docs.python.org/3/library/random.html) module creates random integers.
+
+You can ask input from a user, like his guess, using the [input](https://docs.python.org/3/library/functions.html#input) function.
+Remember that the input function always return a string.
+
+:::
+:::
+::: { .solution exercise="guess_random_number" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+import random
+
+max_num_attemps = 3
+
+max_number = 10
+number_to_guess = random.randint(1, max_number)
+
+guessed_correctly = False
+for idx in range(max_num_attemps):
+    guess = input(f"Attempt {idx + 1}, guess a number between 1 and {max_number}: ")
+    guess = int(guess)
+    if guess == number_to_guess:
+        guessed_correctly = True
+        break
+
+if guessed_correctly:
+    print(f"Congratulations you have guessed correctly it was: {number_to_guess}")
+else:
+    print(f"You have failed, the number was: {number_to_guess}")
+```
+:::
+:::
+
+
 ## Write a Hangman game
 
 ```{pyodide}
@@ -206,3 +540,143 @@ if __name__ == "__main__":
 :::
 
 Now, create functions capable of calculating the percentage of GCs in the sequences and their lengths.
+
+##
+
+## Create a restriction map
+
+Restriction enzymes recognize specific sequences, for instance:
+
+- EcoRI: GATTC (cuts in the position between G and A, G^ATTC)
+- Hind III : AAGCTT (cuts in the position between A and A, AAGCT^T)
+
+
+Given a sequence, create the restriction fragments that these two sequences would create:
+
+```{pyodide}
+#| exercise: restriction_map
+puc18_seq = """GCGCCCAATACGCAAACCGCCTCTCCCCGCGCGTTGGCCGATTCATTAATGCAGCTGGCACGACAGGTTT
+CCCGACTGGAAAGCGGGCAGTGAGCGCAACGCAATTAATGTGAGTTAGCTCACTCATTAGGCACCCCAGG
+CTTTACACTTTATGCTTCCGGCTCGTATGTTGTGTGGAATTGTGAGCGGATAACAATTTCACACAGGAAA
+CAGCTATGACCATGATTACGAATTCGAGCTCGGTACCCGGGGATCCTCTAGAGTCGACCTGCAGGCATGC
+AAGCTTGGCACTGGCCGTCGTTTTACAACGTCGTGACTGGGAAAACCCTGGCGTTACCCAACTTAATCGC
+CTTGCAGCACATCCCCCTTTCGCCAGCTGGCGTAATAGCGAAGAGGCCCGCACCGATCGCCCTTCCCAAC
+AGTTGCGCAGCCTGAATGGCGAATGGCGCCTGATGCGGTATTTTCTCCTTACGCATCTGTGCGGTATTTC
+ACACCGCATATGGTGCACTCTCAGTACAATCTGCTCTGATGCCGCATAGTTAAGCCAGCCCCGACACCCG
+CCAACACCCGCTGACGCGCCCTGACGGGCTTGTCTGCTCCCGGCATCCGCTTACAGACAAGCTGTGACCG
+TCTCCGGGAGCTGCATGTGTCAGAGGTTTTCACCGTCATCACCGAAACGCGCGAGACGAAAGGGCCTCGT
+GATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCACTTTTCGG
+GGAAATGTGCGCGGAACCCCTATTTGTTTATTTTTCTAAATACATTCAAATATGTATCCGCTCATGAGAC
+AATAACCCTGATAAATGCTTCAATAATATTGAAAAAGGAAGAGTATGAGTATTCAACATTTCCGTGTCGC
+CCTTATTCCCTTTTTTGCGGCATTTTGCCTTCCTGTTTTTGCTCACCCAGAAACGCTGGTGAAAGTAAAA
+GATGCTGAAGATCAGTTGGGTGCACGAGTGGGTTACATCGAACTGGATCTCAACAGCGGTAAGATCCTTG
+AGAGTTTTCGCCCCGAAGAACGTTTTCCAATGATGAGCACTTTTAAAGTTCTGCTATGTGGCGCGGTATT
+ATCCCGTATTGACGCCGGGCAAGAGCAACTCGGTCGCCGCATACACTATTCTCAGAATGACTTGGTTGAG
+TACTCACCAGTCACAGAAAAGCATCTTACGGATGGCATGACAGTAAGAGAATTATGCAGTGCTGCCATAA
+CCATGAGTGATAACACTGCGGCCAACTTACTTCTGACAACGATCGGAGGACCGAAGGAGCTAACCGCTTT
+TTTGCACAACATGGGGGATCATGTAACTCGCCTTGATCGTTGGGAACCGGAGCTGAATGAAGCCATACCA
+AACGACGAGCGTGACACCACGATGCCTGTAGCAATGGCAACAACGTTGCGCAAACTATTAACTGGCGAAC
+TACTTACTCTAGCTTCCCGGCAACAATTAATAGACTGGATGGAGGCGGATAAAGTTGCAGGACCACTTCT
+GCGCTCGGCCCTTCCGGCTGGCTGGTTTATTGCTGATAAATCTGGAGCCGGTGAGCGTGGGTCTCGCGGT
+ATCATTGCAGCACTGGGGCCAGATGGTAAGCCCTCCCGTATCGTAGTTATCTACACGACGGGGAGTCAGG
+CAACTATGGATGAACGAAATAGACAGATCGCTGAGATAGGTGCCTCACTGATTAAGCATTGGTAACTGTC
+AGACCAAGTTTACTCATATATACTTTAGATTGATTTAAAACTTCATTTTTAATTTAAAAGGATCTAGGTG
+AAGATCCTTTTTGATAATCTCATGACCAAAATCCCTTAACGTGAGTTTTCGTTCCACTGAGCGTCAGACC
+CCGTAGAAAAGATCAAAGGATCTTCTTGAGATCCTTTTTTTCTGCGCGTAATCTGCTGCTTGCAAACAAA
+AAAACCACCGCTACCAGCGGTGGTTTGTTTGCCGGATCAAGAGCTACCAACTCTTTTTCCGAAGGTAACT
+GGCTTCAGCAGAGCGCAGATACCAAATACTGTCCTTCTAGTGTAGCCGTAGTTAGGCCACCACTTCAAGA
+ACTCTGTAGCACCGCCTACATACCTCGCTCTGCTAATCCTGTTACCAGTGGCTGCTGCCAGTGGCGATAA
+GTCGTGTCTTACCGGGTTGGACTCAAGACGATAGTTACCGGATAAGGCGCAGCGGTCGGGCTGAACGGGG
+GGTTCGTGCACACAGCCCAGCTTGGAGCGAACGACCTACACCGAACTGAGATACCTACAGCGTGAGCTAT
+GAGAAAGCGCCACGCTTCCCGAAGGGAGAAAGGCGGACAGGTATCCGGTAAGCGGCAGGGTCGGAACAGG
+AGAGCGCACGAGGGAGCTTCCAGGGGGAAACGCCTGGTATCTTTATAGTCCTGTCGGGTTTCGCCACCTC
+TGACTTGAGCGTCGATTTTTGTGATGCTCGTCAGGGGGGCGGAGCCTATGGAAAAACGCCAGCAACGCGG
+CCTTTTTACGGTTCCTGGCCTTTTGCTGGCCTTTTGCTCACATGTTCTTTCCTGCGTTATCCCCTGATTC
+TGTGGATAACCGTATTACCGCCTTTGAGTGAGCTGATACCGCTCGCCGCAGCCGAACGACCGAGCGCAGC
+GAGTCAGTGAGCGAGGAAGCGGAAGA"""
+
+ecori = {"sequence": "GATTC", "cut-position": 1}
+hindiii = {"sequence": "AAGCTT", "cut-position": 1}
+enzymes = [ecori, hindiii]
+
+print(cut_dna("GATTCAAGCTT", enzymes))
+# expected fragments ['G', 'ATTCA', 'AGCTT']
+
+puc18_seq = "".join(puc18_seq.splitlines())
+fragments = cut_dna(puc18_seq, enzymes)
+print(fragments)
+```
+::: { .solution exercise="restriction_map" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+puc18_seq = """GCGCCCAATACGCAAACCGCCTCTCCCCGCGCGTTGGCCGATTCATTAATGCAGCTGGCACGACAGGTTT
+CCCGACTGGAAAGCGGGCAGTGAGCGCAACGCAATTAATGTGAGTTAGCTCACTCATTAGGCACCCCAGG
+CTTTACACTTTATGCTTCCGGCTCGTATGTTGTGTGGAATTGTGAGCGGATAACAATTTCACACAGGAAA
+CAGCTATGACCATGATTACGAATTCGAGCTCGGTACCCGGGGATCCTCTAGAGTCGACCTGCAGGCATGC
+AAGCTTGGCACTGGCCGTCGTTTTACAACGTCGTGACTGGGAAAACCCTGGCGTTACCCAACTTAATCGC
+CTTGCAGCACATCCCCCTTTCGCCAGCTGGCGTAATAGCGAAGAGGCCCGCACCGATCGCCCTTCCCAAC
+AGTTGCGCAGCCTGAATGGCGAATGGCGCCTGATGCGGTATTTTCTCCTTACGCATCTGTGCGGTATTTC
+ACACCGCATATGGTGCACTCTCAGTACAATCTGCTCTGATGCCGCATAGTTAAGCCAGCCCCGACACCCG
+CCAACACCCGCTGACGCGCCCTGACGGGCTTGTCTGCTCCCGGCATCCGCTTACAGACAAGCTGTGACCG
+TCTCCGGGAGCTGCATGTGTCAGAGGTTTTCACCGTCATCACCGAAACGCGCGAGACGAAAGGGCCTCGT
+GATACGCCTATTTTTATAGGTTAATGTCATGATAATAATGGTTTCTTAGACGTCAGGTGGCACTTTTCGG
+GGAAATGTGCGCGGAACCCCTATTTGTTTATTTTTCTAAATACATTCAAATATGTATCCGCTCATGAGAC
+AATAACCCTGATAAATGCTTCAATAATATTGAAAAAGGAAGAGTATGAGTATTCAACATTTCCGTGTCGC
+CCTTATTCCCTTTTTTGCGGCATTTTGCCTTCCTGTTTTTGCTCACCCAGAAACGCTGGTGAAAGTAAAA
+GATGCTGAAGATCAGTTGGGTGCACGAGTGGGTTACATCGAACTGGATCTCAACAGCGGTAAGATCCTTG
+AGAGTTTTCGCCCCGAAGAACGTTTTCCAATGATGAGCACTTTTAAAGTTCTGCTATGTGGCGCGGTATT
+ATCCCGTATTGACGCCGGGCAAGAGCAACTCGGTCGCCGCATACACTATTCTCAGAATGACTTGGTTGAG
+TACTCACCAGTCACAGAAAAGCATCTTACGGATGGCATGACAGTAAGAGAATTATGCAGTGCTGCCATAA
+CCATGAGTGATAACACTGCGGCCAACTTACTTCTGACAACGATCGGAGGACCGAAGGAGCTAACCGCTTT
+TTTGCACAACATGGGGGATCATGTAACTCGCCTTGATCGTTGGGAACCGGAGCTGAATGAAGCCATACCA
+AACGACGAGCGTGACACCACGATGCCTGTAGCAATGGCAACAACGTTGCGCAAACTATTAACTGGCGAAC
+TACTTACTCTAGCTTCCCGGCAACAATTAATAGACTGGATGGAGGCGGATAAAGTTGCAGGACCACTTCT
+GCGCTCGGCCCTTCCGGCTGGCTGGTTTATTGCTGATAAATCTGGAGCCGGTGAGCGTGGGTCTCGCGGT
+ATCATTGCAGCACTGGGGCCAGATGGTAAGCCCTCCCGTATCGTAGTTATCTACACGACGGGGAGTCAGG
+CAACTATGGATGAACGAAATAGACAGATCGCTGAGATAGGTGCCTCACTGATTAAGCATTGGTAACTGTC
+AGACCAAGTTTACTCATATATACTTTAGATTGATTTAAAACTTCATTTTTAATTTAAAAGGATCTAGGTG
+AAGATCCTTTTTGATAATCTCATGACCAAAATCCCTTAACGTGAGTTTTCGTTCCACTGAGCGTCAGACC
+CCGTAGAAAAGATCAAAGGATCTTCTTGAGATCCTTTTTTTCTGCGCGTAATCTGCTGCTTGCAAACAAA
+AAAACCACCGCTACCAGCGGTGGTTTGTTTGCCGGATCAAGAGCTACCAACTCTTTTTCCGAAGGTAACT
+GGCTTCAGCAGAGCGCAGATACCAAATACTGTCCTTCTAGTGTAGCCGTAGTTAGGCCACCACTTCAAGA
+ACTCTGTAGCACCGCCTACATACCTCGCTCTGCTAATCCTGTTACCAGTGGCTGCTGCCAGTGGCGATAA
+GTCGTGTCTTACCGGGTTGGACTCAAGACGATAGTTACCGGATAAGGCGCAGCGGTCGGGCTGAACGGGG
+GGTTCGTGCACACAGCCCAGCTTGGAGCGAACGACCTACACCGAACTGAGATACCTACAGCGTGAGCTAT
+GAGAAAGCGCCACGCTTCCCGAAGGGAGAAAGGCGGACAGGTATCCGGTAAGCGGCAGGGTCGGAACAGG
+AGAGCGCACGAGGGAGCTTCCAGGGGGAAACGCCTGGTATCTTTATAGTCCTGTCGGGTTTCGCCACCTC
+TGACTTGAGCGTCGATTTTTGTGATGCTCGTCAGGGGGGCGGAGCCTATGGAAAAACGCCAGCAACGCGG
+CCTTTTTACGGTTCCTGGCCTTTTGCTGGCCTTTTGCTCACATGTTCTTTCCTGCGTTATCCCCTGATTC
+TGTGGATAACCGTATTACCGCCTTTGAGTGAGCTGATACCGCTCGCCGCAGCCGAACGACCGAGCGCAGC
+GAGTCAGTGAGCGAGGAAGCGGAAGA"""
+
+
+def cut_dna(dna_seq, enzymes):
+    cut_positions = set()
+    for enzyme in enzymes:
+        enzyme_pos = dna_seq.find(enzyme["sequence"])
+        if enzyme_pos < 0:
+            continue
+        cut_pos = enzyme_pos + enzyme["cut-position"]
+        cut_positions.add(cut_pos)
+    cut_positions = sorted(cut_positions)
+
+    fragments = []
+    for cut_position in reversed(cut_positions):
+        fragment = dna_seq[cut_position:]
+        dna_seq = dna_seq[:cut_position]
+        fragments.append(fragment)
+    if dna_seq:
+        fragments.append(dna_seq)
+    return list(reversed(fragments))
+
+ecori = {"sequence": "GATTC", "cut-position": 1}
+hindiii = {"sequence": "AAGCTT", "cut-position": 1}
+enzymes = [ecori, hindiii]
+
+print(cut_dna("GATTCAAGCTT", enzymes))
+# expected fragments ['G', 'ATTCA', 'AGCTT']
+puc18_seq = "".join(puc18_seq.splitlines())
+fragments = cut_dna(puc18_seq, enzymes)
+```
+:::
+:::
