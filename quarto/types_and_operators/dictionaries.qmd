@@ -12,13 +12,18 @@ format:
 
 ## Resources
 
-- Read about [dict](https://docs.python.org/3/library/stdtypes.html#typesmapping), and more on [dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) in the official documentation.
 - A Real Python introduction to [dictionaries](https://realpython.com/python-dicts/).
+- Read about [dictionaries](https://docs.python.org/3/library/stdtypes.html#typesmapping), and more on [dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), in the official documentation.
 
 ## Creation
 
 Dictionaries, like lists, are compound types, they can hold several items.
 Lists are [sequences](https://docs.python.org/3/glossary.html#term-sequence), the elements that they hold are stored one after another, and we can access their items by their index, their position in the sequence.
+
+Dictionaries also hold different values, but they are not ordered and, thus, we do not refer to them by their index. They are [mappings](https://docs.python.org/3/glossary.html#term-mapping), they assing a key to every value, and we use those keys to access to the values.
+In other languages these kind of objects are called [hash tables](https://en.wikipedia.org/wiki/Hash_table), hash maps or associative arrays.
+
+An example of a list:
 
 ```{pyodide}
 l = ["John", "Ringo", "Paul", "George"]
@@ -46,8 +51,7 @@ flowchart LR
     3 --> George
 ```
 
-Dictionaries also hold different values, but they are not ordered and, thus, we do not refer to them by their index.
-When we create a dictionary we assign a key to every value and we use those keys to access to the values.
+A dictionary:
 
 ```{mermaid}
 flowchart LR
@@ -76,9 +80,6 @@ We create a dictionary using curly braces (**{}**), and we write the key and the
 In the previous example the keys were: "name", "surname", and "instrument", and the values were: "Ringo", "Starr", and "drums".
 As you have seen in the previous example, we can get the values stored in a dictionary by using square brackes: some_dictionary[key].
 
-A dictionary is a [mapping](https://docs.python.org/3/glossary.html#term-mapping), it maps keys to values.
-In other languages these kind of objects are called [hash tables](https://en.wikipedia.org/wiki/Hash_table), hash maps or associative arrays.
-
 We can ask Python to give us the all keys and values of a dictionary.
 
 ```{pyodide}
@@ -90,7 +91,28 @@ print(list(rectangle.values()))
 
 Be aware that the methods [keys](https://docs.python.org/3/library/stdtypes.html#dict.keys) and [values](https://docs.python.org/3/library/stdtypes.html#dict.values) return [iterators](https://docs.python.org/3/glossary.html#term-iterator), so to print lists we have to pass those iterators to the [list](https://docs.python.org/3/library/functions.html#func-list) function.
 
-We can also iterate through tuples of keys and values.
+Given the following dictionary, find out which is the minimum age of a student.
+```{pyodide}
+#| exercise: ages
+student_ages = {"Paul": 20, "John": 22, "George": 19, "Ringo": 22}
+```
+::: { .hint exercise="ages"}
+::: { .callout-note collapse="false"}
+
+Remember that you can use the [min](https://docs.python.org/3/library/functions.html#min) function to get the minimum value of a list or of an [iterator](https://docs.python.org/3/glossary.html#term-iterator).
+
+:::
+:::
+::: { .solution exercise="ages"}
+::: { .callout-tip collapse="false"}
+```{pyodide}
+student_ages = {"Paul": 20, "John": 22, "George": 19, "Ringo": 22}
+print(min(student_ages.values()))
+```
+:::
+:::
+
+We can also iterate through tuples of keys and values using the [items](https://docs.python.org/3/library/stdtypes.html#dict.items) method.
 
 ```{pyodide}
 rectangle = {"color": "Orange", "width": 10, "height": 5}
@@ -105,9 +127,100 @@ rectangle = {"color": "Orange", "width": 10, "height": 5}
 print(len(rectangle))
 ```
 
+We have two lists, one with values and another one with keys, create a dictionary using them.
+
+```{pyodide}
+#| exercise: key_value_zip
+keys = [1977, 1980, 1983]
+values = ["A New Hope", "The Empire Strikes Back", "Return of the Jedi"]
+```
+::: { .solution exercise="key_value_zip" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+keys = [1977, 1980, 1983]
+values = ["A New Hope", "The Empire Strikes Back", "Return of the Jedi"]
+star_wars_movies = {}
+star_wars_movies[keys[0]] = values[0]
+star_wars_movies[keys[1]] = values[1]
+star_wars_movies[keys[2]] = values[2]
+print(star_wars_movies)
+```
+
+Alternatively this could be done using the [zip](https://docs.python.org/3/library/functions.html#zip) function.
+
+```{pyodide}
+keys = [1977, 1980, 1983]
+values = ["A New Hope", "The Empire Strikes Back", "Return of the Jedi"]
+star_wars_movies = dict(zip(keys, values))
+print(star_wars_movies)
+```
+:::
+:::
+
+Create a dictionary that holds the complementary DNA nucleotides and use it to create a reverse and complementary DNA sequence.
+
+```{pyodide}
+#| exercise: dna_dict
+dna_seq = "ACTG"
+dna_seq_rev_comp = ""
+complementary_nucls = {"A": "T"}
+```
+::: { .solution exercise="dna_dict" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+dna_seq = "ACTG"
+complementary_nucls = {"A": "T", "T": "A", "C": "G", "G": "C"}
+dna_seq_rev_comp = ""
+dna_seq_rev_comp += complementary_nucls[dna_seq[-1]]
+dna_seq_rev_comp += complementary_nucls[dna_seq[-2]]
+dna_seq_rev_comp += complementary_nucls[dna_seq[-3]]
+dna_seq_rev_comp += complementary_nucls[dna_seq[-4]]
+print(dna_seq_rev_comp)
+```
+:::
+:::
+
+## Dicts and lists can hold other compound objets
+
+Print the name and age of these two students.
+
+```{pyodide}
+#| exercise: students_dict
+students = [{"name": "Jane", "age": 21}, {"name": "Paul", "age": 23}]
+```
+::: { .solution exercise="students_dict" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+students = [{"name": "Jane", "age": 21}, {"name": "Paul", "age": 23}]
+print(students[0]["name"])
+print(students[0]["age"])
+student2 = students[1]
+print(student2["name"])
+print(student2["age"])
+```
+:::
+:::
+
+Change the name of the gene2 from BRCA to BRCA2:
+
+```{pyodide}
+#| exercise: oncogenes
+cancer_genes = {"gene1": {"name": "p53", "chromosome": 17}, "gene2": {"name": "BRCA", "chromosome": 12}}
+```
+::: { .solution exercise="oncogenes"}
+::: { .callout-tip collapse="false"}
+```{pyodide}
+cancer_genes = {"gene1": {"name": "p53", "chromosome": 17}, "gene2": {"name": "BRCA", "chromosome": 12}}
+cancer_genes["gene2"]["name"] = "BRCA2"
+print(cancer_genes)
+```
+:::
+:::
+
 ## dicts are mutable
 
 Dictionaries, like lists, are [mutable](https://docs.python.org/3/glossary.html#term-mutable), we can add, modify or remove, items after their creation.
+For instance, we can create an empty dictionary and fill it with values later.
 
 ```{pyodide}
 address = {}
@@ -126,6 +239,7 @@ If we try to store two values under the same key, only one will remain.
 
 ```{pyodide}
 pet = {"name": "Ada", "species": "cat"}
+print(pet)
 pet["name"] = "Toby"
 pet["species"] = "dog"
 print(pet)

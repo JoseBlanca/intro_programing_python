@@ -18,13 +18,11 @@ print("My favorite number is ", favorite_number)
 ::: { .hint exercise="variable_name"}
 ::: { .callout-note collapse="false"}
 
-Remember 
+splitlines
 
 :::
 :::
-
-
-::: { .solution exercise="variable_name" }
+::: { .solution exercise="variable_name"}
 ::: { .callout-tip collapse="false"}
 ```{pyodide}
 name = "Jane"
