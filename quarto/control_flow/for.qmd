@@ -39,29 +39,24 @@ for salutation in salutations:
     print(salutation)
     print("for loop done!")
 ```
-
 ::: { .solution exercise="for_block" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 for salutation in salutations:
     print(salutation)
 print("for loop done!")
 ```
-
 :::
 :::
 
 Internally the for loop works by calling the [next](https://docs.python.org/3/library/functions.html#next) on an [iterator](https://docs.python.org/3/glossary.html#term-iterator) from the given [iterable](https://docs.python.org/3/glossary.html#term-iterable).
-An iterator is an object that supports the generation of one item at a time when given to the next function until it runs out of items.
+An iterator is an object that supports the generation of one item at a time, until it runs out of items, when given to the next function.
 So the previous for would be, more or less, equivalent running the following code.
 
 ```{pyodide}
-
 salutations = iter(["Hello", "hi", "Ciao"])
 
 # This for is equivalent of doing
-salutations = iter(salutations)
 salutation = next(salutations)
 print(salutation)
 salutation = next(salutations)
@@ -70,8 +65,48 @@ salutation = next(salutations)
 print(salutation)
 salutation = next(salutations)
 print(salutation)
+```
+
+
+Python has another way of doing loops, the [while](https://docs.python.org/3/reference/compound_stmts.html#the-while-statement) statement.
+
+## break
+
+At any iteration the loop could be completely stopped, broken, by using the [break](https://docs.python.org/3/reference/simple_stmts.html#break) statement.
+
+```{pyodide}
+for i in [1, 2, 3]:
+    print(i)
+    break # only the first number will be printed
+    print("This line won't be printed")
+print("All done!")
+```
+
+## continue
+
+The continue statement allows us to move to the next iteration without running the rest of the code in the block.
+
+```{pyodide}
+
+for i in [1, 2, 3, 4]:
+    print(i)
+    continue
+    print("This line will never be printed.")
+print("All done!")
 
 ```
+
+```{pyodide}
+
+for i in [1, 2, 3, 4]:
+    if i % 2:
+        continue
+    print("Only the even numbers will be printed: ", i)
+print("All done!")
+
+```
+
+## range
 
 This kind of for loop, the one implemented in the Python, in other languages is known as a [foreach](https://en.wikipedia.org/wiki/Foreach_loop) loop.
 To have the functionallity available in other programming languages, in which the for statement just iterates over some numbers, you could combine a for loop with the [range](https://docs.python.org/3/library/functions.html#func-range) function.
@@ -179,52 +214,11 @@ for i in range(1, 6):
 :::
 :::
 
-Additionally, Python has a [while](https://docs.python.org/3/reference/compound_stmts.html#the-while-statement) statement, another way of doing loops.
-
-## break
-
-During at any moment the loop could be stopped, broken, by using [break](https://docs.python.org/3/reference/simple_stmts.html#break).
-
-```{pyodide}
-
-for i in [1, 2, 3]:
-    print(i)
-    break # only the first number will be printed
-    print("This line won't be printed")
-print("All done!")
-
-```
-
-## continue
-
-The continue statement allows us to move to the next iteration without running the rest of the code in the block.
-
-```{pyodide}
-
-for i in [1, 2, 3, 4]:
-    print(i)
-    continue
-    print("This line will never be printed.")
-print("All done!")
-
-```
-
-```{pyodide}
-
-for i in [1, 2, 3, 4]:
-    if i % 2:
-        continue
-    print("Only the even numbers will be printed: ", i)
-print("All done!")
-
-```
-
 ## enumerate
 
-It is quite common to need both the item and its index. We could do it like:
+It is quite common to require both the item and its index. We could do it like:
 
 ```{pyodide}
-
 i = 0
 for word in ["resistance", "is", "futile"]:
     print(f"This is the word number: {i} - word")
@@ -232,7 +226,7 @@ for word in ["resistance", "is", "futile"]:
 
 ```
 
-However, this is a pattern so common that Python have solved it by using the function [enumerate](https://docs.python.org/3/library/functions.html#enumerate).
+However, this is a pattern so common that Python have solved it using the function [enumerate](https://docs.python.org/3/library/functions.html#enumerate).
 
 ```{pyodide}
 

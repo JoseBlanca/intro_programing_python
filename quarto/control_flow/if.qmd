@@ -10,13 +10,14 @@ format:
 
 ## Resources
 
-- [if](https://docs.python.org/3/tutorial/controlflow.html#if-statements) statement in the official documentation.
 - [Conditional statements](https://realpython.com/python-conditional-statements/) in Real Python.
+- [if](https://docs.python.org/3/tutorial/controlflow.html#if-statements) statement in the official documentation.
+- [Control flow](https://en.wikipedia.org/wiki/Control_flow) in wikipedia.
 
 ## if
 
 [if](https://docs.python.org/3/tutorial/controlflow.html#if-statements) is one of the basic control flow statements.
-It allow us to execute some code only if a given condition is met.
+It allows us to execute some code only if a given condition is met.
 
 ```{pyodide}
 a = 42
@@ -88,7 +89,7 @@ name = "John"
 
 if name == "Jane":
     print("Yes, she is Jane")
-eles:
+else:
     print("No, it wasn't Jane")
 ```
 
@@ -109,9 +110,9 @@ Fix this code:
 number = 453
 
 if number % 3:
-print("The number if not multiple of 3")
+print("The number is not multiple of 3")
 else:
-print("The number if multiple of 3")
+print("The number is multiple of 3")
 ```
 
 ::: { .solution exercise="fix_multiple" }
@@ -121,9 +122,9 @@ print("The number if multiple of 3")
 number = 453
 
 if number % 3:
-    print("The number if not multiple of 3")
+    print("The number is not multiple of 3")
 else:
-    print("The number if multiple of 3")
+    print("The number is multiple of 3")
 ```
 
 :::
@@ -136,10 +137,8 @@ Write some code capable of, given a pair of numbers, finding out which is the hi
 a, b = 3, -4
 ...
 ```
-
 ::: { .solution exercise="highest" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 a, b = 3, -4
 
@@ -149,39 +148,32 @@ else:
     highest = b
 print("The highest number was: ", highest)
 ```
-
 :::
 :::
 
-Why would be wrong this solution for the highest number program and in which case would fail?
+Fix the following code to prevent the error when a = 0.
 
 ```{pyodide}
-#| exercise: highest_wrong
-a, b = 3, -4
+#| exercise: prevent_div_zero
+a = 2
+b = 3
+x = b / a
+print(x)
 
-if a > b:
-    highest = a
-else:
-    highest = b
 ```
-
-::: { .solution exercise="highest_wrong" }
+::: { .solution exercise="prevent_div_zero" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
-# It would fail when both numbers are equal
-a, b = 3, 3
-
-if a > b:
-    highest = a
+a = 2
+b = 3
+if a:
+    x = b / a
 else:
-    highest = b
-print("The highest number was: ", highest)
+    x = None
+print(x)
 ```
-
 :::
 :::
-
 
 ## elif
 
@@ -198,7 +190,7 @@ else:
     print("The number is negative")
 ```
 
-When we have several conditions only the first met will be executed.
+When several conditions are met only the first True one will be executed.
 
 ```{pyodide}
 a = 42
@@ -226,13 +218,12 @@ Write a program that classifies a person into: baby, child, teenager, young, and
 person = ('John', 40)
 
 ```
-
 ::: { .solution exercise="age" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 
 person = ('John', 40)
+age = person[1]
 
 if age < 3:
     age_group = "baby"
@@ -248,7 +239,6 @@ else:
 print(f"{person[0]} is a {age_group}")
 
 ```
-
 :::
 :::
 
@@ -261,12 +251,9 @@ aristogle_quote = "Hope is a waking dream."
 descartes_quote = "I think; therefore I am."
 
 philosopher = "Plato"
-
 ```
-
-::: { .solution exercise="variable_name" }
+::: { .solution exercise="philosopher_quote" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 plato_quote = "Only the dead have seen the end of war."
 aristotle_quote = "Hope is a waking dream."
@@ -283,7 +270,6 @@ elif philosopher.lower() == "descartes":
 else:
     print("Unknown philosopher")
 ```
-
 :::
 :::
 
@@ -316,32 +302,3 @@ if name == "":
 ```
 
 Remember that everything that we talked about booleans and [boolean arithmetic](../types_and_operators/comparisons_and_bool_operators.qmd) is applicable to the if evaluation.
-
-
-Fix the following code to prevent the error when a = 0.
-
-```{pyodide}
-#| exercise: prevent_div_zero
-a = 2
-b = 3
-x = b / a
-print(x)
-
-```
-
-::: { .solution exercise="prevent_div_zero" }
-::: { .callout-tip collapse="false"}
-
-```{pyodide}
-a = 2
-b = 3
-if x:
-    x = b / a
-else:
-    x = None
-print(x)
-
-```
-
-:::
-:::
