@@ -647,6 +647,52 @@ print(help(tuple))
 
 ## More exercises
 
+Split the items separated by commas into a into a list and transform each item in a number.
+
+```{pyodide}
+#| exercise: year_list
+year_line = "2023,1999,2001,1982"
+```
+::: { .solution exercise="year_list"}
+::: { .callout-tip collapse="false"}
+```{pyodide}
+year_line = "2023,1999,2001,1982"
+years_str = year_line.split(",")
+print(years_str)
+years_int = []
+years_int.append(int(years_str[0]))
+years_int.append(int(years_str[1]))
+years_int.append(int(years_str[2]))
+years_int.append(int(years_str[3]))
+print(years_int)
+```
+:::
+:::
+
+We want to store the name, surname and grades of a student into three variables, and we want to calculate the mean grade.
+
+```{pyodide}
+#| exercise: grades
+student = ["Tricia", "McMillan", 8.9, 7.5, 6.7]
+print(name)
+print(surname)
+print(mean_grade)
+```
+::: { .solution exercise="grades"}
+::: { .callout-tip collapse="false"}
+```{pyodide}
+student = ["Tricia", "McMillan", 8.9, 7.5, 6.7]
+name = student[0]
+surname = student[1]
+grades = student[2:]
+mean_grade = sum(grades) / len(grades)
+print(name)
+print(surname)
+print(mean_grade)
+```
+:::
+:::
+
 Carry out the following manipulations.
 
 ```{pyodide}
