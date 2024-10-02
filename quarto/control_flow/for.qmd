@@ -16,7 +16,7 @@ format:
 ## for
 
 for allows us to execute a [block](block.qmd) of code for each item.
-The variable defined after the for keyword will take the value of each item, one at a time, one for each iteration.
+The variable defined after the for keyword will take the value of each item, one at a time, one for each [iteration](https://en.wikipedia.org/wiki/Iteration#Computing).
 
 ```{pyodide}
 salutations = ["Hello", "hi", "Ciao"]
@@ -50,8 +50,8 @@ print("for loop done!")
 :::
 
 Internally the for loop works by calling the [next](https://docs.python.org/3/library/functions.html#next) on an [iterator](https://docs.python.org/3/glossary.html#term-iterator) from the given [iterable](https://docs.python.org/3/glossary.html#term-iterable).
-An iterator is an object that supports the generation of one item at a time, until it runs out of items, when given to the next function.
-So the previous for would be, more or less, equivalent running the following code.
+An iterator is an object that, when given to the [next](https://docs.python.org/3/library/functions.html#next) function, supports the generation of one item at a time, until it runs out of items.
+So the previous for loop would be, more or less, equivalent running the following code.
 
 ```{pyodide}
 salutations = iter(["Hello", "hi", "Ciao"])
@@ -108,7 +108,7 @@ print("All done!")
 
 ## range
 
-This kind of for loop, the one implemented in the Python, in other languages is known as a [foreach](https://en.wikipedia.org/wiki/Foreach_loop) loop.
+This kind of for loop, the one implemented in Python, in other languages is known as a [foreach](https://en.wikipedia.org/wiki/Foreach_loop) loop.
 To have the functionallity available in other programming languages, in which the for statement just iterates over some numbers, you could combine a for loop with the [range](https://docs.python.org/3/library/functions.html#func-range) function.
 
 Write a for loop that prints the first 10 natural numbers.
@@ -226,10 +226,9 @@ for word in ["resistance", "is", "futile"]:
 
 ```
 
-However, this is a pattern so common that Python have solved it using the function [enumerate](https://docs.python.org/3/library/functions.html#enumerate).
+However, this pattern is so common that Python have solved it using the function [enumerate](https://docs.python.org/3/library/functions.html#enumerate).
 
 ```{pyodide}
-
 for i, word in enumerate(["Live", "long", "and", "prosper"]):
     print(f"This is the word number: {i} - word")
 
@@ -238,11 +237,9 @@ for i, word in enumerate(["Live", "long", "and", "prosper"]):
 Enumerate works by creating an iterator of tuples with two elements: the index, and the original item.
 
 ```{pyodide}
-
 words = ["Beam", "me", "up", "Scotty"]
 enumerate_tuples = list(enumerate(words))
 print(enumerate_tuples)
-
 ```
 
 And since Python supports mutiple assigment what we are doing in the for loop is equivalente to:

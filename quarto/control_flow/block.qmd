@@ -1,15 +1,25 @@
-# Block
+---
+title: Block
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
 
 A block of code is a set of statements, functions or instructions that are grouped together.
 In most programming languages the [blocks of code](https://en.wikipedia.org/wiki/Block_(programming)) are created by using curly braces (**{}**). For instance, in C the statements executed when a test condition is met would be written as:
 
 ```
 if (testCondition) {
-   // statements
+   statement1;
+   statement2;
+   statement3;
 }
 ```
 
-In Python a block of code is created by using indentation.
+In Python a block of code is created by using [indentation](https://en.wikipedia.org/wiki/Indentation_(typesetting)).
 
 ```{pyodide}
 a = 42

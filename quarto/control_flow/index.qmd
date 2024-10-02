@@ -1,4 +1,12 @@
-# Control flow
+---
+title: Control flow
+format:
+  live-html:
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
 
 The flow of the code is the order in which the statements, functions or instructions are executed.
 By default the code is executed line by line:

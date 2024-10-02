@@ -43,11 +43,12 @@ print("Did we have enough?")
 Every line included in the [block](block.qmd) will be executed, not just the first one.
 
 ```{pyodide}
-name = "Jane"
+name = "Trinity"
 
-if name == "Jane":
-    print("Yes, she is Jane")
+if name == "Trinity":
+    print("Yes, she is Trinity")
     print("and she is great")
+print("Done")
 ```
 
 Fix the following code to print "Done!" even when the condition is not met.
@@ -59,18 +60,13 @@ if money < 1000000:
     print("You are not rich")
     print("Done!")
 ```
-
 ::: { .hint exercise="fix_if_block"}
 ::: { .callout-note collapse="false"}
-
 Remember that a block ends when the indentation returns to the previous level.
-
 :::
 :::
-
 ::: { .solution exercise="fix_if_block"}
 ::: { .callout-note collapse="false"}
-
 ```{pyodide}
 money = 10
 if money < 1000000:
@@ -80,9 +76,27 @@ print("Done!")
 :::
 :::
 
+Fix the following code.
+
+```{pyodide}
+#| exercise: fix_equal
+group = "Monty Python"
+if group = "Monty Python":
+    print("Python was named in their honor")
+```
+::: { .solution exercise="fix_equal"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+group = "Monty Python"
+if group == "Monty Python":
+    print("Python was named in their honor")
+```
+:::
+:::
+
 ## else
 
-It is common that we want to execute some code if the condition is met, and some other code when the condition was not met, for that we use else.
+It is common that we want to execute some code when the condition is met, and some other code when the condition is not met, for that we use else.
 
 ```{pyodide}
 name = "John"
@@ -100,7 +114,7 @@ a = -1
 if a > 0:
     print("The number is positive")
 else:
-    print("The number was not positive")
+    print("The number is not positive")
 ```
 
 Fix this code:
@@ -109,24 +123,21 @@ Fix this code:
 #| exercise: fix_multiple
 number = 453
 
-if number % 3:
-print("The number is not multiple of 3")
+if number % 2:
+print("The number is multiple of 2")
 else:
-print("The number is multiple of 3")
+print("The number is not multiple of 2")
 ```
-
 ::: { .solution exercise="fix_multiple" }
 ::: { .callout-tip collapse="false"}
-
 ```{pyodide}
 number = 453
 
-if number % 3:
-    print("The number is not multiple of 3")
+if number % 2:
+    print("The number is not multiple of 2")
 else:
-    print("The number is multiple of 3")
+    print("The number is multiple of 2")
 ```
-
 :::
 :::
 
@@ -155,7 +166,7 @@ Fix the following code to prevent the error when a = 0.
 
 ```{pyodide}
 #| exercise: prevent_div_zero
-a = 2
+a = 0
 b = 3
 x = b / a
 print(x)
@@ -164,7 +175,7 @@ print(x)
 ::: { .solution exercise="prevent_div_zero" }
 ::: { .callout-tip collapse="false"}
 ```{pyodide}
-a = 2
+a = 0
 b = 3
 if a:
     x = b / a
@@ -208,7 +219,7 @@ else:
     print("The number is negative")
 ```
 
-As a more powerful alternative to elif Python has a [match](https://docs.python.org/dev/tutorial/controlflow.html#match-statements) statement.
+In Python, a more powerful alternative to elif is the [match](https://docs.python.org/dev/tutorial/controlflow.html#match-statements) statement.
 
 Write a program that classifies a person into: baby, child, teenager, young, and old
 
