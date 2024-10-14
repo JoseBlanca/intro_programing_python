@@ -255,7 +255,6 @@ numbers = [1, 5, 10, 11, 4, 16, 4]
 small_numbers = list(filter(lambda number: number <= 10, numbers))
 print(small_numbers)
 ```
-
 :::
 :::
 

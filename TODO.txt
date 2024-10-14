@@ -1,0 +1,1 @@
+list comprenhensions en el tema del for

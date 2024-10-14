@@ -1,0 +1,561 @@
+---
+title: More on return and function arguments
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- [More on defining](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) functions in the official documentation.
+- [Optional arguments](https://realpython.com/python-optional-arguments/) and [args and kwargs](https://realpython.com/python-kwargs-and-args/) in Real Python.
+
+## Return several variables
+
+Functions can return multiple results, we just need to separate them with commas.
+Complete the following code.
+
+```{pyodide}
+#| exercise: two_returns
+def return_mutiple_values():
+    # we do some calculations
+    first_result = "Ford"
+    second_result = "Prefect"
+    return first_result, second_result
+
+print(name, surname)
+```
+::: { .solution exercise="two_returns"}
+::: { .callout-tip collapse="false"}
+```{pyodide}
+def return_mutiple_values():
+    # we do some calculations
+    first_result = "Ford"
+    second_result = "Prefect"
+    return first_result, second_result
+
+name, surname = return_mutiple_values()
+print(name, surname)
+```
+:::
+:::
+
+Think about how is it possible that all the different options in the following code work.
+What is going on?
+
+```{pyodide}
+#| exercise: return_tuples
+def funct1():
+    a = 1
+    b = 2
+    return a, b
+
+def funct2():
+    c = (3, 4)
+    return c
+
+x, y = funct1()
+print(x, y)
+z = funct1()
+print(z[0], z[1])
+m, n = z
+print(m, n)
+
+x2, y2 = funct2()
+print(x2, y2)
+z2 = funct2()
+print(z2[0], z2[1])
+m2, n2 = z2
+print(m2, n2)
+```
+::: { .solution exercise="return_tuples" }
+::: { .callout-tip collapse="false"}
+Under the hood both functions are returning the same, a [tuple](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences), an imutable list.
+
+```{pyodide}
+# remember that to create a tuple the use of parenthesis is optional in Python
+
+a_tuple = 1, 2
+another_tuple = (1, 2)
+```
+
+So in the first function "return a, b" is first creating the tuple (a, b), and then returning it.
+
+When we call a function that returns a tuple we can assing the tuple to a variable, like in:
+
+```{pyodide}
+z = funct()
+```
+
+But we can also use the mutiple assignment that we studied for lists and tuples.
+```{pyodide}
+a_tuple = 1, 2
+a, b = a_tuple
+print(a, b)
+```
+:::
+:::
+
+Write a function that given a list of numbers it calculates and returns the maximum and the minimum.
+
+```{pyodide}
+#| exercise: min_max
+def calc_max_min(numbers):
+    ...
+
+some_numbers = [5, 6, 7, 3, 2]
+minimum, maximum = calc_max_min(numbers)
+print("Minimum:", minimum)
+print("Maximum:", maximum)
+``` 
+::: { .hint exercise="min_max" }
+::: { .callout-tip collapse="false"}
+You could iterate through the numbers using a for loop.
+In each iteration you could check **if** the number is lower than the current minimum or is larger than the current maximum.
+In the first iteration the current minimum and maximum could be None.
+:::
+:::
+::: { .solution exercise="min_max" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+def calc_max_min(numbers):
+    min_ = None
+    max_ = None
+    for number in numbers:
+        if min_ is None or number < min_:
+            min_ = number
+        if max_ is None or number > max_:
+            max_ = number
+    return min_, max_
+
+some_numbers = [5, 6, 7, 3, 2]
+minimum, maximum = calc_max_min(some_numbers)
+print("Minimum:", minimum)
+print("Maximum:", maximum)
+```
+
+Alternatively you could do it with the [min](https://docs.python.org/3/library/functions.html#min) and [max](https://docs.python.org/3/library/functions.html#max) functions.
+
+```{pyodide}
+def calc_max_min(numbers):
+    return min(numbers), max(numbers)
+
+some_numbers = [5, 6, 7, 3, 2]
+minimum, maximum = calc_max_min(some_numbers)
+print("Minimum:", minimum)
+print("Maximum:", maximum)
+```
+:::
+:::
+
+In fact Python functions can only return just one thing, an object, one object.
+Every Python function always returns just one object.
+
+```{pyodide}
+
+def funct1():
+    print("I do not return?")
+
+def funct2():
+    return "Hi"
+
+def funct3():
+    return 1, 2, 3
+
+a = funct1()
+# None, so one object
+print("Funct 1 returns: ", a)
+
+b = funct2()
+# The string "Hi", so one object
+print("Funct 2 returns: ", b)
+
+c = funct3()
+# The tuple (1, 2, 3)", so one object
+print("Funct 3 returns: ", c)
+```
+
+## Keyword arguments
+
+So far we have seen that functions can be called by passing arguments to them.
+
+```{pyodide}
+
+def print_many_greetings(greeting, number_of_times):
+    for i in range(number_of_times):
+        print(greeting)
+
+print_many_greetings("Hello!", 3)
+
+```
+
+However, you will see another syntax in Python code: [keyword arguments](https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments).
+
+```{pyodide}
+
+def print_many_greetings(greeting, number_of_times):
+    for i in range(number_of_times):
+        print(greeting)
+
+# function call using keyword arguments
+print_many_greetings(greeting="Hello!", number_of_times=2)
+# function call passing ordered arguments 
+print_many_greetings("Bye!", 3)
+
+```
+
+When we use keyword arguments the order in which the arguments is passed is irrelevant.
+
+```{pyodide}
+
+def print_many_greetings(greeting, number_of_times):
+    for i in range(number_of_times):
+        print(greeting)
+
+print_many_greetings(greeting="Hello!", number_of_times=2)
+print_many_greetings(number_of_times= 3, greeting="Bye!")
+
+```
+
+You can even mix arguments passed by its order with arguments passed using keywords.
+
+```{pyodide}
+
+def print_many_greetings(greeting, number_of_times):
+    for i in range(number_of_times):
+        print(greeting)
+
+print_many_greetings("Hello!", number_of_times=2)
+```
+
+There is only one thing that is not allowed, to pass an argument with no keyword after an argument passed using a keyword.
+
+```{pyodide}
+
+def print_many_greetings(greeting, number_of_times):
+    for i in range(number_of_times):
+        print(greeting)
+
+# This call is wrong and it will generate an exception (an error)
+print_many_greetings(greeting="Hello!", 2)
+```
+
+## Default arguments
+
+In function calls it is very common to give, in the function definition, default values to some arguments.
+These parameters can then be omitted in the function call unless we want to change their values.
+
+```{pyodide}
+def print_many_greetings(greeting, number_of_times=1):
+    for i in range(number_of_times):
+        print(greeting)
+
+# The greeting will be printed once
+print_many_greetings(greeting="Hello!")
+
+# The greeting will be printed twice
+print_many_greetings(greeting="Hello!", number_of_times=2)
+```
+
+## References to mutable objects
+
+In Python variables are references to objects.
+Try to guess what will be the result of running the following code:
+
+```{pyodide}
+a = "hello"
+b = a
+b = a.upper()
+print(a)
+print(b)
+```
+
+Give x a value in order the get the result to be 10.
+Should x be 4 or 6?
+
+```{pyodide}
+#| exercise: get_ten
+
+a = 6
+x = 
+c = a
+c = 5
+result = a + b
+print(result)
+print(result == 10)
+```
+
+::: { .solution exercise="get_ten" }
+::: { .callout-tip collapse="false"}
+
+```{pyodide}
+a = 6
+x = 4
+c = a
+c = 5
+result = a + x
+print(result)
+print(result == 10)
+```
+
+:::
+:::
+
+
+With lists the behaviour seems different.
+
+```{pyodide}
+
+a = ["hello", "Dirk"]
+b = a
+b[0] = b[0].upper()
+print(a)
+print(b)
+```
+
+Why do we get these different results?
+
+Let's think about what is going on.
+
+```{python}
+a = "hello"
+```
+
+```{mermaid}
+flowchart TB
+    subgraph variables
+    a
+    b:::invisible
+    end
+    Memory:::memory
+    subgraph Memory
+    hello1["'hello'"]
+    hello2["'HELLO'"]:::invisible
+    end
+    a --> hello1
+    classDef invisible opacity:0%
+    classDef memory fill:#ccc
+```
+```{python}
+# a.upper() creates a new string, it does not modify
+# the original string that remains intact in memory
+# and now b refers to the new string "HELLO"
+b = a.upper()
+```
+
+```{mermaid}
+flowchart TB
+    subgraph variables
+    a
+    b
+    end
+    Memory:::memory
+    subgraph Memory
+    hello1["'hello'"]
+    hello2["'HELLO'"]:::invisible
+    end
+    a --> hello1
+    b --> hello1
+    classDef invisible opacity:0%
+    classDef memory fill:#ccc
+```
+
+```{python}
+b = a
+```
+
+```{mermaid}
+flowchart TB
+    subgraph variables
+    a
+    b
+    end
+    Memory:::memory
+    subgraph Memory
+    hello1["'hello'"]
+    hello2["'HELLO'"]
+    end
+    a --> hello1
+    b --> hello2
+    classDef invisible opacity:0%
+    classDef memory fill:#ccc
+```
+
+With mutable objects, like lists, the result will be different.
+
+```{python}
+a = ["hello", "Jane"]
+```
+
+```{mermaid}
+flowchart TB
+    subgraph variables
+    a
+    b:::invisible
+    end
+    Memory:::memory
+    subgraph Memory
+    hello1["['hello', 'Jane']"]
+    end
+    a --> hello1
+    classDef invisible opacity:0%
+    classDef memory fill:#ccc
+```
+
+```{python}
+b = a
+```
+
+```{mermaid}
+flowchart TB
+    subgraph variables
+    a
+    b
+    end
+    Memory:::memory
+    subgraph Memory
+    hello1["['hello', 'Jane']"]
+    end
+    a --> hello1
+    b --> hello1
+    classDef invisible opacity:0%
+    classDef memory fill:#ccc
+```
+
+```{python}
+# We are modifying the original list
+b[0] = b[0].upper()
+
+# b[0] refers to the string "hello"
+# b[0].upper() creates a new string in memory "HELLO"
+# so b[0] = b[0].upper() is equivalent to
+b[0] = "HELLO"
+# We are asking to the list refered by b, the same list that a refers to,
+# to change its first member from "hello" to "HELLO"
+# So we get a modified list ["HELLO"] and both a and b refer still to this list
+# that is in fact the same original list, that is has changed its first member
+```
+
+```{mermaid}
+flowchart TB
+    subgraph variables
+    a
+    b
+    end
+    Memory:::memory
+    subgraph Memory
+    hello1["['HELLO', 'Jane']"]
+    end
+    a --> hello1
+    b --> hello1
+    classDef invisible opacity:0%
+    classDef memory fill:#ccc
+```
+
+This is an aspect that varies from language to language.
+If you study a different programming language you will need to understand if the variables are ment to be values, [pointers](https://en.wikipedia.org/wiki/Pointer_(computer_programming)) or references.
+In Python they are always references. You can read a Real Python tutorial about Python [references](https://realpython.com/python-pass-by-reference/).
+
+In Python every variable is a reference, and arguments to functions are thus passed by reference.
+When we pass a text string or a list to a function Python creates new references to these objects.
+We have to be careful because if you pass a mutable object to a function the function might changed it.
+
+```{pyodide}
+def sum_squares(numbers):
+    for i in range(len(numbers)):
+        numbers[i] = numbers[i]**2
+    return sum(numbers)
+
+my_numbers = [1, 2, 3]
+print(my_numbers)
+square_sum = sum_squares(my_numbers)
+print(f"{square_sum=}")
+# my_numbers have been changed, not cool
+print(my_numbers)
+```
+
+Changing inside the function a mutable object that have been passed to it without warning the function user is a common source of bugs and problems. This is not a good practice, try to avoid it!
+The previous code could be written to avoid this problem.
+
+```{pyodide}
+def sum_squares(numbers):
+    # first we copy the list to avoid changing the original numbers
+    numbers = numbers[:]
+    for i in range(len(numbers)):
+        numbers[i] = numbers[i]**2
+    return sum(numbers)
+
+my_numbers = [1, 2, 3]
+print(my_numbers)
+square_sum = sum_squares(my_numbers)
+print(f"{square_sum=}")
+# now my_numbers have not been changed, not cool
+print(my_numbers)
+```
+
+### Default mutable arguments
+
+When you create your own functions with default parameters you have to be careful because there is a [gotcha](https://en.wikipedia.org/wiki/Gotcha_(programming)).
+Remember that there are inmutable objects, like str, int or float, and mutable objects, like lists.
+A list is mutable because we can change its items after we have created it, but a text string is inmutable because once we have created we can not modify it (although be could derive other strings for it).
+
+```{pyodide}
+# a string is inmutable
+
+s = "HELLO"
+t = s.lower()
+print(s)
+print(t)
+
+# a list is mutable
+
+l1 = [0, 1, 2]
+l2 = l1
+l2.append(3)
+print(l1)
+print(l2)
+```
+
+If you use a mutable object as a default parameter in a function definition, you will get into trouble.
+
+```{pyodide}
+def create_party_guest_list(guests=[]):
+    return guests
+
+party1_guests = create_party_guest_list()
+party1_guests.extend(["Tricia", "Zaphod", "Arthur"])
+print(party1_guests)
+
+party2_guests = create_party_guest_list()
+party2_guests.extend(["Luke", "Leia"])
+party2_guests.append("Han")
+print(party2_guests)
+```
+
+The problem is that the default values for the arguments are created when the function is defined, so just once.
+Thus, in this example there is only one default empty list for all function calls to the create_guest_list function. Every time that we get the default list we are getting the same empty list.
+This would not be a problem if the object wasn't mutable, but it is a huge problem with mutable objects.
+So the pattern that Python programmers use to avoid this problem is the following: setting the default value to None and creating the list, if needed, inside the function.
+In this way one different default empty list is created for each function call, not like before that only one was created when the function was defined.
+
+```{pyodide}
+
+def create_party_guest_list(guests=None):
+    if guests is None:
+        guests = []
+    return guests
+
+party1_guests = create_party_guest_list()
+party1_guests.extend(["Tricia", "Zaphod", "Arthur"])
+print(party1_guests)
+
+party2_guests = create_party_guest_list()
+party2_guests.extend(["Luke", "Leia"])
+party2_guests.append("Han")
+print(party2_guests)
+```

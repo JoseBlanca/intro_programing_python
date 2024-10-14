@@ -51,8 +51,8 @@ website:
         contents:
           - text: "Definition"
             href: functions/definition.qmd
-          - text: "Arguments"
-            href: functions/arguments.qmd
+          - text: "More on functions"
+            href: functions/more_on_functions.qmd
       - section: "Install and run Python"
         contents:
           - text: "Install"
