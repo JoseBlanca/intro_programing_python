@@ -180,6 +180,47 @@ We get a "'name' is not defined error" because the variable name was created ins
 A variable can only be used when is in the current scope.
 It is said that the function has a local scope in which its variables are available.
 
+Schema with the scope of a function call:
+
+```{pyodide}
+def calc_area(width, height):
+    area = width * height
+    return area
+
+result = calc_area(2, 3)
+```
+
+```{mermaid}
+flowchart LR
+    subgraph def["def calc_area(width, height):"]
+        subgraph func_scope["Function scope"]
+            subgraph return
+               ret["return area"]
+            end
+            subgraph in["function variables"]
+               var["area = width * height"]
+            end
+            subgraph arguments
+               width
+               height
+            end
+        end
+    end
+    subgraph result["result = calc_area(2, 3)"]
+        subgraph caller["Caller scope"]
+            subgraph result_[" "]
+               result__["result ="]
+            end
+            subgraph funccall["Function call"]
+               call1["calc_area(2, 3)"]
+            end
+        end
+    end
+    return ---> result__
+    call1 ---> arguments
+```
+
+
 ### Global scope
 
 Be careful because Python also has a global scope, and if you create the variable outside the function it will be available inside. We can use the variables defined in the global scope inside any function.

@@ -367,6 +367,69 @@ print(prot_seq)
 :::
 :::
 
+## Gene expression
+
+We have done a study in which several patients have been given or not given (the placebo group) a drug.
+We have measured the expression of three genes and now we want to know which is the mean expression for each gene for the treated and placebo groups.
+We have also recorded the patient sex and we want the mean expression of each gene for males and females and the combined effect of sex and treament, so male-treated, male-placebo, female-treated, and female-placebo.
+
+```{pyodide}
+#| exercise: grouped_gene_expression
+patient_data = {'patient1': {'placebo': 'yes', 'sex': 'M', 'gene1': 7.31, 'gene2': 12.15, 'gene3': 13.29}, 'patient2': {'placebo': 'yes', 'sex': 'M', 'gene1': 2.08, 'gene2': 19.26, 'gene3': 17.61}, 'patient3': {'placebo': 'yes', 'sex': 'M', 'gene1': 1.77, 'gene2': 12.34, 'gene3': 7.82}, 'patient4': {'placebo': 'no', 'sex': 'M', 'gene1': 14.2, 'gene2': 19.28, 'gene3': 11.41}, 'patient5': {'placebo': 'no', 'sex': 'M', 'gene1': 9.05, 'gene2': 15.12, 'gene3': 8.96}, 'patient6': {'placebo': 'yes', 'sex': 'M', 'gene1': 14.73, 'gene2': 14.64, 'gene3': 16.88}, 'patient7': {'placebo': 'no', 'sex': 'M', 'gene1': 8.0, 'gene2': 4.57, 'gene3': 8.82}, 'patient8': {'placebo': 'yes', 'sex': 'M', 'gene1': 16.46, 'gene2': 18.43, 'gene3': 8.69}, 'patient9': {'placebo': 'yes', 'sex': 'M', 'gene1': 9.07, 'gene2': 8.32, 'gene3': 6.8}, 'patient10': {'placebo': 'yes', 'sex': 'M', 'gene1': 1.59, 'gene2': 17.97, 'gene3': 10.85}, 'patient11': {'placebo': 'no', 'sex': 'M', 'gene1': 18.94, 'gene2': 12.81, 'gene3': 5.07}, 'patient12': {'placebo': 'yes', 'sex': 'F', 'gene1': 13.17, 'gene2': 15.11, 'gene3': 10.6}, 'patient13': {'placebo': 'no', 'sex': 'M', 'gene1': 18.91, 'gene2': 16.28, 'gene3': 9.74}, 'patient14': {'placebo': 'no', 'sex': 'M', 'gene1': 3.92, 'gene2': 12.25, 'gene3': 7.17}, 'patient15': {'placebo': 'yes', 'sex': 'M', 'gene1': 14.27, 'gene2': 9.18, 'gene3': 5.43}, 'patient16': {'placebo': 'yes', 'sex': 'M', 'gene1': 9.8, 'gene2': 8.58, 'gene3': 7.6}, 'patient17': {'placebo': 'yes', 'sex': 'F', 'gene1': 17.16, 'gene2': 2.61, 'gene3': 12.57}, 'patient18': {'placebo': 'no', 'sex': 'M', 'gene1': 10.5, 'gene2': 7.63, 'gene3': 9.88}, 'patient19': {'placebo': 'yes', 'sex': 'M', 'gene1': 4.98, 'gene2': 17.15, 'gene3': 18.29}, 'patient20': {'placebo': 'yes', 'sex': 'F', 'gene1': 4.51, 'gene2': 8.79, 'gene3': 10.68}, 'patient21': {'placebo': 'yes', 'sex': 'F', 'gene1': 8.16, 'gene2': 11.03, 'gene3': 6.67}, 'patient22': {'placebo': 'no', 'sex': 'M', 'gene1': 4.81, 'gene2': 15.38, 'gene3': 19.0}, 'patient23': {'placebo': 'no', 'sex': 'F', 'gene1': 9.06, 'gene2': 10.09, 'gene3': 10.23}, 'patient24': {'placebo': 'no', 'sex': 'F', 'gene1': 15.12, 'gene2': 16.36, 'gene3': 8.39}, 'patient25': {'placebo': 'no', 'sex': 'F', 'gene1': 2.61, 'gene2': 16.31, 'gene3': 15.65}, 'patient26': {'placebo': 'yes', 'sex': 'M', 'gene1': 13.9, 'gene2': 9.6, 'gene3': 4.46}, 'patient27': {'placebo': 'no', 'sex': 'M', 'gene1': 15.63, 'gene2': 3.93, 'gene3': 19.77}, 'patient28': {'placebo': 'no', 'sex': 'M', 'gene1': 15.45, 'gene2': 6.27, 'gene3': 4.81}, 'patient29': {'placebo': 'no', 'sex': 'M', 'gene1': 6.68, 'gene2': 16.39, 'gene3': 16.65}, 'patient30': {'placebo': 'yes', 'sex': 'M', 'gene1': 17.39, 'gene2': 5.87, 'gene3': 10.63}, 'patient31': {'placebo': 'no', 'sex': 'F', 'gene1': 5.72, 'gene2': 1.13, 'gene3': 15.77}, 'patient32': {'placebo': 'no', 'sex': 'M', 'gene1': 14.72, 'gene2': 11.7, 'gene3': 17.29}, 'patient33': {'placebo': 'no', 'sex': 'M', 'gene1': 15.42, 'gene2': 10.81, 'gene3': 17.73}, 'patient34': {'placebo': 'no', 'sex': 'F', 'gene1': 9.01, 'gene2': 7.65, 'gene3': 10.27}, 'patient35': {'placebo': 'yes', 'sex': 'M', 'gene1': 19.64, 'gene2': 3.51, 'gene3': 16.52}}
+GENES = ("gene1", "gene2", "gene3")
+
+def filter_patient_data(patient_data, desired_placebo=None, desired_sex=None):
+    filtered_patients = []
+    for patient in patient_data.values():
+        patient_sex = patient['sex']
+        if desired_sex is not None and patient_sex != desired_sex:
+            continue
+      
+        patient_placebo = patient['placebo']
+        if patient_placebo == 'yes':
+            patient_placebo = True
+        else:
+            patient_placebo = False
+        if desired_placebo is not None and patient_placebo != desired_placebo:
+            continue
+
+        filtered_patients.append(patient)
+    return filtered_patients
+
+
+def gather_expression_by_gene(patient_list):
+    gene_expressions = {}
+    for gene in GENES:
+        gene_expressions[gene] = []
+
+    for patient in patient_list:
+        for gene in GENES:
+            gene_expressions[gene].append(patient[gene])
+    return gene_expressions
+
+
+def calc_mean_expressions(expressions_per_gene):
+    mean_expressions = {}
+    for gene, values in expressions_per_gene.items():
+        mean_expressions[gene] = sum(values) / len(values)
+    return mean_expressions
+
+def calc_mean_expressions_for_patients(patient_data, desired_placebo=None, desired_sex=None):
+    filtered_patients = filter_patient_data(patient_data,
+                                            desired_placebo=desired_placebo,
+                                            desired_sex=desired_sex)
+    expressions_per_gene = gather_expression_by_gene(filtered_patients)
+    mean_expressions = calc_mean_expressions(expressions_per_gene)
+    return mean_expressions
+
+
+for sex in ("M", "F"):
+    mean_expressions = calc_mean_expressions_for_patients(patient_data, desired_placebo=None, desired_sex=sex)
+    print(f"sex {sex}")
+    print(mean_expressions)
+
+```
+
 ## Guess the number game
 
 Write a program that chooses a random number between 1 and 10 and asks the user to guess it several times.
