@@ -53,6 +53,10 @@ website:
             href: functions/definition.qmd
           - text: "More on functions"
             href: functions/more_on_functions.qmd
+      - section: "Exercises"
+        contents:
+          - text: "Exercises 2"
+            href: exercises/set2.qmd
       - section: "Install and run Python"
         contents:
           - text: "Install"
@@ -75,10 +79,10 @@ website:
         contents:
           - text: "Exceptions"
             href: exceptions.qmd
-      - section: "Exercises 2"
+      - section: "Exercises 3"
         contents:
           - text: "Exercises"
-            href: exercises/set2.qmd
+            href: exercises/set3.qmd
     tools:
       - icon: github
         menu:
