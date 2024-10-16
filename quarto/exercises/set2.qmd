@@ -163,6 +163,52 @@ print(x2)
 :::
 :::
 
+## Calculate the allelic and genotypic frequencies
+
+For a gene with two alleles an individual could have the genotypes AA, Aa or aa.
+Calculate the frequencies of these genotypes in the population.
+Calculate also the allelic frequencies: the number of A and a.
+
+```{pyodide}
+#| exercise: pop_gen
+def calc_freqs(pop):
+    ...
+
+pop1=["AA","aa","AA","AA","Aa","AA","AA","aa","Aa","AA","aa","aa","Aa","aa","AA","aa",
+      "Aa","AA","aa","AA","AA","Aa","aa","Aa","AA","AA","Aa","aa","AA","aa"]
+freqs = calc_freqs(pop1)
+print(freqs)
+```
+::: { .solution exercise="pop_gen" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+def calc_freqs(genotypes):
+    geno_counts = {"AA": 0, "Aa": 0, "aa": 0}
+    for genotype in genotypes:
+        geno_counts[genotype] += 1
+
+    allelic_counts = {}
+    allelic_counts["A"] = geno_counts["AA"] + 0.5 * geno_counts["Aa"]
+    allelic_counts["a"] = geno_counts["aa"] + 0.5 * geno_counts["Aa"]
+
+    tot_counts = len(genotypes)
+    geno_freqs = {}
+    for genotype, count in geno_counts.items():
+        geno_freqs[genotype] = geno_counts[genotype] / tot_counts
+
+    tot_counts = sum(allelic_counts.values())
+    allelic_freqs = {}
+    for allele, counts in allelic_counts.items():
+        allelic_freqs[allele] = counts / tot_counts
+    return {'allelic_freqs': allelic_freqs, "genotypic_freqs": geno_freqs}
+
+pop1=["AA","aa","AA","AA","Aa","AA","AA","aa","Aa","AA","aa","aa","Aa","aa","AA","aa",
+      "Aa","AA","aa","AA","AA","Aa","aa","Aa","AA","AA","Aa","aa","AA","aa"]
+res = calc_freqs(pop1)
+print(res)
+```
+:::
+:::
 
 ## Read the genetic code into a dictionary
 
