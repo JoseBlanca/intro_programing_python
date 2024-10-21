@@ -23,8 +23,8 @@ In many ocassions we will need that our programs read information stored in file
 In Python we could open a file with the [open](https://docs.python.org/3/library/functions.html#open) function.
 
 Let's imagine that we have a text file stored in the same directory/folder as our Python code.
-For instance, we could had downloaded [Alice in wonderland](https://www.gutenberg.org/ebooks/11.txt.utf-8) from [Project Gutenberg](https://www.gutenberg.org/).
-This file is named 11.txt.utf-8, and we could open it using the following code.
+For instance, we could had download [Alice in wonderland](https://www.gutenberg.org/ebooks/11.txt.utf-8) from [Project Gutenberg](https://www.gutenberg.org/).
+This file is named 11.txt.utf-8. Once download it, we could open it using the following code.
 
 ```{python}
 #| eval: false
@@ -34,9 +34,11 @@ file = open(file_name, 'rt')
 
 The [open](https://docs.python.org/3/library/functions.html#open) function can take several parameters, but the most important ones are the [file path](https://docs.python.org/3/glossary.html#term-path-like-object) and the mode.
 
-The mode indicates if we are trying to open an existing file for **r**eading (r mode) or creating new file for **w**riting.
-Moreover, it indicates if we are dealing with a [**t**ext](https://en.wikipedia.org/wiki/Text_file) or binary [**f**iles](https://en.wikipedia.org/wiki/Binary_file).
-In this example the mode was "rt", so we are trying to open a **t**ext file for **r**eading and what the open function returns to us is a [Text IO](https://docs.python.org/3/library/io.html#text-i-o) [file object](https://docs.python.org/3/glossary.html#term-file-object) that will allow us to read the file.
+The mode indicates if we are trying to open an existing file for **r**eading (r mode) or creating a new file for **w**riting (w mode).
+Moreover, it indicates if we are dealing with a [**t**ext](https://en.wikipedia.org/wiki/Text_file) or [**b**inary] (https://en.wikipedia.org/wiki/Binary_file) f*ile.
+In this example the mode was "rt", so we are trying to open an existing **t**ext file for **r**eading.
+
+In this case, the open function returns to us a [Text IO](https://docs.python.org/3/library/io.html#text-i-o) [file object](https://docs.python.org/3/glossary.html#term-file-object) that allows us to read the file.
 
 ### Read text
 
@@ -62,7 +64,6 @@ file = open(file_name, 'rt')
 for line in file:
     print(line)
 ```
-
 ::: { .solution exercise="read_ten" }
 ::: { .callout-tip collapse="false"}
 ```{pyodide}
@@ -122,7 +123,7 @@ file.write("Bye\n")
 
 ## close and with
 
-So far we have not closed our file object after we are done with them, but we really should.
+So far we have not closed our file objects after we are done with them, but we really should.
 So, the proper way to read a file would be:
 
 ```{python}
@@ -136,11 +137,11 @@ for line in file:
 file.close()
 ```
 
-File objects are limited by the operating system, so that's one reason for closing them.
-If we don't do it Python will try to do it for us after the variable that holds the file object goes out of scope, but it's better if we do it by ourselves.
+The number of file objects that we can open are limited by the operating system, so that's one reason for closing them.
+If we don't do it, Python will try to close them for us after the variable that holds the file object goes out of scope, but it's better if we do it by ourselves.
 
 Even better, we could use the [with](https://docs.python.org/3/reference/compound_stmts.html#with) statement.
-with will take care of closing the file after finishing the with block, even in the event of an exception ocurring within the block.
+**with** will take care of closing the file after finishing the with block, even in the event of an exception ocurring within the block.
 
 ```{python}
 #| eval: false
@@ -149,16 +150,14 @@ file_name = "some_file.txt"
 with open(file_name, 'rt') as file:
     for line in file:
         print(line)
-
 ```
 
 ## Buffers and flush 
 
-Closing the file is even more important when writing files.
+Closing the file is even more important when we are writing in them than we are reading from them.
 We could think that every time that we use the write method Python writes the given contents in disk, but this is not so.
 In fact what the write method does is to write the given content in a memory buffer.
-It writes in memory because memory is much faster than disk.
-It would be very slow to write down in disk every time.
+It writes in memory because memory is much faster than disk, and thus iIt would be very slow to write down in disk every time.
 When does Python decides to really write down in disk? Well, from time to time, but usually we do not take care of that.
 What we know for sure is that Python writes down everything that is to write when whe close the file calling the [close](https://docs.python.org/3/library/io.html#io.IOBase.close) method.
 So, close the file.

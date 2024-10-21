@@ -20,18 +20,19 @@ format:
 We are used to interact with our computers using [Graphical User Interfaces](https://en.wikipedia.org/wiki/Graphical_user_interface), we click and drag icons and windows, but when we are developing Python programs our main way of interaction will be a [command-line interface](https://en.wikipedia.org/wiki/Command-line_interface), a [shell](https://en.wikipedia.org/wiki/Shell_(computing)) running in a [terminal](https://en.wikipedia.org/wiki/Terminal_emulator).
 
 In a command-line interface, there is a [prompt](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt) that promts the user the write a text command.
-Once we write the command and hit "enter" the computer runs the command, writes the output in the terminal and, after the command ends, the prompt will be ready for the next command.
+Once we write the command and hit "enter", the computer runs the command, writes the output in the terminal and, after the command ends, the prompt will be ready for the next command.
 A command is just a computer program.
 
-In different operating systems there are different terminal applications. In Linux and MacOS the application is usually named "terminal", while in Windows there are different applications but we recommend "PowerShell" running in the "Windows Terminal".
+In different operating systems there are different terminal applications. In Linux and MacOS the application is usually named "terminal", while in Windows there are different applications, but we recommend "PowerShell" running in the "Windows Terminal".
 
-During the course we recommend to use the editor [Visual Studio Code](https://code.visualstudio.com/) to write Python code and this editor includes its our terminal, so you won't need any other software.
+During the course we recommend to use the editor [Visual Studio Code](https://code.visualstudio.com/) to write Python code. This editor includes its own terminal, so you won't need any other terminal software.
 If you haven't installed Visual Studio Code yet, we recommend that you do it.
 
 ## Hello world with uv
 
 First, create a folder/directory in which you will create and store the Python programs.
-Then open Visual Studio Code and in the File menu select Open Folder and Open the Folder that you just created.
+A Python program is just a text file with Python code in it and the ".py" extension.
+Open Visual Studio Code, and in the File menu, select Open Folder and Open the Folder that you just created.
 Now in the Visual Studio File Explorer click with the right mouse button, select "New File..." and create a file named hello.py.
 All Python programs, by convention, are text files with the extension ".py".
 
@@ -46,14 +47,12 @@ In the menu select "Terminal" -> "New Terminal".
 That will open a terminal inside Visual Studio Code.
 The prompt will indicate the folder/directory in which we are working.
 
-We could run our Python programs directly using the Python interpreter command: "python", but we are going to [uv](https://docs.astral.sh/uv/).
+We could run our Python programs using [uv](https://docs.astral.sh/uv/) or directly using the python command.
 If you haven't [installed uv](https://docs.astral.sh/uv/getting-started/installation/), go ahead and do it.
 Once we have uv available, it will manage the Python installation for us and it will also run Python, just write in Visual Studio Terminal:
 
 ```{bash}
-
 $ uv run hello.py
-
 ```
 
 (The dollar sign is part of the prompt, we are just including it to show that the command is meant to be written in the prompt, but the dolar sign itself should not be written. In this case you should only write "uv run hello.py")
@@ -61,10 +60,8 @@ $ uv run hello.py
 Click enter and, hopefully, you should have run your first Python program in the Terminal.
 
 In most courses and tutorials you would not have installed uv, but just Python.
-In this case you would run the following command instead.
+If you prefer not to use uv, substitute "uv run" with python, and run:
 
 ```{bash}
-
 $ python hello.py
-
 ```
