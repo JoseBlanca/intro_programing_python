@@ -63,7 +63,7 @@ You can think of it as a label in the file cabinet drawer or an arrow that point
 
 ![Value stored in a variable](../static/memory_and_variables.png "Value stored in a variable")
 
-In Python we store a variable in memory by using the assigment operator **=**.
+In Python we store a variable in memory by using the [assigment operator](https://realpython.com/python-assignment-operator/) **=**.
 
 ```{pyodide}
 favorite_number = 42

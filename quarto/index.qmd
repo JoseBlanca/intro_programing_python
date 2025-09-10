@@ -15,7 +15,7 @@ There are many great introductions to Python, but we thought that it would be us
 We decided to try this approach after following the [rustlings](https://github.com/rust-lang/rustlings/) path, an exercise set aimed at teaching the Rust programming language.
 Rustlings assumes that the student has previously read the [Rust introductory book](https://doc.rust-lang.org/book/).
 For this course we have decided to add resources to read for each topic, so, the student could start by reading these resources, and then proceed to practice with the code examples and exercises.
-Alternatively, the examples could be used in a practical session to teach the theory and, then, the exercises could be use as the practice for the students.
+Alternatively, the examples could be used in a practical session to teach the theory and, then, the exercises could be used as the practice for the students.
 
 ## Why Python?
 
@@ -30,17 +30,16 @@ Python is:
 These characteristics make Python a very popular tool.
 
 According to IEEE Spectrum Python is the top programming language of [2024](https://spectrum.ieee.org/top-programming-languages-2024).
-In the [2024 stackoverflow survery](https://survey.stackoverflow.co/2024/technology), 51% of the developers had used Python in the last year; only Javascript, with 62.3%, is a more popular programming language.
-Moreover, 67.7% of these developers want to learn an use Python.
+In the [2025 stackoverflow survery](https://survey.stackoverflow.co/2025/technology), 58% of the developers had used Python in the last year; only Javascript, with 66%, is a more popular programming language.
 
-According to the [2023 Python Developer survey](https://lp.jetbrains.com/python-developers-survey-2023/) Python is used mostly for:
+According to the [2024 Python Developer survey](https://lp.jetbrains.com/python-developers-survey-2024/) Python is used mostly for:
 
-- Web development (21%)
+- Web development (23%)
+- Machine learning (13%)
 - Data analysis (10%)
-- Data engineering (6%)
-- Machine learning (10%)
-- Academic research (9%)
-- Education (9%)
+- Data engineering (7%)
+- Academic research (8%)
+- Education (8%)
 
 So, if you are interested in data analysis or web development, Python is not just a great language to learn, but an interesting professional option.
 
@@ -51,10 +50,9 @@ So, if you are interested in data analysis or web development, Python is not jus
 - [Python Crash Course](https://nostarch.com/python-crash-course-3rd-edition)
 - [The Python Coding Book](https://thepythoncodingbook.com/)
 - [How to Think Like a Computer Scientist](https://runestone.academy/ns/books/published/thinkcspy/index.html)
-- Microsoft course: [Python for beginners](https://learn.microsoft.com/en-us/training/paths/beginner-python/).
 - [Google Python class](https://developers.google.com/edu/python). Also available in [Spanish](https://developers.google.com/edu/python), [German](https://developers.google.com/edu/python), [French](https://developers.google.com/edu/python), and [Indonesian](https://developers.google.com/edu/python).
 - The Python community maintains a [list of Python courses and tutorials](https://wiki.python.org/moin/BeginnersGuide/NonProgrammers).
-- [Introducción a la programación con Python3](https://repositori.uji.es/xmlui/handle/10234/102653)
+- [Introducción a la programación con Python3](http://dx.doi.org/10.6035/Sapientia93)
 - A course in Spanish of focused in [Data Analysis with Python](https://github.com/JoseBlanca/py_industriales)
 
 ## Other interactive Python courses for beginers

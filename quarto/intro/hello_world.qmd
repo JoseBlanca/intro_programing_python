@@ -17,9 +17,9 @@ The aim of this exercise is to learn how to write and execute Python code.
 ## Rationale
 
 There are plenty of [programing languages](https://en.wikipedia.org/wiki/List_of_programming_languages), but all of them share some common principles.
-Computers execute [machine code](https://en.wikipedia.org/wiki/Machine_code), a binary set of instructions that are carried out by the computer processors, but usually human do not write binary machine code, or even [assembly language](https://en.wikipedia.org/wiki/Assembly_language), the written code directly translatable to machine code.
+Computers execute [machine code](https://en.wikipedia.org/wiki/Machine_code), a binary set of instructions that are carried out by the computer processors, but usually humans do not write binary machine code, or even [assembly language](https://en.wikipedia.org/wiki/Assembly_language), the written code directly translatable to machine code.
 
-Most of the time programers write code in languages that are easier to write and read by us, humans. These codes, in turn, have to be translated to machine code. This process of translation is called [compilation](https://en.wikipedia.org/wiki/Compiler). Compilation is a complex process that comprises several steps, and different compilers and programming languages divide theses steps differently.
+Most of the time programers write code in languages that are easier to write and read by us: humans. This code, in turn, have to be translated to machine code. This process of translation is called [compilation](https://en.wikipedia.org/wiki/Compiler). Compilation is a complex process that comprises several steps, and different compilers and programming languages divide theses steps differently.
 There are compilers, like the C or C++ compiles, that take the code and compile it into a binary executable that can be directly run in a computer, while there are other, like the Python [interpreter](https://en.wikipedia.org/wiki/Interpreter_(computing)) of the Java compiler, that are capable of running directly the human readable code that create an intermediate representation called [bytecode](https://en.wikipedia.org/wiki/Bytecode).
 In these cases we need to install the language interpreter to run the program. For instance, if you want to run a Java or Python program you will need to install Java or Python before.
 
@@ -35,11 +35,11 @@ There are many ways of installing Python like:
 
 In this exercise we are going to use [Pyodide](https://pyodide.org/), a Python version that allow us to run Python code directly in a web page without requiring any previous installation.
 
-The Notebook document is composed by cells, some are text (in markdown format), and others contain Python code that can be executed.
-To execute a Python cell:
+To execute the Python :
 
-  - Select the cell that you want to execute.
-  - Click the play symbol on top of the page or press shift + enter.
+  - In the web site select the cell that you want to execute.
+  - Edit the code if necessary.
+  - Click the Run code button, the one with the play symbol.
 
 ## Print Hello world
 

@@ -65,7 +65,7 @@ integer = 42  # type is int
 floating_point = 42.0  # type is float
 ```
 
-The main practical difference between the integer and float types is that the arithmetic for integers will be exact, but for float will be only approximate.
+The main practical difference between the integer and float types is that the arithmetic for integers will be exact, but for floats will be only approximate.
 This is not a Python quirk, but a general feature of the computers.
 
 ```{pyodide}
