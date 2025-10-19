@@ -33,6 +33,7 @@ Both radius and area are pieces of data, whereas cacl_area is an action, a verb.
 - [Python function](https://realpython.com/defining-your-own-python-function/) and [return](https://realpython.com/python-return-statement/) in Real Python.
 - [Functions](https://learn.microsoft.com/en-us/training/modules/functions-python/) in the Microsoft Python for beginners course.
 - [Scopes](https://realpython.com/python-scope-legb-rule/) in Python in Real Python.
+- Functions, a [complete reference](https://mathspp.com/blog/pydonts/functions-a-complete-reference).
 
 ## Definition and calling
 
