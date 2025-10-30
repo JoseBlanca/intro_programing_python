@@ -15,6 +15,7 @@ collections.defaultdict
 
 lambda
 sorted
+reversed
 
 subprocess.run
 

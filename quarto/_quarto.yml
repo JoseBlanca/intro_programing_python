@@ -87,8 +87,10 @@ website:
         contents:
           - text: "Everyday Python"
             href: everyday_python/everyday_python.qmd
-          - text: Typing"
+          - text: Typing
             href: everyday_python/typing.qmd
+          - text: range
+            href: everyday_python/range.qmd
     tools:
       - icon: github
         menu:

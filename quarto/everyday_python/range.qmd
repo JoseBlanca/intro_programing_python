@@ -1,0 +1,102 @@
+---
+title: Range
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official documentation for the [range](https://docs.python.org/3/library/functions.html#func-range) function.
+
+## range
+
+range returns an [iterator](https://docs.python.org/3/glossary.html#term-iterator) that will yield the integers up to the given stop or from the given start up to the given stop.
+
+```{pyodide}
+r = range(10)
+print(r)
+
+print(list(r))
+```
+
+```{pyodide}
+r = range(10, 20)
+print(list(r))
+```
+
+Be aware that the range object is an iterator, so it will be consumed.
+
+```{pyodide}
+r = range(10)
+print(list(r))
+print(list(r))
+```
+
+You will see the range object most commonly used in the for loops, for when you want an index instead of itering through an iterable object.
+
+```{pyodide}
+for i in range(10):
+    print(i)
+```
+
+## Exercises
+
+Create a list of numbers up to 20
+
+```{pyodide}
+#| exercise: range20
+```
+::: { .solution exercise="range20"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+print(list(range(21))
+```
+:::
+:::
+
+Print, in a for loop, the numbers from 20 to 30.
+
+```{pyodide}
+#| exercise: range20_30
+```
+::: { .solution exercise="range20_30"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+for i in range(20,30):
+    print(i)
+```
+:::
+:::
+
+Sum all integers from 1 to 1000
+
+```{pyodide}
+#| exercise: sum1000
+```
+::: { .solution exercise="sum1000"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+print(sum(range(1001)))
+```
+:::
+:::
+
+Create a list of all multiples of 7 smaller than 100.
+
+```{pyodide}
+#| exercise: mul7
+```
+::: { .solution exercise="mul7"}
+::: { .callout-note collapse="false"}
+```{pyodide}
+mul7 = [i for i in range(7, 101) if not i % 7]
+print(mul7)
+```
+:::
+:::
