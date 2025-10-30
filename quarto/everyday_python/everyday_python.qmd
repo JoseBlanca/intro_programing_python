@@ -1,0 +1,24 @@
+---
+title: Everyday Python
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Everyday Python
+
+In the rest of this course we have focused our attention in programming fundamental topics like:
+
+- variables
+- basic types
+- composed types
+- flow control
+- functions
+
+In this section we are going to cover some Python fundamentals.
+In most cases you are not required to use these tools, but you will find them in most Python code written by others and, also, if you use them, will make your Python programming more idiomatic, convenient and powerful.
