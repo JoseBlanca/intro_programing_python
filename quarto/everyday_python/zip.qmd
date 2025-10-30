@@ -1,0 +1,60 @@
+---
+title: zip
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official documentation for the [zip](https://docs.python.org/3/library/functions.html#zip) function.
+
+## zip
+
+It is common to iterate over two iterators in parallel.
+We could try to implement it in the following way.
+
+```{pyodide}
+names = ['John', 'Ringo', 'Paul', 'George']
+surnames = ['Lennon', 'Starr', 'McCartney', 'Harrison']
+
+i = 0
+for name in names:
+    surname = surnames[i]
+    print(name, surname)
+    i += 1
+```
+
+However, the zip functions allows us to accomplish this task in a less cumbersome way.
+
+```{pyodide}
+names = ['John', 'Ringo', 'Paul', 'George']
+surnames = ['Lennon', 'Starr', 'McCartney', 'Harrison']
+
+for name, surname in zip(names, surnames):
+    print(name, surname)
+```
+
+zip works by producing tuples with one item from each iterable at a time.
+
+```{pyodide}
+names = ['John', 'Ringo', 'Paul', 'George']
+surnames = ['Lennon', 'Starr', 'McCartney', 'Harrison']
+
+print(list(zip(names, surnames)))
+```
+
+```{pyodide}
+names = ['John', 'Ringo', 'Paul', 'George']
+surnames = ['Lennon', 'Starr', 'McCartney', 'Harrison']
+
+for item in zip(names, surnames):
+    print(item)
+```
+
+And then we use the standard tuple unpacking to access to the variables in the for loop.

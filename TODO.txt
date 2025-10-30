@@ -1,8 +1,4 @@
-types
 
-range
-enumerate
-zip
 pathlib.Path
 shutil
 

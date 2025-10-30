@@ -93,6 +93,8 @@ website:
             href: everyday_python/range.qmd
           - text: enumerate
             href: everyday_python/enumerate.qmd
+          - text: zip
+            href: everyday_python/zip.qmd
     tools:
       - icon: github
         menu:

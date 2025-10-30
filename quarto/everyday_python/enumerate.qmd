@@ -53,6 +53,12 @@ vowels = ['a', 'e', 'i', 'o', 'u']
 print(list(enumerate(vowels)))
 ```
 
+```{pyodide}
+vowels = ['a', 'e', 'i', 'o', 'u']
+for item in enumerate(vowels):
+    print(item)
+```
+
 An each tuple is then unpacked in the for loop by using the standard tuple unpacking mechanism.
 
 ```{pyodide}
