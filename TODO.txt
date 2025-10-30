@@ -1,5 +1,3 @@
-
-pathlib.Path
 shutil
 
 comprenhensions

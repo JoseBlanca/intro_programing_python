@@ -67,8 +67,6 @@ website:
         contents:
           - text: "Read & write"
             href: files/read_write.qmd
-          - text: "Paths"
-            href: files/paths.qmd
       - section: "Modules and packages"
         contents:
           - text: Modules
@@ -95,6 +93,8 @@ website:
             href: everyday_python/enumerate.qmd
           - text: zip
             href: everyday_python/zip.qmd
+          - text: "Paths"
+            href: files/paths.qmd
     tools:
       - icon: github
         menu:
