@@ -1,0 +1,26 @@
+---
+title: shutil
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official documentation of the [shutil](https://docs.python.org/3/library/shutil.html) module.
+
+## Copying, moving and deleting files and directories
+
+If you need to copy, move or delete a file or directory you can use the shutil utilities.
+
+- shutil.[copy](https://docs.python.org/3/library/shutil.html#shutil.copyfile)(path_to_file1, path_to_file2) copies the file in path_to_file1 src to the file path_to_file2.
+- shutil.[copytree](https://docs.python.org/3/library/shutil.html#shutil.copytree)(path_to_dir1, path_to_dir2) copies recursively the contents of path_to_dir1 to path_to_dir2
+- shutil.[rmtree](https://docs.python.org/3/library/shutil.html#shutil.rmtree)(path_to_dir) deletes the entire directory tree.
+- shutil.[move](https://docs.python.org/3/library/shutil.html#shutil.move)(path1, path2) moves the file or directory from path1 to path2.
+
+To remove a file, not a directory, you could use the [unlink](https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink) method of a [Path](https://docs.python.org/3/library/pathlib.html) object.

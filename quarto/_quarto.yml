@@ -94,7 +94,9 @@ website:
           - text: zip
             href: everyday_python/zip.qmd
           - text: "Paths"
-            href: files/paths.qmd
+            href: everyday_python/paths.qmd
+          - text: "shutil"
+            href: everyday_python/shutil.qmd
     tools:
       - icon: github
         menu:
