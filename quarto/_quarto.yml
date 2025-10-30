@@ -91,6 +91,8 @@ website:
             href: everyday_python/typing.qmd
           - text: range
             href: everyday_python/range.qmd
+          - text: enumerate
+            href: everyday_python/enumerate.qmd
     tools:
       - icon: github
         menu:

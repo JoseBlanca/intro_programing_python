@@ -1,0 +1,73 @@
+---
+title: enumerate
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official documentation for the [enumerate](https://docs.python.org/3/library/functions.html#enumerate) function.
+
+## enumerate
+
+In Python the natural way of writing for loops is to iterate through [iterable](https://docs.python.org/3/glossary.html#term-iterable) objects or [iterators](https://docs.python.org/3/glossary.html#term-iterator).
+
+```{pyodide}
+vowels = ['a', 'e', 'i', 'o', 'u']
+
+for vowel in vowels:
+    print(vowel)
+```
+
+Sometimes it is useful to know the index of the item that we're processing in the loop.
+We could get it by doing:
+
+```{pyodide}
+vowels = ['a', 'e', 'i', 'o', 'u']
+
+i = 0
+for vowel in vowels:
+    print(i, vowel)
+    i += 1
+```
+
+To solve this issue in an easy way Python has the enumerate function.
+
+```{pyodide}
+vowels = ['a', 'e', 'i', 'o', 'u']
+
+for i, vowel in enumerate(vowels):
+    print(i, vowel)
+```
+
+Internally, enumerate works by creating an iterable object that keeps yielding tuples with the index and the item in the original iterable.
+
+```{pyodide}
+vowels = ['a', 'e', 'i', 'o', 'u']
+print(list(enumerate(vowels)))
+```
+
+An each tuple is then unpacked in the for loop by using the standard tuple unpacking mechanism.
+
+```{pyodide}
+vowels = ['a', 'e', 'i', 'o', 'u']
+tuple_list = list(enumerate(vowels))
+first_tuple = tuple_list[0]
+print(first_tuple)
+i, item = first_tuple
+print(i, item)
+second_tuple = tuple_list[1]
+print(second_tuple)
+i, item = second_tuple
+print(i, item)
+third_tuple = tuple_list[2]
+print(third_tuple)
+i, item = third_tuple
+print(i, item)
+```
