@@ -16,7 +16,7 @@ format:
 
 ## range
 
-range returns an [iterator](https://docs.python.org/3/glossary.html#term-iterator) that will yield the integers up to the given stop or from the given start up to the given stop.
+range returns an [iterable](https://docs.python.org/3/glossary.html#term-iterable) that will yield the integers up to the given stop or from the given start up to the given stop.
 
 ```{pyodide}
 r = range(10)
@@ -30,15 +30,7 @@ r = range(10, 20)
 print(list(r))
 ```
 
-Be aware that the range object is an iterator, so it will be consumed.
-
-```{pyodide}
-r = range(10)
-print(list(r))
-print(list(r))
-```
-
-You will see the range object most commonly used in the for loops, for when you want an index instead of itering through an iterable object.
+You will see the range object most commonly used in the for loops, for when you want an index instead of iterating through an iterable object.
 
 ```{pyodide}
 for i in range(10):
