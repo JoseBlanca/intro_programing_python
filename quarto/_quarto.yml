@@ -103,6 +103,10 @@ website:
               href: everyday_python/shutil.qmd
           - text: "Comprehensions"
             href: everyday_python/comprehensions.qmd
+          - text: "Counter"
+            href: everyday_python/collections.qmd
+          - text: "lambda"
+            href: everyday_python/lambda.qmd
     tools:
       - icon: github
         menu:

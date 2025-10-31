@@ -1,0 +1,63 @@
+---
+title: lambda
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official [sorting](https://docs.python.org/3/howto/sorting.html) tutorial.
+- [Sorting](https://realpython.com/python-sort/) Real Python tutorial.
+- Real Python introduction to [lambda](https://realpython.com/python-lambda/) functions.
+
+## lambda functions
+
+Python [lambda](https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions) functions are [anonymous](https://en.wikipedia.org/wiki/Anonymous_function) functions.
+
+For instance we could create an anonymous function that squares a number.
+
+```{pyodide}
+lambda x: x**2
+```
+
+This function is not bound to a name, so we have no way of calling it directly.
+
+Anonymous functions are usually used as arguments that we give to other functions.
+For instance, let's image that we want to sort a list of words.
+
+```{pyodide}
+words = ["Adam", "Eve", "bull", "atom", "faith", "John"]
+words = sorted(words)
+print(words)
+```
+
+The sorting function uses the ASCII value of the letters to do the ordering, that's why we get first the uppercase words, and then the lowercase ones.
+We'd like the sorted function to sort according to the lowercase version of each word, but we don't want to alter the words themselves and that is exactly one of the uses of the lambda functions.
+We can pass to the sorted function a key argument with a function that will be called for every word and the ordering key will be the returned value of that function.
+
+```{pyodide}
+words = ["Adam", "Eve", "bull", "atom", "faith", "John"]
+words = sorted(words, key=lambda x: x.lower())
+print(words)
+```
+
+Lambdas are just a convenient way of writing small throw away functions.
+We could have written the previous code as:
+
+```{pyodide}
+
+def to_lower(word):
+    return word.lower()
+
+words = ["Adam", "Eve", "bull", "atom", "faith", "John"]
+words = sorted(words, key=to_lower)
+print(words)
+```
+
+So, lambdas are not really required, they are just [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar), but they are very commonly used when functions are passed as function arguments.

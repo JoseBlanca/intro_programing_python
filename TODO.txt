@@ -1,12 +1,5 @@
 
-lambda
-sorted
-reversed
-
 subprocess.run
-
-math.isclose
-math.sqrt
 
 set
 
