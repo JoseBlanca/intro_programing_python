@@ -1,0 +1,91 @@
+---
+title: Comprenhensions
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official documentation about [list comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions). 
+
+- Real Python series "When to use" about [list](https://realpython.com/list-comprehension-python/), [dictionary](https://realpython.com/python-dictionary-comprehension/) and [set](https://realpython.com/python-set-comprehension/) comprehensions.
+
+## List comprehensions
+
+List comprehensions allow us to create lists by processing an iterable, item by item, in a concise way.
+Each element of the resulting list will result from applying an operation to a corresponding item of the original iterable.
+
+Imagine that we want to create a list with the squares of the integers from 1 to 10.
+We could write a for loop that keeps on adding elements to a previously created list.
+
+```{pyodide}
+squares = []
+for i in range(1, 11):
+    squares.append(i**2)
+print(squares)
+```
+
+An alternative way of accomplishing the same task very concisely is to create a list comprehension.
+
+```{pyodide}
+squares = [i**2 for i in range(1, 11)]
+print(squares)
+```
+
+So, comprehensions take elements from an iterable and do an operation on each element.
+
+Moreover, we can even filter the elements.
+For instance, we could choose to generate only the squares from the odd integers.
+
+```{pyodide}
+odd_squares = [i**2 for i in range(1, 11) if i % 2]
+print(odd_squares)
+```
+
+## Other comprehensions
+
+Comprehensions are not limited to lists we can also create dictionaries.
+
+```{pyodide}
+squares = {i: i**2 for i in range(1, 11)}
+print(squares)
+```
+
+Or sets:
+
+```{pyodide}
+text = """Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested."""
+words = {word.strip().replace('.', '').lower() for word in text.split()}
+```
+
+## Generator expressions
+
+Finally, you can also create comprehensions that are lazily evaluated, they are [generators expressions](https://docs.python.org/3/glossary.html#term-generator-expression).
+
+```{pyodide}
+square_generator = [i**2 for i in range(1, 11)]
+print(square_generator)
+squares = list(square_generator)
+print(squares)
+```
+
+Be careful because generators are consumed when used.
+
+```{pyodide}
+square_generator = [i**2 for i in range(1, 11)]
+print(square_generator)
+squares = list(square_generator)
+print(squares)
+squares2 = list(square_generator)
+print(squares2)
+```

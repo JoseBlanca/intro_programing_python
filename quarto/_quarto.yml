@@ -87,16 +87,22 @@ website:
             href: everyday_python/everyday_python.qmd
           - text: Typing
             href: everyday_python/typing.qmd
-          - text: range
-            href: everyday_python/range.qmd
-          - text: enumerate
-            href: everyday_python/enumerate.qmd
-          - text: zip
-            href: everyday_python/zip.qmd
-          - text: "Paths"
-            href: everyday_python/paths.qmd
-          - text: "shutil"
-            href: everyday_python/shutil.qmd
+          - section: "Loop utilities"
+            contents:
+            - text: range
+              href: everyday_python/range.qmd
+            - text: enumerate
+              href: everyday_python/enumerate.qmd
+            - text: zip
+              href: everyday_python/zip.qmd
+          - section: "File utilities"
+            contents:
+            - text: "Paths"
+              href: everyday_python/paths.qmd
+            - text: "shutil"
+              href: everyday_python/shutil.qmd
+          - text: "Comprehensions"
+            href: everyday_python/comprehensions.qmd
     tools:
       - icon: github
         menu:

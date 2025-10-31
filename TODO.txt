@@ -1,7 +1,3 @@
-comprenhensions
-any
-all
-
 collections.Counter
 collections.defaultdict
 
