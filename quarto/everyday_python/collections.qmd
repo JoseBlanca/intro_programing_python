@@ -1,0 +1,36 @@
+---
+title: Counter
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official [collections](https://docs.python.org/3/library/collections.html) module documentation.
+- Real Python tutorial on [Counter](https://realpython.com/python-counter/).
+- Real Python introduction to [defaultdict](https://realpython.com/python-defaultdict/)
+
+## collections module
+
+The standard library collections module holds some little useful tools like: [Counter](https://docs.python.org/3/library/collections.html#collections.Counter), [OrderedDict](https://docs.python.org/3/library/collections.html#collections.OrderedDict) or [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict).
+
+## Counter
+
+Counter is the pythonic way of counting items.
+
+Let's simulate that we throw a dice 1000 times and then we count the number of times that we get each number.
+```{pyodide}
+import random
+from collections import Counter
+
+throws = (random.randint(1, 6) for _ in range(1000))
+counts = Counter(throws)
+print(counts)
+```
+
