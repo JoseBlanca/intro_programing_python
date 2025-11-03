@@ -89,3 +89,76 @@ print(squares)
 squares2 = list(square_generator)
 print(squares2)
 ```
+
+## Exercises
+
+Given a list of words, create a list with the length of each word and the maximum length.
+
+```{pyodide}
+#| exercise: word_lens
+words = ["cat", "house", "python"]
+```
+::: { .solution exercise="word_lens" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+words = ["cat", "house", "python"]
+word_lens = [len(word) for word in words]
+max_len = max(word_lens)
+print(word_lens)
+print(max_len)
+```
+
+Uppercase every word in the list.
+
+```{pyodide}
+#| exercise: upper_words
+words = ["cat", "house", "python", 'lion']
+```
+::: { .solution exercise="upper_words" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+words = ["cat", "house", "python"]
+words = [word.upper() for word in words]
+print(words)
+```
+
+Uppercase only the words smaller than 5 characters in the list.
+
+```{pyodide}
+#| exercise: small_upper_words
+words = ["cat", "house", "python", 'lion']
+```
+::: { .solution exercise="small_upper_words" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+words = ["cat", "house", "python"]
+words = [word.upper() for word in words if len(word) < 5]
+print(words)
+```
+
+Tag integers as odd or even.
+You can use a list comprehension with the [ternary operator](https://docs.python.org/3/reference/expressions.html#conditional-expressions).
+
+```{pyodide}
+#| exercise: odd_compre
+```
+::: { .solution exercise="odd_compre" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+odd_even = ['odd' if num % 2 else 'even' for num in range(1, 10)]
+print(odd_even)
+```
+
+Given a string, build a set comprehension with the vowels present.
+
+```{pyodide}
+#| exercise: vowel_set
+text = "Hello world!"
+```
+::: { .solution exercise="vowel_set" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+text = "Hello world!"
+vowels = {char for char in text if char in 'aeiou'}
+print(vowels)
+```
