@@ -1,0 +1,125 @@
+---
+title: subprocess
+format:
+  live-html:
+    mermaid:
+      theme: neutral
+    pyodide:
+      cell-options:
+        autorun: false
+        completion: true
+---
+
+## Resources
+
+- Official [subprocess](https://docs.python.org/3/library/subprocess.html) module documentation.
+- [subprocess](https://realpython.com/python-subprocess/) Real Python tutorial.
+
+## run
+
+When scripting a task it is common to need to run a external process, for instance a program to do a particular data analysis.
+This external process will be a subprocess launched by our Python running process.
+The [subprocess](https://docs.python.org/3/library/subprocess.html) module includes the [run](https://docs.python.org/3/library/subprocess.html#subprocess.run) function to run external processes.
+
+Let's image that we want to run the `ls` command (`dir` in windows).
+
+```{python}
+from subprocess import run
+
+cmd = ['ls']
+run(cmd)
+```
+
+Run, by default, expects a list of strings, not a string with the command.
+For instance, image that our command includes a parameter.
+
+```{python}
+from subprocess import run
+
+cmd = ['ls', '-l']
+run(cmd)
+```
+
+In any case the run function will launch the external process and will also wait for the process to finish, and only then will the function return a [CompletedProcess](https://docs.python.org/3/library/subprocess.html#subprocess.CompletedProcess) object.
+
+```{python}
+from subprocess import run
+
+cmd = ['ls', '-l']
+process = run(cmd)
+print(process.returncode)
+```
+
+## Launching without waiting
+
+## return code
+
+Every process once is finished return a [return code](https://en.wikipedia.org/wiki/Exit_status) or exit status.
+This return code is an integer and the standard is to return 0 when everything has been fine or any other number in the event of an error happening in the subprocess.
+You can access to the exit code of the subprocess.
+
+```{python}
+from subprocess import run
+
+cmd = ['ls']
+process = run(cmd)
+print(process.returncode)
+
+cmd = ['ls', "/hello"]
+process = run(cmd)
+print(process.returncode)
+```
+
+
+If you want the run function to fail in the event of the called process having any problem you could use the check argument.
+
+```{python}
+from subprocess import run
+
+cmd = ['ls', '/hello']
+process = run(cmd, check=True)
+```
+
+## stdout and stdin
+
+You can store the result of [stdout](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)) and [stderr](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)) as properties of the completed process object.
+
+```{python}
+from subprocess import run
+
+cmd = ['ls', '/hello']
+process = run(cmd, capture_output=True)
+print(process.stdout)
+print(process.stderr)
+```
+
+Be aware that, by default, the standard output streams will be binary objects, if you want them to be strings you have to provide an encoding.
+
+```{python}
+from subprocess import run
+
+cmd = ['ls', '/hello']
+process = run(cmd, capture_output=True, encoding='utf-8')
+print(process.stdout)
+print(process.stderr)
+```
+
+## Popen
+
+The `run` function will wait for the subprocess to finnish before returning.
+If you just want to launch the process, but not wait for it to finish you can use the [Popen](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) class.
+
+The use of `Popen` is very similar to the use of `run`, the main difference being that `Popen` will return a [Popen](https://docs.python.org/3/library/subprocess.html#popen-objects) object immediately, without waiting for it to finish.
+
+Once you have that object, you could check if the process has already finished or you could also wait for the process to finish.
+
+```{python}
+from subprocess import Popen
+
+cmd = ['ls']
+process = Popen(cmd, capture_output=True, encoding='utf-8')
+print(process.poll())
+print(process.wait())
+print(process.stdout)
+print(process.stderr)
+```
