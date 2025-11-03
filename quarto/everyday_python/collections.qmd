@@ -34,3 +34,85 @@ counts = Counter(throws)
 print(counts)
 ```
 
+## Exercises
+
+Create a Counter to count how many times each nucleotide appears in a DNA sequence.
+
+```{pyodide}
+#| exercise: nucleotides
+from collections import Counter
+DNA = "AGCTTCGAAGCTT"
+```
+::: { .solution exercise="nucleotides" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from collections import Counter
+DNA = "AGCTTCGAAGCTT"
+counts = Counter(text)
+print(counts)
+```
+
+Given a list of words, count how many end in "ing" and how many do not.
+```{pyodide}
+#| exercise: ing
+from collections import Counter
+words = ["running", "jumping", "eating", "run", "sleeping"]
+```
+::: { .solution exercise="ing" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from collections import Counter
+words = ["running", "jumping", "eating", "run", "sleeping"]
+counts = Counter(["ing" if word.endswith("ing") else "no-ing" for word in words])
+print(counts)
+```
+
+Count the words in a text.
+```{pyodide}
+#| exercise: tobe
+from collections import Counter
+text = "to be or not to be"
+```
+::: { .solution exercise="tobe" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+text = "to be or not to be"
+counts = Counter(text.split())
+print(counts)
+```
+
+Count the words in "El Quijote", you can get the [text file](https://www.gutenberg.org/ebooks/2000) from the Gutenberg project.
+To do it in just one line you might find useful to use [nested](https://docs.python.org/3/tutorial/datastructures.html#nested-list-comprehensions) generator expressions.
+It might also be useful to have a list with the [punctuation signs](https://docs.python.org/3/library/string.html#string.punctuation) that you can find in the [string](https://docs.python.org/3/library/string.html) module.
+
+Which are the 10 most common words?
+
+```{pyodide}
+#| exercise: quijote
+from pathlib import Path
+fhand = open(Path.home() / "Downloads" / "pg2000.txt", 'rt', encoding='utf-8')
+```
+::: { .solution exercise="tobe" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+fhand = open(Path.home() / "Downloads" / "pg2000.txt", 'rt', encoding='utf-8')
+counts = Counter((word.strip().strip(string.punctuation).lower() for line in fhand for word in line.split()))
+print(counts.most_common(10))
+```
+
+Using `zip` and `Counter` count the number of matches and mismatches in two aligned DNA sequences.
+
+```{pyodide}
+#| exercise: match_dna
+dna1 = "AGCTAGCTAGG"
+dna2 = "AGCTTGCAAGG"
+```
+::: { .solution exercise="match_dna" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from collections import Counter
+dna1 = "AGCTAGCTAGG"
+dna2 = "AGCTTGCAAGG"
+matches = Counter([nucl1 == nucl2 for nucl1, nucl2 in zip(dna1, dna2)])
+print(matches)
+```
