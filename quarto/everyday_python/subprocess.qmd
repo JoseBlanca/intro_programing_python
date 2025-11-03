@@ -58,7 +58,7 @@ Every process once is finished return a [return code](https://en.wikipedia.org/w
 This return code is an integer and the standard is to return 0 when everything has been fine or any other number in the event of an error happening in the subprocess.
 You can access to the exit code of the subprocess.
 
-```{python}
+```{pyodide}
 from subprocess import run
 
 cmd = ['ls']
@@ -73,7 +73,7 @@ print(process.returncode)
 
 If you want the run function to fail in the event of the called process having any problem you could use the check argument.
 
-```{python}
+```{pyodide}
 from subprocess import run
 
 cmd = ['ls', '/hello']
@@ -117,9 +117,8 @@ Once you have that object, you could check if the process has already finished o
 from subprocess import Popen
 
 cmd = ['ls']
-process = Popen(cmd, capture_output=True, encoding='utf-8')
+process = Popen(cmd)
 print(process.poll())
 print(process.wait())
-print(process.stdout)
-print(process.stderr)
+print(process.returncode)
 ```
