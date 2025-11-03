@@ -24,3 +24,71 @@ If you need to copy, move or delete a file or directory you can use the shutil u
 - shutil.[move](https://docs.python.org/3/library/shutil.html#shutil.move)(path1, path2) moves the file or directory from path1 to path2.
 
 To remove a file, not a directory, you could use the [unlink](https://docs.python.org/3/library/pathlib.html#pathlib.Path.unlink) method of a [Path](https://docs.python.org/3/library/pathlib.html) object.
+
+## Exercises
+
+**Warning: Be very careful with rmtree because it could delete your files.**
+
+Create a directory named project1, with the files analysis_result1.txt and analysis_result2.txt in it.
+
+```{pyodide}
+#| exercise: create_dir
+```
+::: { .solution exercise="create_dir" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from pathlib import Path
+parent = Path.cwd()
+
+project_dir = parent / 'project1'
+project_dir.mkdir(exist_ok=True)
+print(list(parent.iterdir()))
+
+file1 = project_dir / 'analysis_result1.txt'
+fhand1 = file1.open('wt')
+fhand1.close()
+print(list(project_dir.iterdir()))
+file2 = project_dir / 'analysis_result2.txt'
+fhand2 = file2.open('wt')
+fhand2.close()
+print(list(project_dir.iterdir()))
+```
+:::
+:::
+
+Now remove the file analysis_result2.txt.
+
+```{pyodide}
+#| exercise: delete_file
+```
+::: { .solution exercise="delete_file" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from pathlib import Path
+parent = Path.cwd()
+project_dir = parent / 'project1'
+print(list(project_dir.iterdir()))
+file1 = project_dir / 'analysis_result1.txt'
+file1.unlink()
+file1 = project_dir / 'analysis_result1.txt'
+print(list(project_dir.iterdir()))
+```
+
+Now remove the project dir recursively, including all its contents.
+**Be very careful with the use of [rmtree](https://docs.python.org/3/library/shutil.html#shutil.rmtree)**
+
+```{pyodide}
+#| exercise: rmtree
+```
+::: { .solution exercise="rmtree" }
+::: { .callout-tip collapse="false"}
+```{pyodide}
+from pathlib import Path
+from shutil import rmtree
+
+parent = Path.cwd()
+project_dir = parent / 'project1'
+print(list(parent.iterdir()))
+rmtree(project_dir)
+print(list(parent.iterdir()))
+```

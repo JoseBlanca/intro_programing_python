@@ -101,10 +101,10 @@ website:
               href: everyday_python/paths.qmd
             - text: "shutil"
               href: everyday_python/shutil.qmd
-          - text: "Comprehensions"
-            href: everyday_python/comprehensions.qmd
           - text: "subprocess"
             href: everyday_python/subprocess.qmd
+          - text: "Comprehensions"
+            href: everyday_python/comprehensions.qmd
           - text: "Counter"
             href: everyday_python/collections.qmd
           - text: "lambda"
