@@ -106,7 +106,7 @@ website:
           - text: "Comprehensions"
             href: everyday_python/comprehensions.qmd
           - text: "Counter"
-            href: everyday_python/collections.qmd
+            href: everyday_python/counter.qmd
           - text: "lambda"
             href: everyday_python/lambda.qmd  
     tools:
